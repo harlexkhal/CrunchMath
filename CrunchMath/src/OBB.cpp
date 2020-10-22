@@ -21,7 +21,7 @@ namespace CrunchMath {
 
 	OBB::OBB(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent)
 	{
-		this->CreateNewOBB(Center, RotationAxis, HalfExtent);
+		Set(Center, RotationAxis, HalfExtent);
 	}
 
 	OBB::OBB(const OBB& OrientedBox)
@@ -269,11 +269,6 @@ namespace CrunchMath {
 	}
 
 	void OBB::Set(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent)
-	{
-		this->CreateNewOBB(Center, RotationAxis, HalfExtent);
-	}
-
-	void OBB::CreateNewOBB(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent)
 	{
 		//Making sure its a unit Vector...
 		assert(RotationAxis.x <= 1.0f && RotationAxis.x >= 0.0f);

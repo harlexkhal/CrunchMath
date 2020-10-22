@@ -6,3 +6,5 @@
 #include "src/Mat4x4.h"
 #include "src/AABB.h"
 #include "src/OBB.h"
+#include "src/Sphere.h"
+#include "src/GeometricUtility.h"

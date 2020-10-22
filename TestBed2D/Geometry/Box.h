@@ -22,7 +22,7 @@ public:
         Model.SetRotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::Radian(45));
         Model.Scale(Size);
         CrunchMath::Vec4 R(0, 0, 1, CrunchMath::Radian(45));
-        Volume.Set(Position, R, (Size / 2));
+        Volume = CrunchMath::OBB(Position, R, (Size / 2));
         Color = CrunchMath::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
     }
 

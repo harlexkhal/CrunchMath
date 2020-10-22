@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\GeometricUtility.h" />
+    <ClInclude Include="src\Sphere.h" />
     <ClInclude Include="src\BVH\BVHSphere.h" />
     <ClInclude Include="src\AABB.h" />
     <ClInclude Include="CrunchMath.h" />
@@ -144,6 +146,7 @@
     <ClInclude Include="src\Vec4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Sphere.cpp" />
     <ClCompile Include="src\BVH\BVHSphere.cpp" />
     <ClCompile Include="src\AABB.cpp" />
     <ClCompile Include="src\Mat4x4.cpp" />

@@ -27,8 +27,5 @@ namespace CrunchMath{
 
 		//Note: TO DO >>>
 		//void TransformBox(const Quaternion& Rotation, const Vec3& Position, Vec3 Size);
-
-	private:
-		void CreateNewAABB(const Vec3& Min, const Vec3& Max);
 	};
 }

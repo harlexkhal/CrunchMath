@@ -55,9 +55,13 @@ int main()
     float thetha = 0;
     int Count = 0;
     float FixedTimeStep = (1 / 100.0f);
+
+    Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);
+   
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box(vertexShaderSource, fragmentShaderSource);
+
     while (!glfwWindowShouldClose(window))
     {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -65,10 +69,29 @@ int main()
 
         //Circle
         Circle.Model.Rotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::WrapPi(thetha));
+        Circle.Volume.Set(Box.Position, Circle.Size / 2);
         Circle.Model.Translate(Box.Position);
-        Circle.Model.Scale(Circle.Radius);
+        Circle.Model.Scale(Circle.Size);
         Circle.Render();
+
+        //Circle2
+        Circle2.Model.Rotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::WrapPi(thetha));
+        Circle2.Volume.Set(Box2.Position, Circle2.Size / 2);
+        Circle2.Model.Translate(Box2.Position);
+        Circle2.Model.Scale(Circle2.Size);
+        Circle2.Render();
         
+        if (Circle.Volume.IntersectTest(Circle2.Volume))
+        {
+            Circle.Color = CrunchMath::Vec4(1.0f, 0.0f, 0.0f, 1.0f);
+            Circle2.Color = CrunchMath::Vec4(1.0f, 0.0f, 0.0f, 1.0f);
+        }
+        else
+        {
+            Circle.Color = CrunchMath::Vec4(1.0f, 1.0f, 0.0f, 1.0f);
+            Circle2.Color = CrunchMath::Vec4(1.0f, 1.0f, 0.0f, 1.0f);
+        }
+
         //Box
         CrunchMath::Vec4 R(0, 0, 1, -CrunchMath::WrapPi(thetha));
         Box.Volume.Set(Box.Position, R, (Box.Size / 2));

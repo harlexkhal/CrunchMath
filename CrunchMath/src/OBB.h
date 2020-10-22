@@ -26,8 +26,5 @@ namespace CrunchMath {
 		bool ALTIntersectTest(const OBB& OrientedBox);
 
 		void Set(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent);
-
-	private:
-		void CreateNewOBB(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent);
 	};
 }

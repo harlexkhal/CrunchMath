@@ -14,7 +14,7 @@ namespace CrunchMath {
 
     AABB::AABB(const Vec3& Min, const Vec3& Max)
     {
-        this->CreateNewAABB(Min, Max);
+        this->Set(Min, Max);
     }
 
     AABB::AABB(const AABB& Box)
@@ -122,11 +122,6 @@ namespace CrunchMath {
     }
 
     void AABB::Set(const Vec3& Min, const Vec3& Max)
-    {
-        this->CreateNewAABB(Min, Max);
-    }
-
-    void AABB::CreateNewAABB(const Vec3& Min, const Vec3& Max)
     {
         this->Min[0] = Min.x;
         this->Min[1] = Min.y;

@@ -5,7 +5,8 @@
 class Circle : public Geometry
 {
 public:
-    float Radius;
+    float Size; //Diametre
+    CrunchMath::Sphere Volume;
 private:
     float vertices[2200];
 
@@ -16,9 +17,10 @@ public:
         Draw();
         AllocateBuffers(sizeof(vertices), vertices);
 
-        Radius = 0.2f;
+        Size = 0.2f;
         Model.SetRotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::Radian(45));
-        Model.Scale(Radius);
+        Volume = CrunchMath::Sphere(Position, Size/2);
+        Model.Scale(Size);
         Color = CrunchMath::Vec4(0.0f, 0.0f, 1.0f, 1.0f);
 	}
 
