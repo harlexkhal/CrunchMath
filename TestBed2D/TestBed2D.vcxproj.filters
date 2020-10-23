@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="..\Dependencies\project-src\Glad\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Dependencies\project-src\Glad\src\glad.c">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Geometry\Geometry.h">
+    <ClInclude Include="src\Geometry\Box.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry\Circle.h">
+    <ClInclude Include="src\Geometry\Circle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry\Box.h">
+    <ClInclude Include="src\Geometry\Geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

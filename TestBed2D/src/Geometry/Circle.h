@@ -1,5 +1,4 @@
 #pragma once
-#include "../../CrunchMath/CrunchMath.h"
 #include "Geometry.h"
 
 class Circle : public Geometry

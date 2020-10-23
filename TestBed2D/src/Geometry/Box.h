@@ -1,6 +1,4 @@
 #pragma once
-#pragma once
-#include "../../CrunchMath/CrunchMath.h"
 #include "Geometry.h"
 
 class Box : public Geometry
