@@ -4,7 +4,7 @@
 
 namespace CrunchMath {
 	
-	bool IntersectTest(Sphere& SphereObject, OBB& OBBObject)
+	static bool IntersectTest(Sphere& SphereObject, OBB& OBBObject)
 	{
 		Vec3 P = OBBObject.ClosestPointOBBPt(SphereObject.CenterPosition);
 
