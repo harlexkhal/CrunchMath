@@ -2,7 +2,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../../../CrunchMath/CrunchMath.h"
+#include <CrunchMath.h>
 
 class Geometry
 {
@@ -93,4 +93,3 @@ protected:
         glBindVertexArray(0);
     }
 };
-

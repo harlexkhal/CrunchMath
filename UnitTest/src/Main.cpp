@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "../../CrunchMath/CrunchMath.h"
+#include <CrunchMath.h>
 
 int main() {
 
