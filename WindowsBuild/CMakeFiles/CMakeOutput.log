@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 12/13/2020 6:17:16 AM.
+Build started 12/13/2020 8:55:28 AM.
 Project "C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\3.17.0-rc2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -35,7 +35,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:14.08
+Time Elapsed 00:00:05.81
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -47,28 +47,28 @@ The CXX compiler identification is MSVC, found in "C:/MyCareer/GameEngineDev/Cru
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_711a0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_f3a35.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.26.28806 for x64
   testCXXCompiler.cxx
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_711a0.dir\Debug\\" /Fd"cmTC_711a0.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
-  cmTC_711a0.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_711a0.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f3a35.dir\Debug\\" /Fd"cmTC_f3a35.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+  cmTC_f3a35.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_f3a35.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_f9c98.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_a7d03.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.26.28806 for x64
   CMakeCXXCompilerABI.cpp
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f9c98.dir\Debug\\" /Fd"cmTC_f9c98.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue "C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\share\cmake-3.17\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_f9c98.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_f9c98.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_a7d03.dir\Debug\\" /Fd"cmTC_a7d03.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue "C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\share\cmake-3.17\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_a7d03.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_a7d03.exe
 
 
 
@@ -82,7 +82,7 @@ The output was:
 Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 12/13/2020 6:17:55 AM.
+Build started 12/13/2020 8:55:50 AM.
 Project "C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\3.17.0-rc2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -108,7 +108,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:09.81
+Time Elapsed 00:00:05.87
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -120,28 +120,28 @@ The C compiler identification is MSVC, found in "C:/MyCareer/GameEngineDev/Crunc
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_82ca5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_19410.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.26.28806 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_82ca5.dir\Debug\\" /Fd"cmTC_82ca5.dir\Debug\vc142.pdb" /Gd /TC /errorReport:queue C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\testCCompiler.c
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_19410.dir\Debug\\" /Fd"cmTC_19410.dir\Debug\vc142.pdb" /Gd /TC /errorReport:queue C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\testCCompiler.c
   testCCompiler.c
-  cmTC_82ca5.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_82ca5.exe
+  cmTC_19410.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_19410.exe
 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_e93d4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_a01e0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.6.0+5ff7b0c9e for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.26.28806 for x64
   CMakeCCompilerABI.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e93d4.dir\Debug\\" /Fd"cmTC_e93d4.dir\Debug\vc142.pdb" /Gd /TC /errorReport:queue "C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\share\cmake-3.17\Modules\CMakeCCompilerABI.c"
-  cmTC_e93d4.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_e93d4.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a01e0.dir\Debug\\" /Fd"cmTC_a01e0.dir\Debug\vc142.pdb" /Gd /TC /errorReport:queue "C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\share\cmake-3.17\Modules\CMakeCCompilerABI.c"
+  cmTC_a01e0.vcxproj -> C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_a01e0.exe
 
 
 

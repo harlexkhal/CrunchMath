@@ -63,11 +63,17 @@
     <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec4.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include\CrunchMath.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{C9CAAE4D-9676-363A-9448-929919E022A4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{099838A6-CB4C-3B89-A3AA-B2BEAB5124DE}</UniqueIdentifier>
     </Filter>
