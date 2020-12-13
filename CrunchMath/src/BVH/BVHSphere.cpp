@@ -1,6 +1,6 @@
 #include "BVHSphere.h"
 
-namespace CrunchMathDS {
+namespace CrunchMath {
 
 
 }

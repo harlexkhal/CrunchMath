@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Geometry\Box.h">
+      <Filter>src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Geometry\Circle.h">
+      <Filter>src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Geometry\Geometry.h">
+      <Filter>src\Geometry</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{099838A6-CB4C-3B89-A3AA-B2BEAB5124DE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Geometry">
+      <UniqueIdentifier>{6E20C91D-D254-326B-B74C-FF6FB4248A88}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

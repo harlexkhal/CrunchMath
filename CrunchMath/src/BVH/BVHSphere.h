@@ -1,6 +1,6 @@
 #pragma once
 
-namespace CrunchMathDS {
+namespace CrunchMath {
 
 	class BVHSphere
 	{
