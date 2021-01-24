@@ -1,84 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\AABB.cpp">
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\BVH\BVHSphere.cpp">
-      <Filter>src\BVH</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.cpp">
+      <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Mat4x4.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.cpp">
+      <Filter>src\Math\BVH</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Math_Util.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.cpp">
+      <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\OBB.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.cpp">
+      <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Quaternion.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\OBB.cpp">
+      <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Sphere.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Quaternion.cpp">
+      <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec3.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Sphere.cpp">
+      <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec4.cpp">
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CrunchMath\src\World.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\AABB.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\BVH\BVHDS.hpp">
-      <Filter>src\BVH</Filter>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.h">
+      <Filter>src\Math</Filter>
     </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\BVH\BVHSphere.h">
-      <Filter>src\BVH</Filter>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHDS.hpp">
+      <Filter>src\Math\BVH</Filter>
     </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\GeometricUtility.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.h">
+      <Filter>src\Math\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\GeometricUtility.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\OBB.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Quaternion.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Sphere.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Mat4x4.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Math_Util.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\OBB.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Quaternion.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Sphere.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec3.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec4.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include\CrunchMath.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\CMakeLists.txt" />
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
-      <UniqueIdentifier>{C9CAAE4D-9676-363A-9448-929919E022A4}</UniqueIdentifier>
+      <UniqueIdentifier>{D10DF923-1723-38CF-8B5B-3C855A35791F}</UniqueIdentifier>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{099838A6-CB4C-3B89-A3AA-B2BEAB5124DE}</UniqueIdentifier>
+      <UniqueIdentifier>{6FCF1D4E-CA6B-31E4-855E-13271B646B2A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\BVH">
-      <UniqueIdentifier>{D071947C-937E-315A-8382-B310791E46C0}</UniqueIdentifier>
+    <Filter Include="src\Math">
+      <UniqueIdentifier>{058F74B6-4D9E-37AD-9951-EF7A19F35598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\BVH">
+      <UniqueIdentifier>{BEE6F3C0-D4E9-3E56-AE33-2FA246BA8340}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

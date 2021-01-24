@@ -1,4 +1,4 @@
-# Install script for directory: C:/MyCareer/GameEngineDev/CrunchMath/Dependencies/glad
+# Install script for directory: C:/Dev/MyProjects/CrunchMath/Dependencies/glad
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

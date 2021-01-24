@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CMakeFiles\a025c8ce106c9ce1aa1b87a59f6ff8ce\INSTALL_force.rule">
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\78ff304403d5a349486c17487107a3f0\INSTALL_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{7A2AED00-E99D-3444-BC0D-4F9018E4944C}</UniqueIdentifier>
+      <UniqueIdentifier>{0E52269D-01F9-374E-AA11-AEDDEAFC86A3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

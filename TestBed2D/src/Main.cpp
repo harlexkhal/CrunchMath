@@ -54,7 +54,7 @@ int main()
 
     float thetha = 0;
     int Count = 0;
-    float FixedTimeStep = (1 / 100.0f);
+    float FixedTimeStep = (1 / 60.0f);
 
     Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);
@@ -62,26 +62,36 @@ int main()
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box(vertexShaderSource, fragmentShaderSource);
 
+    float Gravity = -9.8f;
+    World PlanetTest(0, Gravity, 0);
+
+    Body* First = PlanetTest.CreateBody();
+    First->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
+    First->SetMass(2.0f);
+    First->SetLinearDamping(0.9f);
+
     while (!glfwWindowShouldClose(window))
     {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
+        PlanetTest.Step(FixedTimeStep);
+
         //Circle
-        Circle.Model.Rotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::WrapPi(thetha));
+        Circle.Model.Rotate(CrunchMath::Vec3(0, 0, 1), thetha);
         Circle.Volume.Set(Box.Position, Circle.Size / 2);
         Circle.Model.Translate(Box.Position);
         Circle.Model.Scale(Circle.Size);
         Circle.Render();
 
         //Circle2
-        Circle2.Model.Rotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::WrapPi(thetha));
+        Circle2.Model.Rotate(CrunchMath::Vec3(0, 0, 1), thetha);
         Circle2.Volume.Set(Box2.Position, Circle2.Size / 2);
         Circle2.Model.Translate(Box2.Position);
         Circle2.Model.Scale(Circle2.Size);
         Circle2.Render();
         
-        if (Circle.Volume.IntersectTest(Circle2.Volume))
+        if (Circle.Volume.NarrowPhaseCollision(Circle2.Volume))
         {
             Circle.Color = CrunchMath::Vec4(1.0f, 0.0f, 0.0f, 1.0f);
             Circle2.Color = CrunchMath::Vec4(1.0f, 0.0f, 0.0f, 1.0f);
@@ -93,23 +103,23 @@ int main()
         }
 
         //Box
-        CrunchMath::Vec4 R(0, 0, 1, -CrunchMath::WrapPi(thetha));
+        CrunchMath::Vec4 R(0, 0, 1, -thetha);
         Box.Volume.Set(Box.Position, R, (Box.Size / 2));
-        Box.Model.Rotate(CrunchMath::Vec3(0, 0, 1), -CrunchMath::WrapPi(thetha));
+        Box.Model.Rotate(CrunchMath::Vec3(0, 0, 1), thetha);
         Box.Model.Translate(Box.Position);
         Box.Model.Scale(Box.Size);
         Box.Render();
        
         //Box2
-        Box2.Volume.Set(Box2.Position, R, (Box2.Size / 2));
-        Box2.Model.Rotate(CrunchMath::Vec3(0, 0, 1), -CrunchMath::WrapPi(thetha));
-        Box2.Model.Translate(Box2.Position);
+        Box2.Volume.Set(First->GetPosition(), R, (Box2.Size / 2));
+        Box2.Model.Rotate(CrunchMath::Vec3(0, 0, 1), -thetha);
+        Box2.Model.Translate(First->GetPosition());
         Box2.Model.Scale(Box2.Size);
         Box2.Render();
 
         //Events
         thetha = CrunchMath::Radian(Count * FixedTimeStep);
-        Count += 30;
+        Count += 90;
 
         if (glfwGetKey(window, GLFW_KEY_UP))
             Box.Position.y += 0.3f * FixedTimeStep;
@@ -120,7 +130,7 @@ int main()
         if (glfwGetKey(window, GLFW_KEY_RIGHT))
             Box.Position.x += 0.3f * FixedTimeStep;
 
-        if (Box.Volume.IntersectTest(Box2.Volume))
+        if (Box.Volume.BroadPhaseCollision(Box2.Volume))
         {
             Box.Color = CrunchMath::Vec4(1.0f, 0.0f, 0.0f, 1.0f);
             Box2.Color = CrunchMath::Vec4(1.0f, 0.0f, 0.0f, 1.0f);

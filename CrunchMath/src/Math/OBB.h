@@ -21,9 +21,9 @@ namespace CrunchMath {
 
 		Vec3 ClosestPointOBBPt(const Vec3& Point) const;
 
-		bool IntersectTest(const OBB& OrientedBox);
+		bool NarrowPhaseCollision(const OBB& OrientedBox);
 
-		bool ALTIntersectTest(const OBB& OrientedBox);
+		bool BroadPhaseCollision(const OBB& OrientedBox);
 
 		void Set(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent);
 	};

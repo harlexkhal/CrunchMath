@@ -98,7 +98,7 @@ namespace CrunchMath {
 		return ClosestPointOnOBB;
 	}
 
-	bool OBB::IntersectTest(const OBB& OrientedBox)
+	bool OBB::NarrowPhaseCollision(const OBB& OrientedBox)
 	{
 		Vec3 C1(Center[0], Center[1], Center[2]);
 		Vec3 C2(OrientedBox.Center[0], OrientedBox.Center[1], OrientedBox.Center[2]);
@@ -128,14 +128,11 @@ namespace CrunchMath {
 		return (Radius2 >= D);
 	}
 
-	bool OBB::ALTIntersectTest(const OBB& OrientedBox)
+	bool OBB::BroadPhaseCollision(const OBB& OrientedBox)
 	{
 		//---None Exact OBB-OBB intersection Test---
 
-		//Checks to see if to do the test in 2D or 3D for a little bit accuracy in its unreliable intersection tests :-{
 		unsigned int NumAxis = 3;
-		if (HalfExtent[2] <= 0.0f && OrientedBox.HalfExtent[2] <= 0.0f)
-			NumAxis = 2;
 
 		float this_Radius;
 		float OrientedBox_Radius;
@@ -145,38 +142,37 @@ namespace CrunchMath {
 
 		float RM[3][3];
 		float absRM[3][3];
-		for (int i = 0; i < 3; i++)
+		float hold = 0.0f;
+
+		for (int h = 0; h < NumAxis; h++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int i = 0; i < NumAxis; i++)
 			{
-				Vec3 this_OrientationAxis(OrientationMatrix[i][0], 
-					                      OrientationMatrix[i][1], 
-					                      OrientationMatrix[i][2]);
+				for (int j = 0; j < NumAxis; j++)
+				{
+					hold += (OrientationMatrix[j][h] * OrientedBox.OrientationMatrix[i][j]);
+				}
 
-				Vec3 OrientedBox_OrientationAxis(OrientedBox.OrientationMatrix[i][0], 
-					                             OrientedBox.OrientationMatrix[i][1],
-					                             OrientedBox.OrientationMatrix[i][2]);
-
-				//Computing Rotation Matrix expressing OrientedBox in this->OrientedBox object co-ordinate frame
-				RM[i][j] = DotProduct(this_OrientationAxis, OrientedBox_OrientationAxis);
+				RM[i][h] = hold;
+				hold = 0.0f;
 			}
 		}
 		
 		//Compute Translation T
 		Vec3 Tvec = OrientedBox_Center - this_Center;
 		//Bringing the Translation into this->OrientedBox object co-ordinate frame
-		Tvec = Vec3(DotProduct(Vec3(OrientationMatrix[0][0], OrientationMatrix[0][1], OrientationMatrix[0][2]), Tvec),
-			        DotProduct(Vec3(OrientationMatrix[1][0], OrientationMatrix[1][1], OrientationMatrix[1][2]), Tvec),
-			        DotProduct(Vec3(OrientationMatrix[2][0], OrientationMatrix[2][1], OrientationMatrix[2][2]), Tvec));
+		Tvec = Vec3(DotProduct(Vec3(OrientationMatrix[0][0], OrientationMatrix[1][0], OrientationMatrix[2][0]), Tvec),
+			        DotProduct(Vec3(OrientationMatrix[0][1], OrientationMatrix[1][1], OrientationMatrix[2][1]), Tvec),
+			        DotProduct(Vec3(OrientationMatrix[0][2], OrientationMatrix[1][2], OrientationMatrix[2][2]), Tvec));
 		float T[3] = { Tvec.x, Tvec.y, Tvec.z };
 
 		 /*Compute common subexpressions. Add in an epsilon term to
            counteract arithmetic errors when two edges are parallel and
            their cross product is (near) null
 		   such errors normally occur in 3D not 2D*/
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < NumAxis; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < NumAxis; j++)
 			{
 				absRM[i][j] = std::abs(RM[i][j]) + FLT_EPSILON;
 			}
@@ -193,7 +189,8 @@ namespace CrunchMath {
 				                 (OrientedBox.HalfExtent[1] * absRM[i][1]) +
 				                 (OrientedBox.HalfExtent[2] * absRM[i][2]);
 
-			if (std::abs(T[i]) > (this_Radius + OrientedBox_Radius))
+			float sep = std::abs(T[i]) - this_Radius - OrientedBox_Radius;
+			if (sep > 0.0f)
 				return false;
 		}
 
@@ -205,8 +202,8 @@ namespace CrunchMath {
 				(HalfExtent[2] * absRM[2][i]));
 
 			OrientedBox_Radius = OrientedBox.HalfExtent[i];
-
-			if (std::abs(T[0] * RM[0][i] + T[1] * RM[1][i] + T[2] * RM[2][i]) > (this_Radius + OrientedBox_Radius))
+			float sep = std::abs(T[0] * RM[0][i] + T[1] * RM[1][i] + T[2] * RM[2][i]) - this_Radius - OrientedBox_Radius;
+			if (sep > 0.0f)
 				return false;
 		}
 
@@ -263,7 +260,7 @@ namespace CrunchMath {
 		OrientedBox_Radius = (OrientedBox.HalfExtent[0] * absRM[2][1]) + (OrientedBox.HalfExtent[1] * absRM[2][0]);
 		if (std::abs((T[1] * RM[0][2]) - (T[0] * RM[1][2])) > this_Radius + OrientedBox_Radius)
 			return false;
-
+			
 		// Since no separating axis is found, the OBBs must be intersecting
 		return true;
 	}

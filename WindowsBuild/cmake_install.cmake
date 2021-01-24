@@ -1,4 +1,4 @@
-# Install script for directory: C:/MyCareer/GameEngineDev/CrunchMath
+# Install script for directory: C:/Dev/MyProjects/CrunchMath
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CrunchMath/cmake_install.cmake")
-  include("C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/Dependencies/glad/cmake_install.cmake")
-  include("C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/Dependencies/glfw/cmake_install.cmake")
-  include("C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/cmake_install.cmake")
-  include("C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/UnitTest/cmake_install.cmake")
+  include("C:/Dev/MyProjects/CrunchMath/WindowsBuild/CrunchMath/cmake_install.cmake")
+  include("C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glad/cmake_install.cmake")
+  include("C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/cmake_install.cmake")
+  include("C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/cmake_install.cmake")
+  include("C:/Dev/MyProjects/CrunchMath/WindowsBuild/UnitTest/cmake_install.cmake")
 
 endif()
 
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Dev/MyProjects/CrunchMath/WindowsBuild/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

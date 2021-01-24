@@ -1,4 +1,4 @@
-# Install script for directory: C:/MyCareer/GameEngineDev/CrunchMath/TestBed2D
+# Install script for directory: C:/Dev/MyProjects/CrunchMath/TestBed2D
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

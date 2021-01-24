@@ -1,6 +1,7 @@
 file(GLOB CRUNCHMATH_SOURCE_FILES
 	"src/*.*"
-	"src/BVH/*.*")
+	"src/Math/*.*"
+	"src/Math/BVH/*.*")
 
 file(GLOB CRUNCHMATH_INCLUDE_FILES
     "include/CrunchMath.h")

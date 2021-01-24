@@ -73,11 +73,22 @@ namespace CrunchMath {
             return ClosestPointOnAABBToPoint;
     }
 
-    bool AABB::ALTIntersectTest(const AABB& Object2)
+    bool AABB::BroadPhaseCollision(const AABB& Box)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!(this->Min[i] <= Box.Max[i] && this->Max[i] >= Box.Min[i]))
+                return false;
+        }
+       
+        return true;
+    }
+
+    bool AABB::NarrowPhaseCollision(const AABB& Object2)
     {
         Vec3 _thisCenterPoint;
         Vec3 Object2CenterPoint_;
-       
+
         _thisCenterPoint.x = (Min[0] + Max[0]) / 2.0f;
         _thisCenterPoint.y = (Min[1] + Max[1]) / 2.0f;
         _thisCenterPoint.z = (Min[2] + Max[2]) / 2.0f;
@@ -108,17 +119,6 @@ namespace CrunchMath {
 
         //Reports as intersecting if Radius(Object2CenterPoint_- ClosestPtOnObject2) becomes > or = the Distance (ClosestPointOn_this_AABB-Object2CenterPoint_)
         return (RadiusOfObject2 >= D);
-    }
-
-    bool AABB::IntersectTest(const AABB& Box)
-    {
-        bool Collision[3];
-        for (int i = 0; i < 3; i++)
-        {
-            Collision[i] = this->Min[i] <= Box.Max[i] && this->Max[i] >= Box.Min[i];
-        }
-       
-        return (Collision[0] && Collision[1] && Collision[2]);
     }
 
     void AABB::Set(const Vec3& Min, const Vec3& Max)

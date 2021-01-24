@@ -19,9 +19,10 @@ namespace CrunchMath{
 
 		Vec3 ClosestPointAABBPt(const Vec3& Point) const;
 
-		bool ALTIntersectTest(const AABB& Object2);
+		bool BroadPhaseCollision(const AABB& Object2);
 
-		bool IntersectTest(const AABB& Object2);
+		//Narrow Phase Collision shouldn't be ever used for an AABB
+		bool NarrowPhaseCollision(const AABB& Object2);
 
 		void Set(const Vec3& Min, const Vec3& Max);
 

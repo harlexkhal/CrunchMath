@@ -22,8 +22,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CBE527DC-0048-3E07-A792-0F8C47A88CC3}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{3006D886-A3A9-3C0F-BBA9-5B98D233A5FF}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
     <ProjectName>CrunchMath</ProjectName>
@@ -59,29 +59,28 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CrunchMath.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CrunchMath</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CrunchMath.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CrunchMath</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CrunchMath.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CrunchMath</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CrunchMath.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CrunchMath</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
@@ -96,10 +95,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -112,9 +111,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <Optimization>MaxSpeed</Optimization>
@@ -130,10 +128,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -146,9 +144,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <Optimization>MinSpace</Optimization>
@@ -164,10 +161,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -180,9 +177,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -197,10 +193,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\CrunchMath\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -212,10 +208,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/CrunchMath/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/CrunchMath/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -224,11 +221,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/CrunchMath/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/CrunchMath/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -237,11 +234,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/CrunchMath/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/CrunchMath/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -250,11 +247,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/CrunchMath/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/CrunchMath/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/CrunchMath/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -263,36 +260,40 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\AABB.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\AABB.h" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\BVH\BVHDS.hpp" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\BVH\BVHSphere.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\BVH\BVHSphere.h" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\GeometricUtility.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Mat4x4.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Mat4x4.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Math_Util.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Math_Util.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\OBB.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\OBB.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Quaternion.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Quaternion.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Sphere.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Sphere.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec3.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec3.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec4.cpp" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\src\Vec4.h" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include\CrunchMath.h" />
+    <ClCompile Include="..\..\CrunchMath\src\World.cpp" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHDS.hpp" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\GeometricUtility.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\OBB.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\OBB.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Quaternion.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Quaternion.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Sphere.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Sphere.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\ZERO_CHECK.vcxproj">
-      <Project>{C99138BE-9891-37D5-B124-A5418E23C69E}</Project>
+    <ProjectReference Include="C:\Dev\MyProjects\CrunchMath\WindowsBuild\ZERO_CHECK.vcxproj">
+      <Project>{038890B9-D29C-3CFC-A4F7-87DA588650D9}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

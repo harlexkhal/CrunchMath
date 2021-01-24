@@ -22,8 +22,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9416CA95-552E-39DA-8744-C945B7EBDEA3}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{13829512-D833-3FAC-8CB5-616FC0580525}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
     <ProjectName>TestBed2D</ProjectName>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TestBed2D.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TestBed2D</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TestBed2D.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TestBed2D</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">TestBed2D.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">TestBed2D</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">TestBed2D.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">TestBed2D</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,10 +86,9 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
@@ -104,10 +103,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -120,8 +119,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/Debug/TestBed2D.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/Debug/TestBed2D.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/Debug/TestBed2D.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/Debug/TestBed2D.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -130,9 +129,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <Optimization>MaxSpeed</Optimization>
@@ -148,10 +146,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -164,8 +162,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/Release/TestBed2D.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/Release/TestBed2D.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/Release/TestBed2D.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/Release/TestBed2D.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -174,9 +172,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <Optimization>MinSpace</Optimization>
@@ -192,10 +189,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -208,8 +205,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/MinSizeRel/TestBed2D.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/MinSizeRel/TestBed2D.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/MinSizeRel/TestBed2D.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/MinSizeRel/TestBed2D.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -218,9 +215,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
-      <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -235,10 +231,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D;C:\MyCareer\GameEngineDev\CrunchMath\CrunchMath\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glfw\include;C:\MyCareer\GameEngineDev\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\MyProjects\CrunchMath\TestBed2D;C:\Dev\MyProjects\CrunchMath\CrunchMath\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\include;C:\Dev\MyProjects\CrunchMath\Dependencies\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -251,8 +247,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/RelWithDebInfo/TestBed2D.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/RelWithDebInfo/TestBed2D.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/RelWithDebInfo/TestBed2D.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/RelWithDebInfo/TestBed2D.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -260,10 +256,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/TestBed2D/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/TestBed2D/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -272,11 +269,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/TestBed2D/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/TestBed2D/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -285,11 +282,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/TestBed2D/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/TestBed2D/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -298,11 +295,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/MyCareer/GameEngineDev/CrunchMath/TestBed2D/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Dev/MyProjects/CrunchMath/TestBed2D/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files (x86)\cmake-3.17.0-rc2-win32-x86\cmake-3.17.0-rc2-win32-x86\bin\cmake.exe" -SC:/MyCareer/GameEngineDev/CrunchMath -BC:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild --check-stamp-file C:/MyCareer/GameEngineDev/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Dev/MyProjects/CrunchMath -BC:/Dev/MyProjects/CrunchMath/WindowsBuild --check-stamp-file C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -311,33 +308,33 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Dev\MyProjects\CrunchMath\WindowsBuild\TestBed2D\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Geometry\Box.h" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Geometry\Circle.h" />
-    <ClInclude Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Geometry\Geometry.h" />
-    <ClCompile Include="C:\MyCareer\GameEngineDev\CrunchMath\TestBed2D\src\Main.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Geometry\Box.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Geometry\Circle.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Geometry\Geometry.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\ZERO_CHECK.vcxproj">
-      <Project>{C99138BE-9891-37D5-B124-A5418E23C69E}</Project>
+    <ProjectReference Include="C:\Dev\MyProjects\CrunchMath\WindowsBuild\ZERO_CHECK.vcxproj">
+      <Project>{038890B9-D29C-3CFC-A4F7-87DA588650D9}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\CrunchMath\CrunchMath.vcxproj">
-      <Project>{CBE527DC-0048-3E07-A792-0F8C47A88CC3}</Project>
+    <ProjectReference Include="C:\Dev\MyProjects\CrunchMath\WindowsBuild\CrunchMath\CrunchMath.vcxproj">
+      <Project>{3006D886-A3A9-3C0F-BBA9-5B98D233A5FF}</Project>
       <Name>CrunchMath</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\Dependencies\glad\glad.vcxproj">
-      <Project>{1325C55C-380C-3F15-8167-9BD438480348}</Project>
+    <ProjectReference Include="C:\Dev\MyProjects\CrunchMath\WindowsBuild\Dependencies\glad\glad.vcxproj">
+      <Project>{88C85213-6951-37FF-9576-8BFB4CABCBE1}</Project>
       <Name>glad</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\MyCareer\GameEngineDev\CrunchMath\WindowsBuild\Dependencies\glfw\src\glfw.vcxproj">
-      <Project>{23F3A258-90A4-39CC-8EB4-11B404750904}</Project>
+    <ProjectReference Include="C:\Dev\MyProjects\CrunchMath\WindowsBuild\Dependencies\glfw\src\glfw.vcxproj">
+      <Project>{25E00A1D-4794-3B38-BA0B-A1D08DB8F466}</Project>
       <Name>glfw</Name>
     </ProjectReference>
   </ItemGroup>

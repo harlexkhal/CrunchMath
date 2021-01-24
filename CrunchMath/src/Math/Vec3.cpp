@@ -54,9 +54,9 @@ namespace CrunchMath {
 
 	Vec3& Vec3::operator*=(const float& Scale)
 	{
-		x += Scale;
-		y += Scale;
-		z += Scale;
+		x *= Scale;
+		y *= Scale;
+		z *= Scale;
 
 		return *this;
 	}

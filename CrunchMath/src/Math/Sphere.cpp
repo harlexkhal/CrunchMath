@@ -27,7 +27,7 @@ namespace CrunchMath {
 		return *this;
 	}
 
-	bool Sphere::IntersectTest(const Sphere& Object2)
+	bool Sphere::NarrowPhaseCollision(const Sphere& Object2)
 	{
 		Vec3 D = this->CenterPosition - Object2.CenterPosition;
 		float D_sq = DotProduct(D, D);
