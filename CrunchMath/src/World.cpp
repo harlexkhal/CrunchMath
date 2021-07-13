@@ -9,11 +9,11 @@ World::~World()
 {
 }
 
-Body* World::CreateBody()
+Body* World::CreateBody(CMShape type)
 {
 	if (FirstRegistered == nullptr)
 	{
-		FirstRegistered = new Body();
+		FirstRegistered = new Body(type);
 		FirstRegistered->pPrev = nullptr;
 		FirstRegistered->pNext = nullptr;
 		LastRegistered = FirstRegistered;
@@ -21,7 +21,7 @@ Body* World::CreateBody()
 		return LastRegistered;
 	}
 
-	Body* NewBody = new Body();
+	Body* NewBody = new Body(type);
 	LastRegistered->pNext = NewBody;
 	NewBody->pPrev = LastRegistered;
 	NewBody->pNext = nullptr;
@@ -41,7 +41,7 @@ void World::Step(float dt)
 
 		//Temporary code
 		if (LastRegistered->Position.y <= -0.7f)
-			LastRegistered->AddVelocity(0, 0.5f, 0.0f);
+			LastRegistered->Awake = false;
 
 		LastRegistered = LastRegistered->pNext;
 	}

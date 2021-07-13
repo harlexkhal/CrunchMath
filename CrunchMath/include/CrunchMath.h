@@ -9,5 +9,11 @@
 #include "../src/Math/Sphere.h"
 #include "../src/Math/GeometricUtility.h"
 
-//----Temporary-----
+//----Temporary but Main-----
 #include "../src/World.h"
+
+//-----Temporary but Refs----
+#include "../src/CycloneRef/body.h"
+#include "../src/CycloneRef/collide_fine.h"
+#include "../src/CycloneRef/contacts.h"
+#include "../src/CycloneRef/core.h"

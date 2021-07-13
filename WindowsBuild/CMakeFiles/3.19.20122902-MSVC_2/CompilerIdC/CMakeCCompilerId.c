@@ -225,6 +225,36 @@
   # define COMPILER_VERSION_PATCH DEC(__ARMCOMPILER_VERSION     % 10000)
 # define COMPILER_VERSION_INTERNAL DEC(__ARMCOMPILER_VERSION)
 
+#elif defined(__clang__) && defined(__INTEL_DPCPP_COMPILER__)
+# define COMPILER_ID "IntelDPCPP"
+# if defined(_MSC_VER)
+#  define SIMULATE_ID "MSVC"
+# endif
+# define COMPILER_VERSION_MAJOR DEC(__clang_major__)
+# define COMPILER_VERSION_MINOR DEC(__clang_minor__)
+# define COMPILER_VERSION_PATCH DEC(__clang_patchlevel__)
+# if defined(_MSC_VER)
+   /* _MSC_VER = VVRR */
+#  define SIMULATE_VERSION_MAJOR DEC(_MSC_VER / 100)
+#  define SIMULATE_VERSION_MINOR DEC(_MSC_VER % 100)
+# endif
+# define COMPILER_VERSION_TWEAK DEC(__INTEL_DPCPP_COMPILER__)
+
+#elif defined(__clang__) && defined(__INTEL_CLANG_COMPILER)
+# define COMPILER_ID "IntelClang"
+# if defined(_MSC_VER)
+#  define SIMULATE_ID "MSVC"
+# endif
+# define COMPILER_VERSION_MAJOR DEC(__clang_major__)
+# define COMPILER_VERSION_MINOR DEC(__clang_minor__)
+# define COMPILER_VERSION_PATCH DEC(__clang_patchlevel__)
+# if defined(_MSC_VER)
+   /* _MSC_VER = VVRR */
+#  define SIMULATE_VERSION_MAJOR DEC(_MSC_VER / 100)
+#  define SIMULATE_VERSION_MINOR DEC(_MSC_VER % 100)
+# endif
+# define COMPILER_VERSION_TWEAK DEC(__INTEL_CLANG_COMPILER)
+
 #elif defined(__clang__)
 # define COMPILER_ID "Clang"
 # if defined(_MSC_VER)
@@ -539,6 +569,24 @@ char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
 # else /* unknown architecture */
 #  define ARCHITECTURE_ID ""
 # endif
+
+#elif defined(__TI_COMPILER_VERSION__)
+# if defined(__TI_ARM__)
+#  define ARCHITECTURE_ID "ARM"
+
+# elif defined(__MSP430__)
+#  define ARCHITECTURE_ID "MSP430"
+
+# elif defined(__TMS320C28XX__)
+#  define ARCHITECTURE_ID "TMS320C28x"
+
+# elif defined(__TMS320C6X__) || defined(_TMS320C6X)
+#  define ARCHITECTURE_ID "TMS320C6x"
+
+# else /* unknown architecture */
+#  define ARCHITECTURE_ID ""
+# endif
+
 #else
 #  define ARCHITECTURE_ID
 #endif
@@ -616,7 +664,6 @@ char const info_simulate_version[] = {
    array rather than assigning a pointer to a static array.  */
 char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
 char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
-
 
 
 

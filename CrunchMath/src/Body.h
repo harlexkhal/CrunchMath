@@ -1,14 +1,19 @@
 #pragma once
 #include "Math/Mat4x4.h"
 
+enum class CMShape
+{
+	Box,
+	Sphere
+};
+
 class Body
 {
 public:
-	Body();
+	Body(CMShape type);
 	~Body();
 
 	void Integrate(float dt);
-	void CalculateTransform();
 
 	void SetMass(float p_Mass);
 	void SetSize(float x, float y, float z);
@@ -20,13 +25,20 @@ public:
 	void SetAngularVelocity(float x, float y, float z);
 	void SetInertiaTensor();
 	void SetAcceleration(float x, float y, float z);
+	void SetAwake(bool a);
+
+	CrunchMath::Vec3 GetPosition() const;
+	const CrunchMath::Mat4x4& GetTransform() const;
 
 	void AddVelocity(float x, float y, float z);
-	CrunchMath::Vec3 GetPosition() const;
+
 private:
+	void CalculateTransform();
+	void CalculateInertiaTensor();
 
 	float Mass, InverseMass;
 	CrunchMath::Vec3 Size;
+	CrunchMath::Vec3 HalfExtent;
 
 	float LinearDamping, AngularDamping;
 
@@ -35,10 +47,13 @@ private:
 
 	CrunchMath::Vec3 Velocity;
 	CrunchMath::Vec3 AngularVelocity;
+
 	//Just using a 9 slots (3x3)...until a 3x3 matrix is available in the math library
-	CrunchMath::Mat4x4 InertialTensorWorld, InverseInertialTensorWorld;
+	CrunchMath::Mat4x4 InertiaTensorObject;
+	CrunchMath::Mat4x4 InertiaTensorWorld, InverseInertiaTensorWorld;
 
 	CrunchMath::Vec3 Acceleration;
+	CrunchMath::Vec3 AngularAcceleration;
 	CrunchMath::Vec3 LastFrameAcceleration;
 
 	CrunchMath::Vec3 ForceAcc;
@@ -46,7 +61,10 @@ private:
 
 	CrunchMath::Mat4x4 TransformMatrix;
 
-	CrunchMath::Vec3 AngularAcceleration;
+	CMShape Type;
+	bool MassExist = false;
+	bool SizeExist = false;
+	bool Awake = true;
 
 	Body* pNext = nullptr;
 	Body* pPrev = nullptr;

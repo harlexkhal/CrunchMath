@@ -4,6 +4,24 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Collision.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Contact.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\body.cpp">
+      <Filter>src\CycloneRef</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\collide_fine.cpp">
+      <Filter>src\CycloneRef</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\contacts.cpp">
+      <Filter>src\CycloneRef</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\core.cpp">
+      <Filter>src\CycloneRef</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
@@ -31,13 +49,34 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\CrunchMath\src\World.cpp">
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Collision.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Contact.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\body.h">
+      <Filter>src\CycloneRef</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\collide_fine.h">
+      <Filter>src\CycloneRef</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\contacts.h">
+      <Filter>src\CycloneRef</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\core.h">
+      <Filter>src\CycloneRef</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\precision.h">
+      <Filter>src\CycloneRef</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.h">
       <Filter>src\Math</Filter>
@@ -88,6 +127,9 @@
     </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{6FCF1D4E-CA6B-31E4-855E-13271B646B2A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\CycloneRef">
+      <UniqueIdentifier>{8D601513-1874-36E7-A53A-C61979498A0C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Math">
       <UniqueIdentifier>{058F74B6-4D9E-37AD-9951-EF7A19F35598}</UniqueIdentifier>

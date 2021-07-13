@@ -31,7 +31,7 @@ namespace CrunchMath {
 	{
 		float Matrix[4][4];
 
-		bool RotationMatrix = true;
+		bool RotationMatrix = false;
 
 		Mat4x4();
 
@@ -114,7 +114,7 @@ namespace CrunchMath {
 			);
 	}
 
-	Mat4x4 Invert(Mat4x4& m);
+	Mat4x4 Invert(const Mat4x4& m);
 
 	static inline Vec3 GetColumn(int colpos, const Mat4x4& m)
 	{

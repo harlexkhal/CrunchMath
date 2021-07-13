@@ -348,8 +348,10 @@ namespace CrunchMath {
 		return *this;
 	}
 	
-	Mat4x4 Invert(Mat4x4& m)
+	Mat4x4 Invert(const Mat4x4& refm)
 	{
+		Mat4x4 m = refm;
+
 		if (m.RotationMatrix)
 		{
             Vec3 Trans = GetTranslation(m);

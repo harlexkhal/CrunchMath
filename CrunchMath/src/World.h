@@ -7,7 +7,7 @@ public:
 	World(float x, float y, float z);
 	~World();
 
-	Body* CreateBody();
+	Body* CreateBody(CMShape type);
 	void Step(float dt);
 
 private:

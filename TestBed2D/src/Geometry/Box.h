@@ -1,7 +1,7 @@
 #pragma once
 #include "Geometry.h"
 
-class Box : public Geometry
+class Box : public cyclone::CollisionBox, public Geometry
 {
 public:
     CrunchMath::Vec3 Size;
@@ -10,6 +10,8 @@ private:
     float vertices[12 * 2];
 
 public:
+    Box(){}
+
     Box(const char* vertexShaderSource, const char* fragmentShaderSource)
     {
         CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
@@ -22,6 +24,8 @@ public:
         CrunchMath::Vec4 R(0, 0, 1, CrunchMath::Radian(45));
         Volume = CrunchMath::OBB(Position, R, (Size / 2));
         Color = CrunchMath::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
+
+        body = new cyclone::RigidBody();
     }
 
 protected:
