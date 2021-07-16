@@ -18,7 +18,7 @@ public:
         Draw();
         AllocateBuffers(sizeof(vertices), vertices);
 
-        Size = CrunchMath::Vec3(0.2f, 0.2f, 0.0f);
+        Size = CrunchMath::Vec3(0.05f, 0.05f, 0.0f);
         Model.SetRotate(CrunchMath::Vec3(0, 0, 1), CrunchMath::Radian(45));
         Model.Scale(Size);
         CrunchMath::Vec4 R(0, 0, 1, CrunchMath::Radian(45));

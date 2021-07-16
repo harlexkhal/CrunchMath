@@ -78,25 +78,27 @@ int main()
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box1(vertexShaderSource, fragmentShaderSource);
     // Set the first block
+    Box1.Size = CrunchMath::Vec3(0.5, 0.05, 0.0f);
+    Box1.Position = CrunchMath::Vec3(-0.0f, 0.0f, 0.0f);
     Box1.halfSize = CrunchPhysx::Vector3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
-    Box1.body->setPosition(Box1.Position.x, 0.7f, 0.0f);
-    Box1.body->setOrientation(1, 0, 0, 0);
+    Box1.body->setPosition(Box1.Position.x, Box1.Position.y, 0.0f);
+    Box1.body->setOrientation(0.5f, 0.0, 0.0f, 1.3f);
     Box1.body->setVelocity(0, 0, 0);
     Box1.body->setRotation(0, 0, 0);
-    Box1.body->setMass(100.0f);
+    //Box1.body->setMass(0.0f);
     CrunchPhysx::Matrix3 it;
     it.setBlockInertiaTensor(Box1.halfSize, 100.0f);
     Box1.body->setInertiaTensor(it);
     Box1.body->setDamping(0.9f, 0.9f);
     Box1.body->calculateDerivedData();
     Box1.calculateInternals();
-    Box1.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
+    Box1.body->setAcceleration(CrunchPhysx::Vector3(0.0f, 0.0f, 0.0f));
     Box1.body->setAwake(true);
     Box1.body->setCanSleep(true);
 
     // Set the first block
     Box2.halfSize = CrunchPhysx::Vector3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
-    Box2.body->setPosition(0.1f, -0.3f, 0.0f);
+    Box2.body->setPosition(0.1f, 0.9f, 0.0f);
     Box2.body->setOrientation(1, 0, 0, 0);
     Box2.body->setVelocity(0, 0, 0);
     Box2.body->setRotation(0, 0, 0);
@@ -119,7 +121,7 @@ int main()
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
         B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
-        B.body->setPosition(0.0f, 0.7f, 0.0f);
+        B.body->setPosition(0.0f, 0.9f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
@@ -142,7 +144,7 @@ int main()
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
         B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
-        B.body->setPosition(0.0f, -0.3f, 0.0f);
+        B.body->setPosition(0.0f, 0.9f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
@@ -210,8 +212,12 @@ int main()
 
         for (int i = 0; i < 10; i++)
         {
-            if (Boxes[i].body->getPosition().y < -1.0f)
-                Boxes[i].body->setAwake(false);
+            if (Boxes[i].body->getPosition().y <= -0.9f)
+            {
+                Boxes[i].body->setVelocity(0, 0, 0);
+                Boxes[i].body->setRotation(0, 0, 0);
+                Boxes[i].body->setPosition(0.0f, 0.9f, 0.0f);
+            }              
         }
 
         for (int a = 0; a < 10; a++)
