@@ -1,34 +1,7 @@
-/*
- * Interface file for the contact resolution system.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
-/**
- * @file
- *
- * This file contains the contact resolution system for cyclone,
- * although it is called the contact resolution system, it handles
- * collisions, contacts (sliding and resting), and constraints (such
- * as joints).
- *
- * The resolver uses an iterative satisfaction algorithm; it loops
- * through each contact and tries to resolve it. This is a very fast
- * algorithm but can be unstable when the contacts are highly
- * inter-related.
- */
-#ifndef CYCLONE_CONTACTS_H
-#define CYCLONE_CONTACTS_H
-
+#pragma once
 #include "body.h"
 
-namespace cyclone {
+namespace CrunchPhysx {
 
     /*
      * Forward declaration, see full declaration below for complete
@@ -438,6 +411,4 @@ namespace cyclone {
         virtual unsigned addContact(Contact *contact, unsigned limit) const = 0;
     };
 
-} // namespace cyclone
-
-#endif // CYCLONE_CONTACTS_H
+}

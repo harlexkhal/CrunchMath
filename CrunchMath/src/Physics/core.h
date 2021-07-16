@@ -1,110 +1,8 @@
-/*
- * Interface file for core components and functions.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
-/**
- * @mainpage Cyclone Reference
- *
- * Cyclone is a general purpose and robust system for real-time
- * simulation of rigid bodies. The library was designed to be used in
- * computer games, but may be applicable to other areas of simulation
- * or research.
- *
- * @section docs About This Document
- *
- * This documentation contains detailed reference to every aspect of
- * the Cyclone library.
- *
- * @subsection contents Contents
- *
- * Use the navigation system on the left side of the page to view the
- * documentation. The navigation tool uses JavaScript, and requires a
- * version 4 browser or above.
- *
- * All the publically accessible functions and classes of Cyclone
- * are provided in a set of header files. These, and their contents,
- * can be browsed from the File List section.
- *
- * Cyclone is contained in a single namespace, cyclone. Its
- * contents can be viewed in the Compound List section. The Class
- * Hierarchy section provides an alternative way to navigate these
- * classes. The Graphical Class Hierarchy provides an overview of
- * class inheritance.
- *
- * The Compound List section gives an alphabetic list of all symbols
- * in the library, including method names and functions.
- *
- * @subsection graphs Graphs
- *
- * Most of the documentation contains detailed graphical
- * representations of the file and class dependencies. These diagrams
- * are clickable, and provide the fastest mechanism for browsing the
- * documentation. Each diagram is followed by a link to a help file
- * giving a legend.
- *
- * @section use Using Cyclone
- *
- * To set up:
- *
- * @li Create a set of instances of RigidBody.
- *
- * @li Set their mass, inertia tensor, and damping.
- *
- * @li Set their initial location, orientation, velocity and rotation.
- *
- * @li Apply any permanent forces (such as gravity).
- *
- * Then each frame:
- *
- * @li Apply any transient forces (such as springs or thrusts).
- *
- * @li Call eulerIntegrate on each body in turn.
- *
- * @li Fill an array of Contact instances with all contacts on all
- * bodies.
- *
- * @li Call ContactResolver::resolveContacts to resolve the
- * contacts.
- *
- * @li Call calculateInternals to update the bodies' internal
- * properties (such as the transform matrix).
- *
- * @li Render the bodies.
- *
- * @section legal Legal
- *
- * This documentation is distributed under license. Use of this
- * documentation implies agreement with all terms and conditions of
- * the accompanying software and documentation license.
- */
-
+#pragma once
 #include <math.h>
-
-/**
- * @file
- *
- * The core contains utility functions, helpers and a basic set of
- * mathematical types.
- */
-#ifndef CYCLONE_CORE_H
-#define CYCLONE_CORE_H
-
 #include "precision.h"
 
-/**
- * The cyclone namespace includes all cyclone functions and
- * classes. It is defined as a namespace to allow function and class
- * names to be simple without causing conflicts.
- */
-namespace cyclone {
+namespace CrunchPhysx {
 
     /**
      * Holds the value for energy under which a body will be put to
@@ -1239,5 +1137,3 @@ namespace cyclone {
     };
 
 }
-
-#endif // CYCLONE_CORE_H

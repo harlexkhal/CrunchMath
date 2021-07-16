@@ -1,18 +1,6 @@
-/*
- * Implementation file for core functions in the library.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
 #include "core.h"
 
-using namespace cyclone;
+using namespace CrunchPhysx;
 
 const Vector3 Vector3::GRAVITY = Vector3(0, -9.81, 0);
 const Vector3 Vector3::HIGH_GRAVITY = Vector3(0, -19.62, 0);
@@ -26,19 +14,19 @@ const Vector3 Vector3::Z = Vector3(0, 0, 1);
 /*
  * Definition of the sleep epsilon extern.
  */
-real cyclone::sleepEpsilon = ((real)0.3);
+real CrunchPhysx::sleepEpsilon = ((real)0.3);
 
 /*
  * Functions to change sleepEpsilon.
  */
-void cyclone::setSleepEpsilon(real value)
+void CrunchPhysx::setSleepEpsilon(real value)
 {
-    cyclone::sleepEpsilon = value;
+    CrunchPhysx::sleepEpsilon = value;
 }
 
-real cyclone::getSleepEpsilon()
+real CrunchPhysx::getSleepEpsilon()
 {
-    return cyclone::sleepEpsilon;
+    return CrunchPhysx::sleepEpsilon;
 }
 
 real Matrix4::getDeterminant() const

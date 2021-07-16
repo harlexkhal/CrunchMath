@@ -1,20 +1,8 @@
-/*
- * Implementation file for the contact resolution system.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
 #include "contacts.h"
 #include <memory.h>
 #include <assert.h>
 
-using namespace cyclone;
+using namespace CrunchPhysx;
 
 // Contact implementation
 

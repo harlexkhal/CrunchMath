@@ -1,33 +1,7 @@
-/*
- * Interface file for code that changes when the core's precision is
- * altered.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
-/**
- * @file
- *
- * Because Cyclone is designed to work at either single or double
- * precision, mathematical functions such as sqrt cannot be used
- * in the source code or headers. This file provides defines for
- * the real number type and mathematical formulae that work on it.
- *
- * @note All the contents of this file need to be changed to compile
- * Cyclone at a different precision.
- */
-#ifndef CYCLONE_PRECISION_H
-#define CYCLONE_PRECISION_H
-
+#pragma once
 #include <float.h>
 
-namespace cyclone {
+namespace CrunchPhysx {
 
 #if 0
     /**
@@ -83,5 +57,3 @@ namespace cyclone {
     #define R_PI 3.14159265358979
 #endif
 }
-
-#endif // CYCLONE_PRECISION_H

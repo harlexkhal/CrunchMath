@@ -61,13 +61,13 @@ int main()
     const static unsigned maxContacts = 1000;
 
     /** Holds the array of contacts. */
-    cyclone::Contact contacts[maxContacts];
+    CrunchPhysx::Contact contacts[maxContacts];
 
     /** Holds the collision data structure for collision detection. */
-    cyclone::CollisionData cData;
+    CrunchPhysx::CollisionData cData;
 
     /** Holds the contact resolver. */
-    cyclone::ContactResolver resolver(maxContacts);
+    CrunchPhysx::ContactResolver resolver(maxContacts);
 
     cData.contactArray = contacts;
 
@@ -78,36 +78,36 @@ int main()
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box1(vertexShaderSource, fragmentShaderSource);
     // Set the first block
-    Box1.halfSize = cyclone::Vector3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
+    Box1.halfSize = CrunchPhysx::Vector3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
     Box1.body->setPosition(Box1.Position.x, 0.7f, 0.0f);
     Box1.body->setOrientation(1, 0, 0, 0);
     Box1.body->setVelocity(0, 0, 0);
     Box1.body->setRotation(0, 0, 0);
     Box1.body->setMass(100.0f);
-    cyclone::Matrix3 it;
+    CrunchPhysx::Matrix3 it;
     it.setBlockInertiaTensor(Box1.halfSize, 100.0f);
     Box1.body->setInertiaTensor(it);
     Box1.body->setDamping(0.9f, 0.9f);
     Box1.body->calculateDerivedData();
     Box1.calculateInternals();
-    Box1.body->setAcceleration(cyclone::Vector3::GRAVITY);
+    Box1.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
     Box1.body->setAwake(true);
     Box1.body->setCanSleep(true);
 
     // Set the first block
-    Box2.halfSize = cyclone::Vector3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
+    Box2.halfSize = CrunchPhysx::Vector3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
     Box2.body->setPosition(0.1f, -0.3f, 0.0f);
     Box2.body->setOrientation(1, 0, 0, 0);
     Box2.body->setVelocity(0, 0, 0);
     Box2.body->setRotation(0, 0, 0);
-    Box2.body->setMass(100.0f);
-    cyclone::Matrix3 it2;
+    Box2.body->setMass(10.0f);
+    CrunchPhysx::Matrix3 it2;
     it.setBlockInertiaTensor(Box2.halfSize, 100.0f);
     Box2.body->setInertiaTensor(it2);
     Box2.body->setDamping(0.9f, 0.9f);
     Box2.body->calculateDerivedData();
     Box2.calculateInternals();
-    Box2.body->setAcceleration(cyclone::Vector3::GRAVITY);
+    Box2.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
     Box2.body->setAwake(true);
     Box2.body->setCanSleep(true);
 
@@ -118,19 +118,19 @@ int main()
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
-        B.halfSize = cyclone::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
+        B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
         B.body->setPosition(0.0f, 0.7f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
         B.body->setMass(100.0f);
-        cyclone::Matrix3 it;
+        CrunchPhysx::Matrix3 it;
         it.setBlockInertiaTensor(B.halfSize, 10.0f);
         B.body->setInertiaTensor(it);
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
         B.calculateInternals();
-        B.body->setAcceleration(cyclone::Vector3::GRAVITY);
+        B.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 
@@ -141,19 +141,19 @@ int main()
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
-        B.halfSize = cyclone::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
+        B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
         B.body->setPosition(0.0f, -0.3f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
         B.body->setMass(100.0f);
-        cyclone::Matrix3 it;
+        CrunchPhysx::Matrix3 it;
         it.setBlockInertiaTensor(B.halfSize, 10.0f);
         B.body->setInertiaTensor(it);
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
         B.calculateInternals();
-        B.body->setAcceleration(cyclone::Vector3::GRAVITY);
+        B.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 
@@ -182,9 +182,9 @@ int main()
 
         // Set up the collision data structure
         cData.reset(maxContacts);
-        cData.friction = (cyclone::real)0.9;
-        cData.restitution = (cyclone::real)0.2;
-        cData.tolerance = (cyclone::real)0.1;
+        cData.friction = (CrunchPhysx::real)0.9;
+        cData.restitution = (CrunchPhysx::real)0.2;
+        cData.tolerance = (CrunchPhysx::real)0.1;
 
         //PlanetTest.Step(FixedTimeStep);
 
@@ -198,7 +198,7 @@ int main()
         {
             for (int j = i + 1; j < 10; j++)
             {
-                cyclone::CollisionDetector::boxAndBox(Boxes[i], Boxes[j], &cData);
+                CrunchPhysx::CollisionDetector::boxAndBox(Boxes[i], Boxes[j], &cData);
             }
         }
 

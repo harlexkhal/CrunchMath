@@ -1,33 +1,7 @@
-/*
- * Interface file for the fine grained collision detection system.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
-/**
- * @file
- *
- * This file contains the fine grained collision detection system.
- * It is used to return contacts between pairs of primitives.
- *
- * There are two groups of tests in this file. Intersection tests
- * use the fastest separating axis method to check if two objects
- * intersect, and the collision tests generate the contacts. The
- * collision tests typically use the intersection tests as an early
- * out.
- */
-#ifndef CYCLONE_COLLISION_FINE_H
-#define CYCLONE_COLLISION_FINE_H
-
+#pragma once
 #include "contacts.h"
 
-namespace cyclone {
+namespace CrunchPhysx {
 
     // Forward declarations of primitive friends
     class IntersectionTests;
@@ -304,9 +278,4 @@ namespace cyclone {
             CollisionData *data
             );
     };
-
-
-
-} // namespace cyclone
-
-#endif // CYCLONE_COLLISION_FINE_H
+}

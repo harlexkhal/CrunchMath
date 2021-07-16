@@ -265,25 +265,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.cpp">
-      <ObjectFileName>$(IntDir)/src/Body.cpp.obj</ObjectFileName>
-    </ClCompile>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Collision.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Collision.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Contact.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Contact.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\body.cpp">
-      <ObjectFileName>$(IntDir)/src/CycloneRef/body.cpp.obj</ObjectFileName>
-    </ClCompile>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\body.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\collide_fine.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\collide_fine.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\contacts.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\contacts.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\core.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\core.h" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\precision.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.h" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHDS.hpp" />
@@ -304,8 +285,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\body.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\body.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\collide_fine.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\collide_fine.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\contacts.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\contacts.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\precision.h" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h" />
   </ItemGroup>
   <ItemGroup>

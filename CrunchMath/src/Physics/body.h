@@ -1,44 +1,8 @@
-/*
- * Interface file for the rigid body class.
- *
- * Part of the Cyclone physics system.
- *
- * Copyright (c) Icosagon 2003. All Rights Reserved.
- *
- * This software is distributed under licence. Use of this software
- * implies agreement with all terms and conditions of the accompanying
- * software licence.
- */
-
-/**
- * @file
- *
- * This file contains the definitions for the rigid body class, the
- * basic building block of all the physics system.
- */
-#ifndef CYCLONE_BODY_H
-#define CYCLONE_BODY_H
-
+#pragma once
 #include "core.h"
 
-namespace cyclone {
+namespace CrunchPhysx {
 
-    /**
-     * A rigid body is the basic simulation object in the physics
-     * core.
-     *
-     * It has position and orientation data, along with first
-     * derivatives. It can be integrated forward through time, and
-     * have forces, torques and impulses (linear or angular) applied
-     * to it. The rigid body manages its state and allows access
-     * through a set of methods.
-     *
-     * A ridid body contains 64 words (the size of which is given
-     * by the precision: sizeof(real)). It contains no virtual
-     * functions, so should take up exactly 64 words in memory. Of
-     * this total 15 words are padding, distributed among the
-     * Vector3 data members.
-     */
     class RigidBody
     {
     public:
@@ -973,6 +937,4 @@ namespace cyclone {
 
     };
 
-} // namespace cyclone
-
-#endif // CYCLONE_BODY_H
+}

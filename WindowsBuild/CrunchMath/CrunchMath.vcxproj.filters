@@ -1,27 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Collision.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Contact.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\body.cpp">
-      <Filter>src\CycloneRef</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\collide_fine.cpp">
-      <Filter>src\CycloneRef</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\contacts.cpp">
-      <Filter>src\CycloneRef</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\core.cpp">
-      <Filter>src\CycloneRef</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
@@ -49,35 +28,20 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\body.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\collide_fine.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\contacts.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.cpp">
+      <Filter>src\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Body.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Collision.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Contact.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\body.h">
-      <Filter>src\CycloneRef</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\collide_fine.h">
-      <Filter>src\CycloneRef</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\contacts.h">
-      <Filter>src\CycloneRef</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\core.h">
-      <Filter>src\CycloneRef</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\CycloneRef\precision.h">
-      <Filter>src\CycloneRef</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.h">
       <Filter>src\Math</Filter>
     </ClInclude>
@@ -111,8 +75,20 @@
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h">
       <Filter>src\Math</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\World.h">
-      <Filter>src</Filter>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\body.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\collide_fine.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\contacts.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\precision.h">
+      <Filter>src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h">
       <Filter>include</Filter>
@@ -128,14 +104,14 @@
     <Filter Include="src">
       <UniqueIdentifier>{6FCF1D4E-CA6B-31E4-855E-13271B646B2A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\CycloneRef">
-      <UniqueIdentifier>{8D601513-1874-36E7-A53A-C61979498A0C}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Math">
       <UniqueIdentifier>{058F74B6-4D9E-37AD-9951-EF7A19F35598}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Math\BVH">
       <UniqueIdentifier>{BEE6F3C0-D4E9-3E56-AE33-2FA246BA8340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Physics">
+      <UniqueIdentifier>{6C6D6619-381C-39D4-ACCB-A694CBF66F9E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
