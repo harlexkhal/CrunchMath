@@ -74,21 +74,18 @@ int main()
     Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);
 
-    Box Boxes[10];
+    Box Boxes[50];
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box1(vertexShaderSource, fragmentShaderSource);
     // Set the first block
-    Box1.Size = CrunchMath::Vec3(0.5, 0.05, 0.0f);
-    Box1.Position = CrunchMath::Vec3(-0.0f, 0.0f, 0.0f);
+    Box1.Size = CrunchMath::Vec3(0.8, 0.05, 0.0f);
+    Box1.Position = CrunchMath::Vec3(-0.0f, -0.3f, 0.0f);
     Box1.halfSize = CrunchPhysx::Vector3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
     Box1.body->setPosition(Box1.Position.x, Box1.Position.y, 0.0f);
     Box1.body->setOrientation(0.5f, 0.0, 0.0f, 1.3f);
     Box1.body->setVelocity(0, 0, 0);
     Box1.body->setRotation(0, 0, 0);
-    //Box1.body->setMass(0.0f);
     CrunchPhysx::Matrix3 it;
-    it.setBlockInertiaTensor(Box1.halfSize, 100.0f);
-    Box1.body->setInertiaTensor(it);
     Box1.body->setDamping(0.9f, 0.9f);
     Box1.body->calculateDerivedData();
     Box1.calculateInternals();
@@ -97,35 +94,36 @@ int main()
     Box1.body->setCanSleep(true);
 
     // Set the first block
+    Box2.Size = CrunchMath::Vec3(0.05, 0.5, 0.0f);
     Box2.halfSize = CrunchPhysx::Vector3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
-    Box2.body->setPosition(0.1f, 0.9f, 0.0f);
+    Box2.body->setPosition(0.1f, 0.0f, 0.0f);
     Box2.body->setOrientation(1, 0, 0, 0);
     Box2.body->setVelocity(0, 0, 0);
     Box2.body->setRotation(0, 0, 0);
-    Box2.body->setMass(10.0f);
     CrunchPhysx::Matrix3 it2;
-    it.setBlockInertiaTensor(Box2.halfSize, 100.0f);
+    it2.setBlockInertiaTensor(Box2.halfSize, 10.0f);
     Box2.body->setInertiaTensor(it2);
     Box2.body->setDamping(0.9f, 0.9f);
     Box2.body->calculateDerivedData();
     Box2.calculateInternals();
-    Box2.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
+    Box2.body->setAcceleration(CrunchPhysx::Vector3(0.0f, 0.0f, 0.0f));
     Box2.body->setAwake(true);
     Box2.body->setCanSleep(true);
 
     Boxes[0] = Box1;
     Boxes[1] = Box2;
 
-    for (int i = 0; i < 5; i++)
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < 25; i++)
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
         B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
-        B.body->setPosition(0.0f, 0.9f, 0.0f);
+        B.body->setPosition((float)rand() / RAND_MAX, 0.9f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
-        B.body->setMass(100.0f);
+        B.body->setMass(10.0f);
         CrunchPhysx::Matrix3 it;
         it.setBlockInertiaTensor(B.halfSize, 10.0f);
         B.body->setInertiaTensor(it);
@@ -139,16 +137,16 @@ int main()
         Boxes[i + 2] = B;
     }
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 25; i++)
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
         B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
-        B.body->setPosition(0.0f, 0.9f, 0.0f);
+        B.body->setPosition((float)rand() / RAND_MAX, 0.9f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
-        B.body->setMass(100.0f);
+        B.body->setMass(10.0f);
         CrunchPhysx::Matrix3 it;
         it.setBlockInertiaTensor(B.halfSize, 10.0f);
         B.body->setInertiaTensor(it);
@@ -159,7 +157,7 @@ int main()
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 
-        Boxes[i + 5] = B;
+        Boxes[i + 25] = B;
     }
     /*float Gravity = -9.8f;
     World PlanetTest(0, Gravity, 0);
@@ -190,15 +188,15 @@ int main()
 
         //PlanetTest.Step(FixedTimeStep);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 50; i++)
         {
             Boxes[i].body->integrate(FixedTimeStep);
             Boxes[i].calculateInternals();
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 50; i++)
         {
-            for (int j = i + 1; j < 10; j++)
+            for (int j = i + 1; j < 50; j++)
             {
                 CrunchPhysx::CollisionDetector::boxAndBox(Boxes[i], Boxes[j], &cData);
             }
@@ -210,7 +208,7 @@ int main()
             FixedTimeStep
         );
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 50; i++)
         {
             if (Boxes[i].body->getPosition().y <= -0.9f)
             {
@@ -220,7 +218,7 @@ int main()
             }              
         }
 
-        for (int a = 0; a < 10; a++)
+        for (int a = 0; a < 50; a++)
         {
             int f = 0;
             for (int i = 0; i < 4; i++)
@@ -236,6 +234,7 @@ int main()
             }
             Boxes[a].Model.Scale(Boxes[a].Size);
             Boxes[a].Render();
+            //std::cout << a << std::endl;
         }
 
         glfwSwapBuffers(window);

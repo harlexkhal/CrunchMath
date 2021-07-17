@@ -9,7 +9,6 @@ namespace CrunchPhysx {
 
         // ... Other RigidBody code as before ...
 
-
     protected:
         /**
          * @name Characteristic Data and State
