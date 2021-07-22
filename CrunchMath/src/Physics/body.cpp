@@ -530,28 +530,6 @@ void RigidBody::addForce(const Vector3 &force)
     isAwake = true;
 }
 
-void RigidBody::addForceAtBodyPoint(const Vector3 &force,
-                                    const Vector3 &point)
-{
-    // Convert to coordinates relative to center of mass.
-    Vector3 pt = getPointInWorldSpace(point);
-    addForceAtPoint(force, pt);
-
-}
-
-void RigidBody::addForceAtPoint(const Vector3 &force,
-                                const Vector3 &point)
-{
-    // Convert to coordinates relative to center of mass.
-    Vector3 pt = point;
-    pt -= position;
-
-    forceAccum += force;
-    torqueAccum += pt % force;
-
-    isAwake = true;
-}
-
 void RigidBody::addTorque(const Vector3 &torque)
 {
     torqueAccum += torque;
