@@ -307,12 +307,16 @@ void Body::addRotation(const Vector3 &deltaRotation)
 
 void Body::setAwake(const bool awake)
 {
-    if (awake) {
+    if (awake) 
+    {
         isAwake= true;
 
         // Add a bit of motion to avoid it falling asleep immediately.
-        motion = sleepEpsilon*2.0f;
-    } else {
+        motion = sleepEpsilon * 2.0f;
+    } 
+
+    else
+    {
         isAwake = false;
         velocity.clear();
         rotation.clear();
