@@ -1,5 +1,5 @@
 #pragma once
-#include "contacts.h"
+#include "Contacts.h"
 
 namespace CrunchPhysx {
 
@@ -24,7 +24,7 @@ namespace CrunchPhysx {
         /**
          * The rigid body that is represented by this primitive.
          */
-        RigidBody * body;
+        Body * body;
 
         /**
          * The offset of this primitive from the given rigid body.
@@ -81,7 +81,7 @@ namespace CrunchPhysx {
 
     /**
      * The plane is not a primitive: it doesn't represent another
-     * rigid body. It is used for contacts with the immovable
+     * rigid body. It is used for Contacts with the immovable
      * world geometry.
      */
     class CollisionPlane
@@ -165,12 +165,12 @@ namespace CrunchPhysx {
         Contact *contactArray;
 
         /** Holds the contact array to write into. */
-        Contact *contacts;
+        Contact *Contacts;
 
-        /** Holds the maximum number of contacts the array can take. */
-        int contactsLeft;
+        /** Holds the maximum number of Contacts the array can take. */
+        int ContactsLeft;
 
-        /** Holds the number of contacts found so far. */
+        /** Holds the number of Contacts found so far. */
         unsigned contactCount;
 
         /** Holds the friction value to write into any collisions. */
@@ -186,36 +186,36 @@ namespace CrunchPhysx {
         real tolerance;
 
         /**
-         * Checks if there are more contacts available in the contact
+         * Checks if there are more Contacts available in the contact
          * data.
          */
         bool hasMoreContacts()
         {
-            return contactsLeft > 0;
+            return ContactsLeft > 0;
         }
 
         /**
-         * Resets the data so that it has no used contacts recorded.
+         * Resets the data so that it has no used Contacts recorded.
          */
         void reset(unsigned maxContacts)
         {
-            contactsLeft = maxContacts;
+            ContactsLeft = maxContacts;
             contactCount = 0;
-            contacts = contactArray;
+            Contacts = contactArray;
         }
 
         /**
-         * Notifies the data that the given number of contacts have
+         * Notifies the data that the given number of Contacts have
          * been added.
          */
         void addContacts(unsigned count)
         {
-            // Reduce the number of contacts remaining, add number used
-            contactsLeft -= count;
+            // Reduce the number of Contacts remaining, add number used
+            ContactsLeft -= count;
             contactCount += count;
 
             // Move the array forward
-            contacts += count;
+            Contacts += count;
         }
     };
 
@@ -225,7 +225,7 @@ namespace CrunchPhysx {
      *
      * Each of the functions has the same format: it takes the details
      * of two objects, and a pointer to a contact array to fill. It
-     * returns the number of contacts it wrote into the array.
+     * returns the number of Contacts it wrote into the array.
      */
     class CollisionDetector
     {

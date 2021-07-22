@@ -3,7 +3,7 @@
 
 namespace CrunchPhysx {
 
-    class RigidBody
+    class Body
     {
     protected:
         real inverseMass;

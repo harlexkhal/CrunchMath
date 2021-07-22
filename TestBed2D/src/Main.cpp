@@ -57,11 +57,11 @@ int main()
     int Count = 0;
     float FixedTimeStep = (1.0f / 200.0f);
 
-    /** Holds the maximum number of contacts. */
+    /** Holds the maximum number of Contacts. */
     const static unsigned maxContacts = 1000;
 
-    /** Holds the array of contacts. */
-    CrunchPhysx::Contact contacts[maxContacts];
+    /** Holds the array of Contacts. */
+    CrunchPhysx::Contact Contacts[maxContacts];
 
     /** Holds the collision data structure for collision detection. */
     CrunchPhysx::CollisionData cData;
@@ -69,7 +69,7 @@ int main()
     /** Holds the contact resolver. */
     CrunchPhysx::ContactResolver resolver(maxContacts);
 
-    cData.contactArray = contacts;
+    cData.contactArray = Contacts;
 
     Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);

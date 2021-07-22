@@ -25,7 +25,7 @@ public:
         Volume = CrunchMath::OBB(Position, R, (Size / 2));
         Color = CrunchMath::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
 
-        body = new CrunchPhysx::RigidBody();
+        body = new CrunchPhysx::Body();
     }
 
 protected:

@@ -1,4 +1,4 @@
-#include "collide_fine.h"
+#include "Collisions.h"
 #include <memory.h>
 #include <assert.h>
 #include <cstdlib>
@@ -133,8 +133,8 @@ unsigned CollisionDetector::sphereAndTruePlane(
     CollisionData *data
     )
 {
-    // Make sure we have contacts
-    if (data->contactsLeft <= 0) return 0;
+    // Make sure we have Contacts
+    if (data->ContactsLeft <= 0) return 0;
 
     // Cache the sphere position
     Vector3 position = sphere.getAxis(3);
@@ -159,7 +159,7 @@ unsigned CollisionDetector::sphereAndTruePlane(
     penetration += sphere.radius;
 
     // Create the contact - it has a normal in the plane direction.
-    Contact* contact = data->contacts;
+    Contact* contact = data->Contacts;
     contact->contactNormal = normal;
     contact->penetration = penetration;
     contact->contactPoint = position - plane.direction * centreDistance;
@@ -176,8 +176,8 @@ unsigned CollisionDetector::sphereAndHalfSpace(
     CollisionData *data
     )
 {
-    // Make sure we have contacts
-    if (data->contactsLeft <= 0) return 0;
+    // Make sure we have Contacts
+    if (data->ContactsLeft <= 0) return 0;
 
     // Cache the sphere position
     Vector3 position = sphere.getAxis(3);
@@ -190,7 +190,7 @@ unsigned CollisionDetector::sphereAndHalfSpace(
     if (ballDistance >= 0) return 0;
 
     // Create the contact - it has a normal in the plane direction.
-    Contact* contact = data->contacts;
+    Contact* contact = data->Contacts;
     contact->contactNormal = plane.direction;
     contact->penetration = -ballDistance;
     contact->contactPoint =
@@ -208,8 +208,8 @@ unsigned CollisionDetector::sphereAndSphere(
     CollisionData *data
     )
 {
-    // Make sure we have contacts
-    if (data->contactsLeft <= 0) return 0;
+    // Make sure we have Contacts
+    if (data->ContactsLeft <= 0) return 0;
 
     // Cache the sphere positions
     Vector3 positionOne = one.getAxis(3);
@@ -229,7 +229,7 @@ unsigned CollisionDetector::sphereAndSphere(
     // size to hand.
     Vector3 normal = midline * (((real)1.0)/size);
 
-    Contact* contact = data->contacts;
+    Contact* contact = data->Contacts;
     contact->contactNormal = normal;
     contact->contactPoint = positionOne + midline * (real)0.5;
     contact->penetration = (one.radius+two.radius - size);
@@ -308,7 +308,7 @@ void fillPointFaceBoxBox(
     // This method is called when we know that a vertex from
     // box two is in contact with box one.
 
-    Contact* contact = data->contacts;
+    Contact* contact = data->Contacts;
 
     // We know which axis the collision is on (i.e. best),
     // but we need to work out which of the two faces on
@@ -505,7 +505,7 @@ unsigned CollisionDetector::boxAndBox(
             );
 
         // We can fill the contact.
-        Contact* contact = data->contacts;
+        Contact* contact = data->Contacts;
 
         contact->penetration = pen;
         contact->contactNormal = axis;
@@ -556,7 +556,7 @@ unsigned CollisionDetector::boxAndPoint(
     }
 
     // Compile the contact
-    Contact* contact = data->contacts;
+    Contact* contact = data->Contacts;
     contact->contactNormal = normal;
     contact->contactPoint = point;
     contact->penetration = min_depth;
@@ -615,7 +615,7 @@ unsigned CollisionDetector::boxAndSphere(
     // Compile the contact
     Vector3 closestPtWorld = box.transform.transform(closestPt);
 
-    Contact* contact = data->contacts;
+    Contact* contact = data->Contacts;
     contact->contactNormal = (closestPtWorld - centre);
     contact->contactNormal.normalise();
     contact->contactPoint = closestPtWorld;
@@ -633,8 +633,8 @@ unsigned CollisionDetector::boxAndHalfSpace(
     CollisionData *data
     )
 {
-    // Make sure we have contacts
-    if (data->contactsLeft <= 0) return 0;
+    // Make sure we have Contacts
+    if (data->ContactsLeft <= 0) return 0;
 
     // Check for intersection
     if (!IntersectionTests::boxAndHalfSpace(box, plane))
@@ -650,8 +650,8 @@ unsigned CollisionDetector::boxAndHalfSpace(
     static real mults[8][3] = {{1,1,1},{-1,1,1},{1,-1,1},{-1,-1,1},
                                {1,1,-1},{-1,1,-1},{1,-1,-1},{-1,-1,-1}};
 
-    Contact* contact = data->contacts;
-    unsigned contactsUsed = 0;
+    Contact* contact = data->Contacts;
+    unsigned ContactsUsed = 0;
     for (unsigned i = 0; i < 8; i++) {
 
         // Calculate the position of each vertex
@@ -682,11 +682,11 @@ unsigned CollisionDetector::boxAndHalfSpace(
 
             // Move onto the next contact
             contact++;
-            contactsUsed++;
-            if (contactsUsed == (unsigned)data->contactsLeft) return contactsUsed;
+            ContactsUsed++;
+            if (ContactsUsed == (unsigned)data->ContactsLeft) return ContactsUsed;
         }
     }
 
-    data->addContacts(contactsUsed);
-    return contactsUsed;
+    data->addContacts(ContactsUsed);
+    return ContactsUsed;
 }

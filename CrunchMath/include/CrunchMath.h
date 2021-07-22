@@ -12,6 +12,6 @@
 
 //-----Independent Physics System----
 #include "../src/Physics/body.h"
-#include "../src/Physics/collide_fine.h"
-#include "../src/Physics/contacts.h"
+#include "../src/Physics/Collisions.h"
+#include "../src/Physics/Contacts.h"
 #include "../src/Physics/core.h"

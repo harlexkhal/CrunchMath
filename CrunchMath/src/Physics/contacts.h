@@ -19,14 +19,14 @@ namespace CrunchPhysx {
      *
      * It can be a good idea to create a contact object even when the
      * contact isn't violated. Because resolving one contact can violate
-     * another, contacts that are close to being violated should be
+     * another, Contacts that are close to being violated should be
      * sent to the resolver; that way if one resolution moves the body,
      * the contact may be violated, and can be resolved. If the contact
      * is not violated, it will not be resolved, so you only loose a
      * small amount of execution time.
      *
      * The contact has no callable functions, it just holds the contact
-     * details. To resolve a set of contacts, use the contact resolver
+     * details. To resolve a set of Contacts, use the contact resolver
      * class.
      */
     class Contact
@@ -34,7 +34,7 @@ namespace CrunchPhysx {
         // ... Other data as before ...
 
         /**
-         * The contact resolver object needs access into the contacts to
+         * The contact resolver object needs access into the Contacts to
          * set and effect the contact.
          */
         friend class ContactResolver;
@@ -42,9 +42,9 @@ namespace CrunchPhysx {
     public:
         /**
          * Holds the bodies that are involved in the contact. The
-         * second of these can be NULL, for contacts with the scenery.
+         * second of these can be NULL, for Contacts with the scenery.
          */
-        RigidBody* body[2];
+        Body* body[2];
 
         /**
          * Holds the lateral friction coefficient at the contact.
@@ -77,7 +77,7 @@ namespace CrunchPhysx {
          * Sets the data that doesn't normally depend on the position
          * of the contact (i.e. the bodies, and their material properties).
          */
-        void setBodyData(RigidBody* one, RigidBody *two,
+        void setBodyData(Body* one, Body *two,
                          real friction, real restitution);
 
     protected:
@@ -154,7 +154,7 @@ namespace CrunchPhysx {
          * Applies an impulse to the given body, returning the
          * change in velocities.
          */
-        void applyImpulse(const Vector3 &impulse, RigidBody *body,
+        void applyImpulse(const Vector3 &impulse, Body *body,
                           Vector3 *velocityChange, Vector3 *rotationChange);
 
         /**
@@ -200,8 +200,8 @@ namespace CrunchPhysx {
      *
      * The resolver uses an iterative satisfaction algorithm; it loops
      * through each contact and tries to resolve it. Each contact is
-     * resolved locally, which may in turn put other contacts in a worse
-     * position. The algorithm then revisits other contacts and repeats
+     * resolved locally, which may in turn put other Contacts in a worse
+     * position. The algorithm then revisits other Contacts and repeats
      * the process up to a specified iteration limit. It can be proved
      * that given enough iterations, the simulation will get to the
      * correct result. As with all approaches, numerical stability can
@@ -211,7 +211,7 @@ namespace CrunchPhysx {
      *
      * This algorithm is very fast, much faster than other physics
      * approaches. Even using many more iterations than there are
-     * contacts, it will be faster than global approaches.
+     * Contacts, it will be faster than global approaches.
      *
      * Many global algorithms are unstable under high friction, this
      * approach is very robust indeed for high friction and low
@@ -224,7 +224,7 @@ namespace CrunchPhysx {
      * @subsection weaknesses Weaknesses
      *
      * The algorithm does not cope well with situations with many
-     * inter-related contacts: stacked boxes, for example. In this
+     * inter-related Contacts: stacked boxes, for example. In this
      * case the simulation may appear to jiggle slightly, which often
      * dislodges a box from the stack, allowing it to collapse.
      *
@@ -275,13 +275,13 @@ namespace CrunchPhysx {
     public:
         /**
          * Stores the number of velocity iterations used in the
-         * last call to resolve contacts.
+         * last call to resolve Contacts.
          */
         unsigned velocityIterationsUsed;
 
         /**
          * Stores the number of position iterations used in the
-         * last call to resolve contacts.
+         * last call to resolve Contacts.
          */
         unsigned positionIterationsUsed;
 
@@ -338,21 +338,21 @@ namespace CrunchPhysx {
                         real positionEpsilon);
 
         /**
-         * Resolves a set of contacts for both penetration and velocity.
+         * Resolves a set of Contacts for both penetration and velocity.
          *
          * Contacts that cannot interact with
          * each other should be passed to separate calls to resolveContacts,
          * as the resolution algorithm takes much longer for lots of
-         * contacts than it does for the same number of contacts in small
+         * Contacts than it does for the same number of Contacts in small
          * sets.
          *
          * @param contactArray Pointer to an array of contact objects.
          *
-         * @param numContacts The number of contacts in the array to resolve.
+         * @param numContacts The number of Contacts in the array to resolve.
          *
          * @param numIterations The number of iterations through the
          * resolution algorithm. This should be at least the number of
-         * contacts (otherwise some constraints will not be resolved -
+         * Contacts (otherwise some constraints will not be resolved -
          * although sometimes this is not noticable). If the iterations are
          * not needed they will not be used, so adding more iterations may
          * not make any difference. In some cases you would need millions
@@ -369,7 +369,7 @@ namespace CrunchPhysx {
 
     protected:
         /**
-         * Sets up contacts ready for processing. This makes sure their
+         * Sets up Contacts ready for processing. This makes sure their
          * internal data is configured correctly and the correct set of bodies
          * is made alive.
          */
@@ -388,7 +388,7 @@ namespace CrunchPhysx {
          * Resolves the positional issues with the given array of constraints,
          * using the given number of iterations.
          */
-        void adjustPositions(Contact *contacts,
+        void adjustPositions(Contact *Contacts,
             unsigned numContacts,
             real duration);
     };
@@ -404,11 +404,10 @@ namespace CrunchPhysx {
          * Fills the given contact structure with the generated
          * contact. The contact pointer should point to the first
          * available contact in a contact array, where limit is the
-         * maximum number of contacts in the array that can be written
-         * to. The method returns the number of contacts that have
+         * maximum number of Contacts in the array that can be written
+         * to. The method returns the number of Contacts that have
          * been written.
          */
         virtual unsigned addContact(Contact *contact, unsigned limit) const = 0;
     };
-
 }

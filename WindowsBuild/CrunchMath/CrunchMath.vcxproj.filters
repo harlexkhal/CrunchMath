@@ -28,13 +28,13 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\body.cpp">
+    <ClCompile Include="..\..\CrunchMath\src\Physics\Body.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\collide_fine.cpp">
+    <ClCompile Include="..\..\CrunchMath\src\Physics\Collisions.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\contacts.cpp">
+    <ClCompile Include="..\..\CrunchMath\src\Physics\Contacts.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.cpp">
@@ -75,13 +75,13 @@
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h">
       <Filter>src\Math</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\body.h">
+    <ClInclude Include="..\..\CrunchMath\src\Physics\Body.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\collide_fine.h">
+    <ClInclude Include="..\..\CrunchMath\src\Physics\Collisions.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\contacts.h">
+    <ClInclude Include="..\..\CrunchMath\src\Physics\Contacts.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.h">

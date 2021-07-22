@@ -1,4 +1,4 @@
-#include "contacts.h"
+#include "Contacts.h"
 #include <memory.h>
 #include <assert.h>
 
@@ -6,7 +6,7 @@ using namespace CrunchPhysx;
 
 // Contact implementation
 
-void Contact::setBodyData(RigidBody* one, RigidBody *two,
+void Contact::setBodyData(Body* one, Body *two,
                           real friction, real restitution)
 {
     Contact::body[0] = one;
@@ -41,7 +41,7 @@ void Contact::swapBodies()
 {
     contactNormal *= -1;
 
-    RigidBody *temp = body[0];
+    Body *temp = body[0];
     body[0] = body[1];
     body[1] = temp;
 }
@@ -103,7 +103,7 @@ void Contact::calculateContactBasis()
 
 Vector3 Contact::calculateLocalVelocity(unsigned bodyIndex, real duration)
 {
-    RigidBody *thisBody = body[bodyIndex];
+    Body *thisBody = body[bodyIndex];
 
     // Work out the velocity of the contact point.
     Vector3 velocity =
@@ -207,7 +207,7 @@ void Contact::applyVelocityChange(Vector3 velocityChange[2],
 
     if (friction == (real)0.0)
     {
-        // Use the short format for frictionless contacts
+        // Use the short format for frictionless Contacts
         impulseContact = calculateFrictionlessImpulse(inverseInertiaTensor);
     }
     else
@@ -533,7 +533,7 @@ void ContactResolver::setEpsilon(real velocityEpsilon,
     ContactResolver::positionEpsilon = positionEpsilon;
 }
 
-void ContactResolver::resolveContacts(Contact *contacts,
+void ContactResolver::resolveContacts(Contact *Contacts,
                                       unsigned numContacts,
                                       real duration)
 {
@@ -541,23 +541,23 @@ void ContactResolver::resolveContacts(Contact *contacts,
     if (numContacts == 0) return;
     if (!isValid()) return;
 
-    // Prepare the contacts for processing
-    prepareContacts(contacts, numContacts, duration);
+    // Prepare the Contacts for processing
+    prepareContacts(Contacts, numContacts, duration);
 
-    // Resolve the interpenetration problems with the contacts.
-    adjustPositions(contacts, numContacts, duration);
+    // Resolve the interpenetration problems with the Contacts.
+    adjustPositions(Contacts, numContacts, duration);
 
-    // Resolve the velocity problems with the contacts.
-    adjustVelocities(contacts, numContacts, duration);
+    // Resolve the velocity problems with the Contacts.
+    adjustVelocities(Contacts, numContacts, duration);
 }
 
-void ContactResolver::prepareContacts(Contact* contacts,
+void ContactResolver::prepareContacts(Contact* Contacts,
                                       unsigned numContacts,
                                       real duration)
 {
     // Generate contact velocity and axis information.
-    Contact* lastContact = contacts + numContacts;
-    for (Contact* contact=contacts; contact < lastContact; contact++)
+    Contact* lastContact = Contacts + numContacts;
+    for (Contact* contact=Contacts; contact < lastContact; contact++)
     {
         // Calculate the internal contact data (inertia, basis, etc).
         contact->calculateInternals(duration);
@@ -662,7 +662,7 @@ void ContactResolver::adjustPositions(Contact *c,
             max);
 
         // Again this action may have changed the penetration of other
-        // bodies, so we update contacts.
+        // bodies, so we update Contacts.
         for (i = 0; i < numContacts; i++)
         {
             // Check each body in the contact
