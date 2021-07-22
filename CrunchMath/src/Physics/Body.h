@@ -5,7 +5,7 @@ namespace CrunchPhysx {
 
     class Body
     {
-    protected:
+    private:
         real inverseMass;
         Matrix3 inverseInertiaTensor;
 
