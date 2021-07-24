@@ -14,22 +14,22 @@ const Vector3 Vector3::Z = Vector3(0, 0, 1);
 /*
  * Definition of the sleep epsilon extern.
  */
-real CrunchPhysx::sleepEpsilon = ((real)0.3);
+cpfloat CrunchPhysx::sleepEpsilon = ((cpfloat)0.3);
 
 /*
  * Functions to change sleepEpsilon.
  */
-void CrunchPhysx::setSleepEpsilon(real value)
+void CrunchPhysx::setSleepEpsilon(cpfloat value)
 {
     CrunchPhysx::sleepEpsilon = value;
 }
 
-real CrunchPhysx::getSleepEpsilon()
+cpfloat CrunchPhysx::getSleepEpsilon()
 {
     return CrunchPhysx::sleepEpsilon;
 }
 
-real Matrix4::getDeterminant() const
+cpfloat Matrix4::getDeterminant() const
 {
     return -data[8]*data[5]*data[2]+
         data[4]*data[9]*data[2]+
@@ -42,9 +42,9 @@ real Matrix4::getDeterminant() const
 void Matrix4::setInverse(const Matrix4 &m)
 {
     // Make sure the determinant is non-zero.
-    real det = getDeterminant();
+    cpfloat det = getDeterminant();
     if (det == 0) return;
-    det = ((real)1.0)/det;
+    det = ((cpfloat)1.0)/det;
 
     data[0] = (-m.data[9]*m.data[6]+m.data[5]*m.data[10])*det;
     data[4] = (m.data[8]*m.data[6]-m.data[4]*m.data[10])*det;
@@ -78,7 +78,7 @@ void Matrix4::setInverse(const Matrix4 &m)
                -m.data[0]*m.data[5]*m.data[11])*det;
 }
 
-Matrix3 Matrix3::linearInterpolate(const Matrix3& a, const Matrix3& b, real prop)
+Matrix3 Matrix3::linearInterpolate(const Matrix3& a, const Matrix3& b, cpfloat prop)
 {
     Matrix3 result;
     for (unsigned i = 0; i < 9; i++) {

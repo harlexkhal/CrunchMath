@@ -1,6 +1,6 @@
 #pragma once
 #include <math.h>
-#include "precision.h"
+#include "Precision.h"
 
 namespace CrunchPhysx {
 
@@ -12,7 +12,7 @@ namespace CrunchPhysx {
      * other forces are around that of gravity. It may need tweaking
      * if your simulation is drastically different to this.
      */
-    extern real sleepEpsilon;
+    extern cpfloat sleepEpsilon;
 
     /**
      * Sets the current sleep epsilon value: the kinetic energy under
@@ -30,7 +30,7 @@ namespace CrunchPhysx {
      * @param value The sleep epsilon value to use from this point
      * on.
      */
-    void setSleepEpsilon(real value);
+    void setSleepEpsilon(cpfloat value);
 
     /**
      * Gets the current value of the sleep epsilon parameter.
@@ -41,7 +41,7 @@ namespace CrunchPhysx {
      *
      * @return The current value of the parameter.
      */
-    real getSleepEpsilon();
+    cpfloat getSleepEpsilon();
 
     /**
      * Holds a vector in 3 dimensions. Four data members are allocated
@@ -55,17 +55,17 @@ namespace CrunchPhysx {
     {
     public:
          /** Holds the value along the x axis. */
-        real x;
+        cpfloat x;
 
         /** Holds the value along the y axis. */
-        real y;
+        cpfloat y;
 
         /** Holds the value along the z axis. */
-        real z;
+        cpfloat z;
 
     private:
         /** Padding to ensure 4 word alignment. */
-        real pad;
+        cpfloat pad;
 
     public:
         /** The default constructor creates a zero vector. */
@@ -75,7 +75,7 @@ namespace CrunchPhysx {
          * The explicit constructor creates a vector with the given
          * components.
          */
-        Vector3(const real x, const real y, const real z)
+        Vector3(const cpfloat x, const cpfloat y, const cpfloat z)
             : x(x), y(y), z(z) {}
 
         const static Vector3 GRAVITY;
@@ -90,14 +90,14 @@ namespace CrunchPhysx {
         // ... Other Vector3 code as before ...
 
 
-        real operator[](unsigned i) const
+        cpfloat operator[](unsigned i) const
         {
             if (i == 0) return x;
             if (i == 1) return y;
             return z;
         }
 
-        real& operator[](unsigned i)
+        cpfloat& operator[](unsigned i)
         {
             if (i == 0) return x;
             if (i == 1) return y;
@@ -137,7 +137,7 @@ namespace CrunchPhysx {
         }
 
         /** Multiplies this vector by the given scalar. */
-        void operator*=(const real value)
+        void operator*=(const cpfloat value)
         {
             x *= value;
             y *= value;
@@ -145,7 +145,7 @@ namespace CrunchPhysx {
         }
 
         /** Returns a copy of this vector scaled the given value. */
-        Vector3 operator*(const real value) const
+        Vector3 operator*(const cpfloat value) const
         {
             return Vector3(x*value, y*value, z*value);
         }
@@ -205,7 +205,7 @@ namespace CrunchPhysx {
          * Calculates and returns the scalar product of this vector
          * with the given vector.
          */
-        real scalarProduct(const Vector3 &vector) const
+        cpfloat scalarProduct(const Vector3 &vector) const
         {
             return x*vector.x + y*vector.y + z*vector.z;
         }
@@ -214,7 +214,7 @@ namespace CrunchPhysx {
          * Calculates and returns the scalar product of this vector
          * with the given vector.
          */
-        real operator *(const Vector3 &vector) const
+        cpfloat operator *(const Vector3 &vector) const
         {
             return x*vector.x + y*vector.y + z*vector.z;
         }
@@ -222,7 +222,7 @@ namespace CrunchPhysx {
         /**
          * Adds the given vector to this, scaled by the given amount.
          */
-        void addScaledVector(const Vector3& vector, real scale)
+        void addScaledVector(const Vector3& vector, cpfloat scale)
         {
             x += vector.x * scale;
             y += vector.y * scale;
@@ -230,19 +230,19 @@ namespace CrunchPhysx {
         }
 
         /** Gets the magnitude of this vector. */
-        real magnitude() const
+        cpfloat magnitude() const
         {
-            return real_sqrt(x*x+y*y+z*z);
+            return cp_sqrt(x*x+y*y+z*z);
         }
 
         /** Gets the squared magnitude of this vector. */
-        real squareMagnitude() const
+        cpfloat squareMagnitude() const
         {
             return x*x+y*y+z*z;
         }
 
         /** Limits the size of the vector to the given maximum. */
-        void trim(real size)
+        void trim(cpfloat size)
         {
             if (squareMagnitude() > size*size)
             {
@@ -256,10 +256,10 @@ namespace CrunchPhysx {
         /** Turns a non-zero vector into a vector of unit length. */
         void normalise()
         {
-            real l = magnitude();
+            cpfloat l = magnitude();
             if (l > 0)
             {
-                (*this) *= ((real)1)/l;
+                (*this) *= ((cpfloat)1)/l;
             }
         }
 
@@ -372,33 +372,33 @@ namespace CrunchPhysx {
         union {
             struct {
                 /**
-                 * Holds the real component of the quaternion.
+                 * Holds the cpfloat component of the quaternion.
                  */
-                real r;
+                cpfloat r;
 
                 /**
                  * Holds the first complex component of the
                  * quaternion.
                  */
-                real i;
+                cpfloat i;
 
                 /**
                  * Holds the second complex component of the
                  * quaternion.
                  */
-                real j;
+                cpfloat j;
 
                 /**
                  * Holds the third complex component of the
                  * quaternion.
                  */
-                real k;
+                cpfloat k;
             };
 
             /**
              * Holds the quaternion data in array form.
              */
-            real data[4];
+            cpfloat data[4];
         };
 
         // ... other Quaternion code as before ...
@@ -413,7 +413,7 @@ namespace CrunchPhysx {
          * The explicit constructor creates a quaternion with the given
          * components.
          *
-         * @param r The real component of the rigid body's orientation
+         * @param r The cpfloat component of the rigid body's orientation
          * quaternion.
          *
          * @param i The first complex component of the rigid body's
@@ -433,7 +433,7 @@ namespace CrunchPhysx {
          *
          * @see normalise
          */
-        Quaternion(const real r, const real i, const real j, const real k)
+        Quaternion(const cpfloat r, const cpfloat i, const cpfloat j, const cpfloat k)
             : r(r), i(i), j(j), k(k)
         {
         }
@@ -444,16 +444,16 @@ namespace CrunchPhysx {
          */
         void normalise()
         {
-            real d = r*r+i*i+j*j+k*k;
+            cpfloat d = r*r+i*i+j*j+k*k;
 
             // Check for zero length quaternion, and use the no-rotation
             // quaternion in that case.
-            if (d < real_epsilon) {
+            if (d < cp_epsilon) {
                 r = 1;
                 return;
             }
 
-            d = ((real)1.0)/real_sqrt(d);
+            d = ((cpfloat)1.0)/cp_sqrt(d);
             r *= d;
             i *= d;
             j *= d;
@@ -487,17 +487,17 @@ namespace CrunchPhysx {
          *
          * @param scale The amount of the vector to add.
          */
-        void addScaledVector(const Vector3& vector, real scale)
+        void addScaledVector(const Vector3& vector, cpfloat scale)
         {
             Quaternion q(0,
                 vector.x * scale,
                 vector.y * scale,
                 vector.z * scale);
             q *= *this;
-            r += q.r * ((real)0.5);
-            i += q.i * ((real)0.5);
-            j += q.j * ((real)0.5);
-            k += q.k * ((real)0.5);
+            r += q.r * ((cpfloat)0.5);
+            i += q.i * ((cpfloat)0.5);
+            j += q.j * ((cpfloat)0.5);
+            k += q.k * ((cpfloat)0.5);
         }
 
         void rotateByVector(const Vector3& vector)
@@ -518,7 +518,7 @@ namespace CrunchPhysx {
         /**
          * Holds the transform matrix data in array form.
          */
-        real data[12];
+        cpfloat data[12];
 
         // ... Other Matrix4 code as before ...
 
@@ -536,7 +536,7 @@ namespace CrunchPhysx {
         /**
          * Sets the matrix to be a diagonal matrix with the given coefficients.
          */
-        void setDiagonal(real a, real b, real c)
+        void setDiagonal(cpfloat a, cpfloat b, cpfloat c)
         {
             data[0] = a;
             data[5] = b;
@@ -604,7 +604,7 @@ namespace CrunchPhysx {
         /**
          * Returns the determinant of the matrix.
          */
-        real getDeterminant() const;
+        cpfloat getDeterminant() const;
 
         /**
          * Sets the matrix to be the inverse of the given matrix.
@@ -789,7 +789,7 @@ namespace CrunchPhysx {
     /**
      * Holds an inertia tensor, consisting of a 3x3 row-major matrix.
      * This matrix is not padding to produce an aligned structure, since
-     * it is most commonly used with a mass (single real) and two
+     * it is most commonly used with a mass (single cpfloat) and two
      * damping coefficients to make the 12-element characteristics array
      * of a rigid body.
      */
@@ -799,7 +799,7 @@ namespace CrunchPhysx {
         /**
          * Holds the tensor matrix data in array form.
          */
-        real data[9];
+        cpfloat data[9];
 
         // ... Other Matrix3 code as before ...
 
@@ -825,8 +825,8 @@ namespace CrunchPhysx {
         /**
          * Creates a new matrix with explicit coefficients.
          */
-        Matrix3(real c0, real c1, real c2, real c3, real c4, real c5,
-            real c6, real c7, real c8)
+        Matrix3(cpfloat c0, cpfloat c1, cpfloat c2, cpfloat c3, cpfloat c4, cpfloat c5,
+            cpfloat c6, cpfloat c7, cpfloat c8)
         {
             data[0] = c0; data[1] = c1; data[2] = c2;
             data[3] = c3; data[4] = c4; data[5] = c5;
@@ -837,7 +837,7 @@ namespace CrunchPhysx {
          * Sets the matrix to be a diagonal matrix with the given
          * values along the leading diagonal.
          */
-        void setDiagonal(real a, real b, real c)
+        void setDiagonal(cpfloat a, cpfloat b, cpfloat c)
         {
             setInertiaTensorCoeffs(a, b, c);
         }
@@ -845,8 +845,8 @@ namespace CrunchPhysx {
         /**
          * Sets the value of the matrix from inertia tensor values.
          */
-        void setInertiaTensorCoeffs(real ix, real iy, real iz,
-            real ixy=0, real ixz=0, real iyz=0)
+        void setInertiaTensorCoeffs(cpfloat ix, cpfloat iy, cpfloat iz,
+            cpfloat ixy=0, cpfloat ixz=0, cpfloat iyz=0)
         {
             data[0] = ix;
             data[1] = data[3] = -ixy;
@@ -861,7 +861,7 @@ namespace CrunchPhysx {
          * a rectangular block aligned with the body's coordinate
          * system with the given axis half-sizes and mass.
          */
-        void setBlockInertiaTensor(const Vector3 &halfSizes, real mass)
+        void setBlockInertiaTensor(const Vector3 &halfSizes, cpfloat mass)
         {
             Vector3 squares = halfSizes.componentProduct(halfSizes);
             setInertiaTensorCoeffs(0.3f*mass*(squares.y + squares.z),
@@ -972,20 +972,20 @@ namespace CrunchPhysx {
          */
         void setInverse(const Matrix3 &m)
         {
-            real t4 = m.data[0]*m.data[4];
-            real t6 = m.data[0]*m.data[5];
-            real t8 = m.data[1]*m.data[3];
-            real t10 = m.data[2]*m.data[3];
-            real t12 = m.data[1]*m.data[6];
-            real t14 = m.data[2]*m.data[6];
+            cpfloat t4 = m.data[0]*m.data[4];
+            cpfloat t6 = m.data[0]*m.data[5];
+            cpfloat t8 = m.data[1]*m.data[3];
+            cpfloat t10 = m.data[2]*m.data[3];
+            cpfloat t12 = m.data[1]*m.data[6];
+            cpfloat t14 = m.data[2]*m.data[6];
 
             // Calculate the determinant
-            real t16 = (t4*m.data[8] - t6*m.data[7] - t8*m.data[8]+
+            cpfloat t16 = (t4*m.data[8] - t6*m.data[7] - t8*m.data[8]+
                         t10*m.data[7] + t12*m.data[5] - t14*m.data[4]);
 
             // Make sure the determinant is non-zero.
-            if (t16 == (real)0.0f) return;
-            real t17 = 1/t16;
+            if (t16 == (cpfloat)0.0f) return;
+            cpfloat t17 = 1/t16;
 
             data[0] = (m.data[4]*m.data[8]-m.data[5]*m.data[7])*t17;
             data[1] = -(m.data[1]*m.data[8]-m.data[2]*m.data[7])*t17;
@@ -1066,9 +1066,9 @@ namespace CrunchPhysx {
          */
         void operator*=(const Matrix3 &o)
         {
-            real t1;
-            real t2;
-            real t3;
+            cpfloat t1;
+            cpfloat t2;
+            cpfloat t3;
 
             t1 = data[0]*o.data[0] + data[1]*o.data[3] + data[2]*o.data[6];
             t2 = data[0]*o.data[1] + data[1]*o.data[4] + data[2]*o.data[7];
@@ -1095,7 +1095,7 @@ namespace CrunchPhysx {
         /**
          * Multiplies this matrix in place by the given scalar.
          */
-        void operator*=(const real scalar)
+        void operator*=(const cpfloat scalar)
         {
             data[0] *= scalar; data[1] *= scalar; data[2] *= scalar;
             data[3] *= scalar; data[4] *= scalar; data[5] *= scalar;
@@ -1133,7 +1133,7 @@ namespace CrunchPhysx {
         /**
          * Interpolates a couple of matrices.
          */
-        static Matrix3 linearInterpolate(const Matrix3& a, const Matrix3& b, real prop);
+        static Matrix3 linearInterpolate(const Matrix3& a, const Matrix3& b, cpfloat prop);
     };
 
 }

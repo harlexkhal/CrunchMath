@@ -3,57 +3,33 @@
 
 namespace CrunchPhysx {
 
-#if 0
-    /**
-     * Defines we're in single precision mode, for any code
-     * that needs to be conditionally compiled.
-     */
-    #define SINGLE_PRECISION
+#if 1
+    //Single Precision Mode
+    typedef float cpfloat;
+    #define cp_MAX FLT_MAX
+    #define cp_sqrt sqrtf
+    #define cp_abs fabsf
+    #define cp_sin sinf
+    #define cp_cos cosf
+    #define cp_exp expf
+    #define cp_pow powf
+    #define cp_fmod fmodf
+    #define cp_epsilon FLT_EPSILON
+    #define R_PI 3.14159265358979f
 
-    /**
-     * Defines a real number precision. Cyclone can be compiled in
-     * single or double precision versions. By default single precision is
-     * provided.
-     */
-    typedef float real;
-
-    /** Defines the highest value for the real number. */
-    #define REAL_MAX FLT_MAX
-
-    /** Defines the precision of the square root operator. */
-    #define real_sqrt sqrtf
-    /** Defines the precision of the absolute magnitude operator. */
-    #define real_abs fabsf
-    /** Defines the precision of the sine operator. */
-    #define real_sin sinf
-
-    /** Defines the precision of the cosine operator. */
-    #define real_cos cosf
-
-    /** Defines the precision of the exponent operator. */
-    #define real_exp expf
-    /** Defines the precision of the power operator. */
-    #define real_pow powf
-
-    /** Defines the precision of the floating point modulo operator. */
-    #define real_fmod fmodf
-    
-    /** Defines the number e on which 1+e == 1 **/
-    #define real_epsilon FLT_EPSILON
-
-    #define R_PI 3.14159f
 #else
+    // Dounble Precision Mode
     #define DOUBLE_PRECISION
-    typedef double real;
-    #define REAL_MAX DBL_MAX
-    #define real_sqrt sqrt
-    #define real_abs fabs
-    #define real_sin sin
-    #define real_cos cos
-    #define real_exp exp
-    #define real_pow pow
-    #define real_fmod fmod
-    #define real_epsilon DBL_EPSILON
+    typedef double cpfloat;
+    #define cp_MAX DBL_MAX
+    #define cp_sqrt sqrt
+    #define cp_abs fabs
+    #define cp_sin sin
+    #define cp_cos cos
+    #define cp_exp exp
+    #define cp_pow pow
+    #define cp_fmod fmod
+    #define cp_epsilon DBL_EPSILON
     #define R_PI 3.14159265358979
 #endif
 }

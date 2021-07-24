@@ -9,31 +9,31 @@ static inline void _transformInertiaTensor(Matrix3 &iitWorld,
                                            const Matrix3 &iitBody,
                                            const Matrix4 &rotmat)
 {
-    real t4 = rotmat.data[0]*iitBody.data[0]+
+    cpfloat t4 = rotmat.data[0]*iitBody.data[0]+
         rotmat.data[1]*iitBody.data[3]+
         rotmat.data[2]*iitBody.data[6];
-    real t9 = rotmat.data[0]*iitBody.data[1]+
+    cpfloat t9 = rotmat.data[0]*iitBody.data[1]+
         rotmat.data[1]*iitBody.data[4]+
         rotmat.data[2]*iitBody.data[7];
-    real t14 = rotmat.data[0]*iitBody.data[2]+
+    cpfloat t14 = rotmat.data[0]*iitBody.data[2]+
         rotmat.data[1]*iitBody.data[5]+
         rotmat.data[2]*iitBody.data[8];
-    real t28 = rotmat.data[4]*iitBody.data[0]+
+    cpfloat t28 = rotmat.data[4]*iitBody.data[0]+
         rotmat.data[5]*iitBody.data[3]+
         rotmat.data[6]*iitBody.data[6];
-    real t33 = rotmat.data[4]*iitBody.data[1]+
+    cpfloat t33 = rotmat.data[4]*iitBody.data[1]+
         rotmat.data[5]*iitBody.data[4]+
         rotmat.data[6]*iitBody.data[7];
-    real t38 = rotmat.data[4]*iitBody.data[2]+
+    cpfloat t38 = rotmat.data[4]*iitBody.data[2]+
         rotmat.data[5]*iitBody.data[5]+
         rotmat.data[6]*iitBody.data[8];
-    real t52 = rotmat.data[8]*iitBody.data[0]+
+    cpfloat t52 = rotmat.data[8]*iitBody.data[0]+
         rotmat.data[9]*iitBody.data[3]+
         rotmat.data[10]*iitBody.data[6];
-    real t57 = rotmat.data[8]*iitBody.data[1]+
+    cpfloat t57 = rotmat.data[8]*iitBody.data[1]+
         rotmat.data[9]*iitBody.data[4]+
         rotmat.data[10]*iitBody.data[7];
-    real t62 = rotmat.data[8]*iitBody.data[2]+
+    cpfloat t62 = rotmat.data[8]*iitBody.data[2]+
         rotmat.data[9]*iitBody.data[5]+
         rotmat.data[10]*iitBody.data[8];
 
@@ -110,7 +110,7 @@ void Body::calculateDerivedData()
 
 }
 
-void Body::integrate(real duration)
+void Body::integrate(cpfloat duration)
 {
     if (!isAwake) return;
 
@@ -130,8 +130,8 @@ void Body::integrate(real duration)
     rotation.addScaledVector(angularAcceleration, duration);
 
     // Impose drag.
-    velocity *= real_pow(linearDamping, duration);
-    rotation *= real_pow(angularDamping, duration);
+    velocity *= cp_pow(linearDamping, duration);
+    rotation *= cp_pow(angularDamping, duration);
 
     // Adjust positions
     // Update linear position.
@@ -150,10 +150,10 @@ void Body::integrate(real duration)
     // Update the kinetic energy store, and possibly put the body to
     // sleep.
     if (canSleep) {
-        real currentMotion = velocity.scalarProduct(velocity) +
+        cpfloat currentMotion = velocity.scalarProduct(velocity) +
             rotation.scalarProduct(rotation);
 
-        real bias = real_pow(0.5, duration);
+        cpfloat bias = cp_pow(0.5, duration);
         motion = bias*motion + (1-bias)*currentMotion;
 
         if (motion < sleepEpsilon) setAwake(false);
@@ -161,22 +161,22 @@ void Body::integrate(real duration)
     }
 }
 
-void Body::setMass(const real mass)
+void Body::setMass(const cpfloat mass)
 {
     assert(mass != 0);
-    Body::inverseMass = ((real)1.0)/mass;
+    Body::inverseMass = ((cpfloat)1.0)/mass;
 }
 
-real Body::getMass() const
+cpfloat Body::getMass() const
 {
     if (inverseMass == 0) {
-        return REAL_MAX;
+        return cp_MAX;
     } else {
-        return ((real)1.0)/inverseMass;
+        return ((cpfloat)1.0)/inverseMass;
     }
 }
 
-real Body::getInverseMass() const
+cpfloat Body::getInverseMass() const
 {
     return inverseMass;
 }
@@ -196,8 +196,8 @@ void Body::getInverseInertiaTensorWorld(Matrix3 *inverseInertiaTensor) const
     *inverseInertiaTensor = inverseInertiaTensorWorld;
 }
 
-void Body::setDamping(const real linearDamping,
-               const real angularDamping)
+void Body::setDamping(const cpfloat linearDamping,
+               const cpfloat angularDamping)
 {
     Body::linearDamping = linearDamping;
     Body::angularDamping = angularDamping;
@@ -208,7 +208,7 @@ void Body::setPosition(const Vector3 &position)
     Body::position = position;
 }
 
-void Body::setPosition(const real x, const real y, const real z)
+void Body::setPosition(const cpfloat x, const cpfloat y, const cpfloat z)
 {
     position.x = x;
     position.y = y;
@@ -231,8 +231,8 @@ void Body::setOrientation(const Quaternion &orientation)
     Body::orientation.normalise();
 }
 
-void Body::setOrientation(const real r, const real i,
-                   const real j, const real k)
+void Body::setOrientation(const cpfloat r, const cpfloat i,
+                   const cpfloat j, const cpfloat k)
 {
     orientation.r = r;
     orientation.i = i;
@@ -251,7 +251,7 @@ void Body::getOrientation(Matrix3 *matrix) const
     getOrientation(matrix->data);
 }
 
-void Body::getOrientation(real matrix[9]) const
+void Body::getOrientation(cpfloat matrix[9]) const
 {
     matrix[0] = transformMatrix.data[0];
     matrix[1] = transformMatrix.data[1];
@@ -271,7 +271,7 @@ Matrix4 Body::getTransform() const
     return transformMatrix;
 }
 
-void Body::setVelocity(const real x, const real y, const real z)
+void Body::setVelocity(const cpfloat x, const cpfloat y, const cpfloat z)
 {
     velocity.x = x;
     velocity.y = y;
@@ -288,7 +288,7 @@ void Body::addVelocity(const Vector3 &deltaVelocity)
     velocity += deltaVelocity;
 }
 
-void Body::setRotation(const real x, const real y, const real z)
+void Body::setRotation(const cpfloat x, const cpfloat y, const cpfloat z)
 {
     rotation.x = x;
     rotation.y = y;

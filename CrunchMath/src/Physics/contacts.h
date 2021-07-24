@@ -49,12 +49,12 @@ namespace CrunchPhysx {
         /**
          * Holds the lateral friction coefficient at the contact.
          */
-        real friction;
+        cpfloat friction;
 
         /**
          * Holds the normal restitution coefficient at the contact.
          */
-        real restitution;
+        cpfloat restitution;
 
         /**
          * Holds the position of the contact in world coordinates.
@@ -71,14 +71,13 @@ namespace CrunchPhysx {
          * bodies are specified then the contact point should be midway
          * between the inter-penetrating points.
          */
-        real penetration;
+        cpfloat penetration;
 
         /**
          * Sets the data that doesn't normally depend on the position
          * of the contact (i.e. the bodies, and their material properties).
          */
-        void setBodyData(Body* one, Body *two,
-                         real friction, real restitution);
+        void setBodyData(Body* one, Body* two, cpfloat friction, cpfloat restitution);
 
     protected:
 
@@ -99,7 +98,7 @@ namespace CrunchPhysx {
          * Holds the required change in velocity for this contact to be
          * resolved.
          */
-        real desiredDeltaVelocity;
+        cpfloat desiredDeltaVelocity;
 
         /**
          * Holds the world space position of the contact point relative to
@@ -114,7 +113,7 @@ namespace CrunchPhysx {
          * the resolution algorithm tries to do any resolution. It should
          * never need to be called manually.
          */
-        void calculateInternals(real duration);
+        void calculateInternals(cpfloat duration);
 
         /**
          * Reverses the contact. This involves swapping the two rigid bodies
@@ -135,13 +134,13 @@ namespace CrunchPhysx {
          * Calculates and sets the internal value for the desired delta
          * velocity.
          */
-        void calculateDesiredDeltaVelocity(real duration);
+        void calculateDesiredDeltaVelocity(cpfloat duration);
 
         /**
          * Calculates and returns the velocity of the contact
          * point on the given body.
          */
-        Vector3 calculateLocalVelocity(unsigned bodyIndex, real duration);
+        Vector3 calculateLocalVelocity(unsigned bodyIndex, cpfloat duration);
 
         /**
          * Calculates an orthonormal basis for the contact point, based on
@@ -151,26 +150,16 @@ namespace CrunchPhysx {
         void calculateContactBasis();
 
         /**
-         * Applies an impulse to the given body, returning the
-         * change in velocities.
-         */
-        void applyImpulse(const Vector3 &impulse, Body *body,
-                          Vector3 *velocityChange, Vector3 *rotationChange);
-
-        /**
          * Performs an inertia-weighted impulse based resolution of this
          * contact alone.
          */
-        void applyVelocityChange(Vector3 velocityChange[2],
-                                 Vector3 rotationChange[2]);
+        void applyVelocityChange(Vector3 velocityChange[2], Vector3 rotationChange[2]);
 
         /**
          * Performs an inertia weighted penetration resolution of this
          * contact alone.
          */
-        void applyPositionChange(Vector3 linearChange[2],
-                                 Vector3 angularChange[2],
-                                 real penetration);
+        void applyPositionChange(Vector3 linearChange[2], Vector3 angularChange[2], cpfloat penetration);
 
         /**
          * Calculates the impulse needed to resolve this contact,
@@ -218,7 +207,7 @@ namespace CrunchPhysx {
      * restitution values.
      *
      * The algorithm produces visually believable behaviour. Tradeoffs
-     * have been made to err on the side of visual realism rather than
+     * have been made to err on the side of visual cpfloatism rather than
      * computational expense or numerical accuracy.
      *
      * @subsection weaknesses Weaknesses
@@ -261,7 +250,7 @@ namespace CrunchPhysx {
          * interpenetrate visually. A good starting point is the default
          * of 0.01.
          */
-        real velocityEpsilon;
+        cpfloat velocityEpsilon;
 
         /**
          * To avoid instability penetrations
@@ -270,7 +259,7 @@ namespace CrunchPhysx {
          * bodies may interpenetrate visually. A good starting point is
          * the default of0.01.
          */
-        real positionEpsilon;
+        cpfloat positionEpsilon;
 
     public:
         /**
@@ -296,46 +285,28 @@ namespace CrunchPhysx {
          * Creates a new contact resolver with the given number of iterations
          * per resolution call, and optional epsilon values.
          */
-        ContactResolver(unsigned iterations,
-            real velocityEpsilon=(real)0.01,
-            real positionEpsilon=(real)0.01);
-
-        /**
-         * Creates a new contact resolver with the given number of iterations
-         * for each kind of resolution, and optional epsilon values.
-         */
-        ContactResolver(unsigned velocityIterations,
-            unsigned positionIterations,
-            real velocityEpsilon=(real)0.01,
-            real positionEpsilon=(real)0.01);
+        ContactResolver(unsigned iterations, cpfloat velocityEpsilon = (cpfloat)0.01, cpfloat positionEpsilon = (cpfloat)0.01);
 
         /**
          * Returns true if the resolver has valid settings and is ready to go.
          */
         bool isValid()
         {
-            return (velocityIterations > 0) &&
-                   (positionIterations > 0) &&
-                   (positionEpsilon >= 0.0f) &&
-                   (positionEpsilon >= 0.0f);
+            return (
+                     (velocityIterations > 0) && (positionIterations > 0) &&
+                      (positionEpsilon >= 0.0f) && (positionEpsilon >= 0.0f)
+                   );
         }
 
         /**
          * Sets the number of iterations for each resolution stage.
          */
-        void setIterations(unsigned velocityIterations,
-                           unsigned positionIterations);
-
-        /**
-         * Sets the number of iterations for both resolution stages.
-         */
-        void setIterations(unsigned iterations);
+        void setIterations(unsigned velocityIterations, unsigned positionIterations);
 
         /**
          * Sets the tolerance value for both velocity and position.
          */
-        void setEpsilon(real velocityEpsilon,
-                        real positionEpsilon);
+        void setEpsilon(cpfloat velocityEpsilon, cpfloat positionEpsilon);
 
         /**
          * Resolves a set of Contacts for both penetration and velocity.
@@ -363,9 +334,7 @@ namespace CrunchPhysx {
          * @param duration The duration of the previous integration step.
          * This is used to compensate for forces applied.
          */
-        void resolveContacts(Contact *contactArray,
-            unsigned numContacts,
-            real duration);
+        void resolveContacts(Contact *contactArray, unsigned numContacts, cpfloat duration);
 
     protected:
         /**
@@ -373,41 +342,18 @@ namespace CrunchPhysx {
          * internal data is configured correctly and the correct set of bodies
          * is made alive.
          */
-        void prepareContacts(Contact *contactArray, unsigned numContacts,
-            real duration);
+        void prepareContacts(Contact *contactArray, unsigned numContacts, cpfloat duration);
 
         /**
          * Resolves the velocity issues with the given array of constraints,
          * using the given number of iterations.
          */
-        void adjustVelocities(Contact *contactArray,
-            unsigned numContacts,
-            real duration);
+        void adjustVelocities(Contact *contactArray, unsigned numContacts, cpfloat duration);
 
         /**
          * Resolves the positional issues with the given array of constraints,
          * using the given number of iterations.
          */
-        void adjustPositions(Contact *Contacts,
-            unsigned numContacts,
-            real duration);
-    };
-
-    /**
-     * This is the basic polymorphic interface for contact generators
-     * applying to rigid bodies.
-     */
-    class ContactGenerator
-    {
-    public:
-        /**
-         * Fills the given contact structure with the generated
-         * contact. The contact pointer should point to the first
-         * available contact in a contact array, where limit is the
-         * maximum number of Contacts in the array that can be written
-         * to. The method returns the number of Contacts that have
-         * been written.
-         */
-        virtual unsigned addContact(Contact *contact, unsigned limit) const = 0;
+        void adjustPositions(Contact *Contacts, unsigned numContacts, cpfloat duration);
     };
 }

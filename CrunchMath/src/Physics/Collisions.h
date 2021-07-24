@@ -43,16 +43,16 @@ namespace CrunchPhysx {
         unsigned contactCount;
 
         /** Holds the friction value to write into any collisions. */
-        real friction;
+        cpfloat friction;
 
         /** Holds the restitution value to write into any collisions. */
-        real restitution;
+        cpfloat restitution;
 
         /**
          * Holds the collision tolerance, even uncolliding objects this
          * close should have collisions generated.
          */
-        real tolerance;
+        cpfloat tolerance;
 
         /**
          * Checks if there are more Contacts available in the contact
@@ -99,6 +99,6 @@ namespace CrunchPhysx {
     class CollisionDetector
     {
     public:
-        static unsigned boxAndBox( const CollisionBox &one, const CollisionBox &two, CollisionData *data);
+        static unsigned BoxBox( const CollisionBox &one, const CollisionBox &two, CollisionData *data);
     };
 }

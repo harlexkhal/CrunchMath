@@ -6,11 +6,11 @@ namespace CrunchPhysx {
     class Body
     {
     private:
-        real inverseMass;
+        cpfloat inverseMass;
         Matrix3 inverseInertiaTensor;
 
-        real linearDamping;
-        real angularDamping;
+        cpfloat linearDamping;
+        cpfloat angularDamping;
 
         Vector3 position;
         Quaternion orientation;
@@ -20,7 +20,7 @@ namespace CrunchPhysx {
 
         Matrix3 inverseInertiaTensorWorld;
 
-        real motion;
+        cpfloat motion;
         bool isAwake;
         bool canSleep;
 
@@ -34,28 +34,28 @@ namespace CrunchPhysx {
 
     public:
         void calculateDerivedData();
-        void integrate(real duration);
-        void setMass(const real mass);
-        real getMass() const;
-        real getInverseMass() const;
+        void integrate(cpfloat duration);
+        void setMass(const cpfloat mass);
+        cpfloat getMass() const;
+        cpfloat getInverseMass() const;
         void setInertiaTensor(const Matrix3 &inertiaTensor);
         void getInertiaTensorWorld(Matrix3 *inertiaTensor) const;
         void getInverseInertiaTensorWorld(Matrix3 *inverseInertiaTensor) const;
-        void setDamping(const real linearDamping, const real angularDamping);
+        void setDamping(const cpfloat linearDamping, const cpfloat angularDamping);
         void setPosition(const Vector3 &position);
-        void setPosition(const real x, const real y, const real z);
+        void setPosition(const cpfloat x, const cpfloat y, const cpfloat z);
         void getPosition(Vector3 *position) const;
         Vector3 getPosition() const;
         void setOrientation(const Quaternion &orientation);
-        void setOrientation(const real r, const real i, const real j, const real k);
+        void setOrientation(const cpfloat r, const cpfloat i, const cpfloat j, const cpfloat k);
         void getOrientation(Quaternion *orientation) const;
         void getOrientation(Matrix3 *matrix) const;
-        void getOrientation(real matrix[9]) const;
+        void getOrientation(cpfloat matrix[9]) const;
         Matrix4 getTransform() const;
-        void setVelocity(const real x, const real y, const real z);
+        void setVelocity(const cpfloat x, const cpfloat y, const cpfloat z);
         Vector3 getVelocity() const;
         void addVelocity(const Vector3 &deltaVelocity);
-        void setRotation(const real x, const real y, const real z);
+        void setRotation(const cpfloat x, const cpfloat y, const cpfloat z);
         Vector3 getRotation() const;
         void addRotation(const Vector3 &deltaRotation);
 

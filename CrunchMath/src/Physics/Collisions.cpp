@@ -6,13 +6,13 @@
 
 using namespace CrunchPhysx;
 
-static inline real transformToAxis(const CollisionBox &box, const Vector3 &axis)
+static inline cpfloat transformToAxis(const CollisionBox &box, const Vector3 &axis)
 {
     return
         (
-            box.halfSize.x * real_abs(axis * box.body->getTransform().getAxisVector(0)) +
-            box.halfSize.y * real_abs(axis * box.body->getTransform().getAxisVector(1)) +
-            box.halfSize.z * real_abs(axis * box.body->getTransform().getAxisVector(2))
+            box.halfSize.x * cp_abs(axis * box.body->getTransform().getAxisVector(0)) +
+            box.halfSize.y * cp_abs(axis * box.body->getTransform().getAxisVector(1)) +
+            box.halfSize.z * cp_abs(axis * box.body->getTransform().getAxisVector(2))
         );
 }
 
@@ -23,14 +23,14 @@ static inline real transformToAxis(const CollisionBox &box, const Vector3 &axis)
  * is used to pass in the vector between the boxes centre
  * points, to avoid having to recalculate it each time.
  */
-static inline real penetrationOnAxis(const CollisionBox &one, const CollisionBox &two, const Vector3 &axis, const Vector3 &toCentre)
+static inline cpfloat penetrationOnAxis(const CollisionBox &one, const CollisionBox &two, const Vector3 &axis, const Vector3 &toCentre)
 {
     // Project the half-size of one onto axis
-    real oneProject = transformToAxis(one, axis);
-    real twoProject = transformToAxis(two, axis);
+    cpfloat oneProject = transformToAxis(one, axis);
+    cpfloat twoProject = transformToAxis(two, axis);
 
     // Project this onto the axis
-    real distance = real_abs(toCentre * axis);
+    cpfloat distance = cp_abs(toCentre * axis);
 
     // Return the overlap (i.e. positive indicates
     // overlap, negative indicates separation).
@@ -38,7 +38,7 @@ static inline real penetrationOnAxis(const CollisionBox &one, const CollisionBox
 }
 
 static inline bool tryAxis(const CollisionBox &one, const CollisionBox &two, Vector3 axis, const Vector3& toCentre,
-                            unsigned index, real& smallestPenetration, unsigned &smallestCase)
+                            unsigned index, cpfloat& smallestPenetration, unsigned &smallestCase)
 {
     // Make sure we have a normalized axis, and don't check almost parallel axes
     if (axis.squareMagnitude() < 0.0001) 
@@ -46,7 +46,7 @@ static inline bool tryAxis(const CollisionBox &one, const CollisionBox &two, Vec
 
     axis.normalise();
 
-    real penetration = penetrationOnAxis(one, two, axis, toCentre);
+    cpfloat penetration = penetrationOnAxis(one, two, axis, toCentre);
     if (penetration < 0)
         return false;
 
@@ -60,7 +60,7 @@ static inline bool tryAxis(const CollisionBox &one, const CollisionBox &two, Vec
 }
 
 void fillPointFaceBoxBox(const CollisionBox &one, const CollisionBox &two, const Vector3 &toCentre, 
-                                                      CollisionData *data, unsigned best, real pen)
+                                                      CollisionData *data, unsigned best, cpfloat pen)
 {
     // This method is called when we know that a vertex from
     // box two is in contact with box one.
@@ -90,12 +90,12 @@ void fillPointFaceBoxBox(const CollisionBox &one, const CollisionBox &two, const
     contact->setBodyData(one.body, two.body, data->friction, data->restitution);
 }
 
-static inline Vector3 contactPoint(const Vector3 &pOne, const Vector3 &dOne, real oneSize, const Vector3 &pTwo, 
-                                   const Vector3 &dTwo, real twoSize, bool useOne)
+static inline Vector3 contactPoint(const Vector3 &pOne, const Vector3 &dOne, cpfloat oneSize, const Vector3 &pTwo, 
+                                                                const Vector3 &dTwo, cpfloat twoSize, bool useOne)
 {
     Vector3 toSt, cOne, cTwo;
-    real dpStaOne, dpStaTwo, dpOneTwo, smOne, smTwo;
-    real denom, mua, mub;
+    cpfloat dpStaOne, dpStaTwo, dpOneTwo, smOne, smTwo;
+    cpfloat denom, mua, mub;
 
     smOne = dOne.squareMagnitude();
     smTwo = dTwo.squareMagnitude();
@@ -108,7 +108,8 @@ static inline Vector3 contactPoint(const Vector3 &pOne, const Vector3 &dOne, rea
     denom = smOne * smTwo - dpOneTwo * dpOneTwo;
 
     // Zero denominator indicates parrallel lines
-    if (real_abs(denom) < 0.0001f) {
+    if (cp_abs(denom) < 0.0001f) 
+    {
         return useOne?pOne:pTwo;
     }
 
@@ -119,13 +120,11 @@ static inline Vector3 contactPoint(const Vector3 &pOne, const Vector3 &dOne, rea
     // of bounds, then the edges aren't crossed, we have
     // an edge-face contact. Our point is on the edge, which
     // we know from the useOne parameter.
-    if (mua > oneSize ||
-        mua < -oneSize ||
-        mub > twoSize ||
-        mub < -twoSize)
+    if (mua > oneSize || mua < -oneSize || mub > twoSize || mub < -twoSize)
     {
         return useOne?pOne:pTwo;
     }
+
     else
     {
         cOne = pOne + dOne * mua;
@@ -140,16 +139,16 @@ static inline Vector3 contactPoint(const Vector3 &pOne, const Vector3 &dOne, rea
 #define CHECK_OVERLAP(axis, index) \
     if (!tryAxis(one, two, (axis), toCentre, (index), pen, best)) return 0;
 
-unsigned CollisionDetector::boxAndBox(const CollisionBox &one, const CollisionBox &two, CollisionData *data)
+unsigned CollisionDetector::BoxBox(const CollisionBox &one, const CollisionBox &two, CollisionData *data)
 {
-    //>>>>>TO Do ----> EarlyOut Intersection Test to be done by math library...
+    //TO Do ----> EarlyOut Intersection Test to be done by math library...
     //if (!IntersectionTests::boxAndBox(one, two)) return 0;
 
     // Find the vector between the two centres
     Vector3 toCentre = two.body->getTransform().getAxisVector(3) - one.body->getTransform().getAxisVector(3);
 
     // We start assuming there is no contact
-    real pen = REAL_MAX;
+    cpfloat pen = cp_MAX;
     unsigned best = 0xffffff;
 
     // Now we check each axes, returning if it gives us
@@ -167,15 +166,15 @@ unsigned CollisionDetector::boxAndBox(const CollisionBox &one, const CollisionBo
     // parallel edge collisions later
     unsigned bestSingleAxis = best;
 
-   /*CHECK_OVERLAP(one.getAxis(0) % two.getAxis(0), 6);
-   CHECK_OVERLAP(one.getAxis(0) % two.getAxis(1), 7);
-   CHECK_OVERLAP(one.getAxis(0) % two.getAxis(2), 8);
-   CHECK_OVERLAP(one.getAxis(1) % two.getAxis(0), 9);
-   CHECK_OVERLAP(one.getAxis(1) % two.getAxis(1), 10);
-   CHECK_OVERLAP(one.getAxis(1) % two.getAxis(2), 11);
-   CHECK_OVERLAP(one.getAxis(2) % two.getAxis(0), 12);
-   CHECK_OVERLAP(one.getAxis(2) % two.getAxis(1), 13);
-   CHECK_OVERLAP(one.getAxis(2) % two.getAxis(2), 14);*/
+    /*CHECK_OVERLAP(one.getAxis(0) % two.getAxis(0), 6);
+    CHECK_OVERLAP(one.getAxis(0) % two.getAxis(1), 7);
+    CHECK_OVERLAP(one.getAxis(0) % two.getAxis(2), 8);
+    CHECK_OVERLAP(one.getAxis(1) % two.getAxis(0), 9);
+    CHECK_OVERLAP(one.getAxis(1) % two.getAxis(1), 10);
+    CHECK_OVERLAP(one.getAxis(1) % two.getAxis(2), 11);
+    CHECK_OVERLAP(one.getAxis(2) % two.getAxis(0), 12);
+    CHECK_OVERLAP(one.getAxis(2) % two.getAxis(1), 13);
+    CHECK_OVERLAP(one.getAxis(2) % two.getAxis(2), 14);*/
 
     // Make sure we've got a result.
     assert(best != 0xffffff);

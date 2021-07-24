@@ -182,9 +182,9 @@ int main()
 
         // Set up the collision data structure
         cData.reset(maxContacts);
-        cData.friction = (CrunchPhysx::real)0.9;
-        cData.restitution = (CrunchPhysx::real)0.2;
-        cData.tolerance = (CrunchPhysx::real)0.1;
+        cData.friction = (CrunchPhysx::cpfloat)0.9;
+        cData.restitution = (CrunchPhysx::cpfloat)0.2;
+        cData.tolerance = (CrunchPhysx::cpfloat)0.1;
 
         //PlanetTest.Step(FixedTimeStep);
 
@@ -197,7 +197,7 @@ int main()
         {
             for (int j = i + 1; j < 50; j++)
             {
-                CrunchPhysx::CollisionDetector::boxAndBox(Boxes[i], Boxes[j], &cData);
+                CrunchPhysx::CollisionDetector::BoxBox(Boxes[i], Boxes[j], &cData);
             }
         }
 
