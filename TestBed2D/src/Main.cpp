@@ -88,7 +88,7 @@ int main()
     CrunchPhysx::Matrix3 it;
     Box1.body->setDamping(0.9f, 0.9f);
     Box1.body->calculateDerivedData();
-    Box1.calculateInternals();
+    //Box1.calculateInternals();
     Box1.body->setAcceleration(CrunchPhysx::Vector3(0.0f, 0.0f, 0.0f));
     Box1.body->setAwake(true);
     Box1.body->setCanSleep(true);
@@ -105,7 +105,7 @@ int main()
     Box2.body->setInertiaTensor(it2);
     Box2.body->setDamping(0.9f, 0.9f);
     Box2.body->calculateDerivedData();
-    Box2.calculateInternals();
+    //Box2.calculateInternals();
     Box2.body->setAcceleration(CrunchPhysx::Vector3(0.0f, 0.0f, 0.0f));
     Box2.body->setAwake(true);
     Box2.body->setCanSleep(true);
@@ -129,7 +129,7 @@ int main()
         B.body->setInertiaTensor(it);
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
-        B.calculateInternals();
+        //B.calculateInternals();
         B.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
         B.body->setAwake(true);
         B.body->setCanSleep(true);
@@ -152,7 +152,7 @@ int main()
         B.body->setInertiaTensor(it);
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
-        B.calculateInternals();
+        //B.calculateInternals();
         B.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
         B.body->setAwake(true);
         B.body->setCanSleep(true);
@@ -191,7 +191,6 @@ int main()
         for (int i = 0; i < 50; i++)
         {
             Boxes[i].body->integrate(FixedTimeStep);
-            Boxes[i].calculateInternals();
         }
 
         for (int i = 0; i < 50; i++)
