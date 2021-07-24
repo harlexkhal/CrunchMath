@@ -16,7 +16,7 @@ namespace CrunchMath {
 
 		Sphere& operator=(const Sphere& SphereShape);
 
-		bool NarrowPhaseCollision(const Sphere& Object2);
+		bool NarrowPhaseCollisionTest(const Sphere& Object2);
 
 		void Set(Vec3 Center, float Radius);
 	};

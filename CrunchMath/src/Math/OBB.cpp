@@ -98,7 +98,7 @@ namespace CrunchMath {
 		return ClosestPointOnOBB;
 	}
 
-	bool OBB::NarrowPhaseCollision(const OBB& OrientedBox)
+	bool OBB::NarrowPhaseCollisionTest(const OBB& OrientedBox)
 	{
 		Vec3 C1(Center[0], Center[1], Center[2]);
 		Vec3 C2(OrientedBox.Center[0], OrientedBox.Center[1], OrientedBox.Center[2]);
@@ -128,7 +128,7 @@ namespace CrunchMath {
 		return (Radius2 >= D);
 	}
 
-	bool OBB::BroadPhaseCollision(const OBB& OrientedBox)
+	bool OBB::BroadPhaseCollisionTest(const OBB& OrientedBox)
 	{
 		//---None Exact OBB-OBB intersection Test---
 

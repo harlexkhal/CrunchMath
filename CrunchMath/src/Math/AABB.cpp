@@ -73,7 +73,7 @@ namespace CrunchMath {
             return ClosestPointOnAABBToPoint;
     }
 
-    bool AABB::BroadPhaseCollision(const AABB& Box)
+    bool AABB::BroadPhaseCollisionTest(const AABB& Box)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -84,7 +84,7 @@ namespace CrunchMath {
         return true;
     }
 
-    bool AABB::NarrowPhaseCollision(const AABB& Object2)
+    bool AABB::NarrowPhaseCollisionTest(const AABB& Object2)
     {
         Vec3 _thisCenterPoint;
         Vec3 Object2CenterPoint_;
