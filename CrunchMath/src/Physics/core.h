@@ -15,7 +15,7 @@ namespace CrunchPhysx {
     #define cp_pow powf
     #define cp_fmod fmodf
     #define cp_epsilon FLT_EPSILON
-    #define R_PI 3.14159265358979f
+    #define cp_PI 3.14159265358979f
 
 #else
     // Dounble Precision Mode
@@ -30,7 +30,7 @@ namespace CrunchPhysx {
     #define cp_pow pow
     #define cp_fmod fmod
     #define cp_epsilon DBL_EPSILON
-    #define R_PI 3.14159265358979
+    #define cp_PI 3.14159265358979
 #endif
 
  /**
@@ -40,7 +40,8 @@ namespace CrunchPhysx {
    * about 20 units per second squared, masses are about one, and
    * other forces are around that of gravity. It may need tweaking
    * if your simulation is drastically different to this.
-   */
 
+   * Defined in PhysxMath.cpp***
+   */
     extern cpfloat sleepEpsilon;
 }
