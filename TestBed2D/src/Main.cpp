@@ -130,7 +130,7 @@ int main()
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
         //B.calculateInternals();
-        B.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
+        B.body->setAcceleration(CrunchPhysx::Vector3(0.0f, -9.8f, 0.0f));
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 
@@ -153,7 +153,7 @@ int main()
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
         //B.calculateInternals();
-        B.body->setAcceleration(CrunchPhysx::Vector3::GRAVITY);
+        B.body->setAcceleration(CrunchPhysx::Vector3(0.0f, -9.8f, 0.0f));
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 

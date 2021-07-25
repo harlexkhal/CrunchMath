@@ -1,5 +1,6 @@
 #pragma once
-#include "core.h"
+#include "PhysxMath.h"
+#include "Core.h"
 
 namespace CrunchPhysx {
 

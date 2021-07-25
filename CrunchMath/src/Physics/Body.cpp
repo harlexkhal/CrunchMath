@@ -1,6 +1,6 @@
-#include "body.h"
 #include <memory.h>
 #include <assert.h>
+#include "body.h"
 
 using namespace CrunchPhysx;
 
