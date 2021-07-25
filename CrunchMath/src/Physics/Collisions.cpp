@@ -122,7 +122,7 @@ static inline Vector3 contactPoint(const Vector3 &pOne, const Vector3 &dOne, cpf
     // we know from the useOne parameter.
     if (mua > oneSize || mua < -oneSize || mub > twoSize || mub < -twoSize)
     {
-        return useOne?pOne:pTwo;
+        return useOne ? pOne : pTwo;
     }
 
     else
