@@ -253,8 +253,7 @@ unsigned CollisionDetector::BoxBox(const CollisionBox &one, const CollisionBox &
         contact->penetration = pen;
         contact->contactNormal = axis;
         contact->contactPoint = vertex;
-        contact->setBodyData(one.body, two.body,
-            data->friction, data->restitution);
+        contact->setBodyData(one.body, two.body, data->friction, data->restitution);
         data->addContacts(1);
         return 1;
     }

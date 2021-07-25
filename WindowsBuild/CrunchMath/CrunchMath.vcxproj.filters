@@ -34,7 +34,7 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.cpp">
+    <ClCompile Include="..\..\CrunchMath\src\Physics\Contacts.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.cpp">
@@ -81,7 +81,7 @@
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.h">
+    <ClInclude Include="..\..\CrunchMath\src\Physics\Contacts.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.h">

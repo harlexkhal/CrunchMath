@@ -289,8 +289,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\CrunchMath\src\Physics\Body.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.h" />
-    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.cpp" />
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.h" />
+    <ClCompile Include="..\..\CrunchMath\src\Physics\Contacts.cpp" />
+    <ClInclude Include="..\..\CrunchMath\src\Physics\Contacts.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\core.h" />
     <ClInclude Include="..\..\CrunchMath\src\Physics\Precision.h" />
