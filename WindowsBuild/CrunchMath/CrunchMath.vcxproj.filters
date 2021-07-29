@@ -28,16 +28,16 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\CrunchMath\src\Physics\Body.cpp">
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Body.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\CrunchMath\src\Physics\Contacts.cpp">
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\CrunchMath\src\Physics\PhysxMath.cpp">
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\PhysxMath.cpp">
       <Filter>src\Physics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,19 +75,19 @@
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h">
       <Filter>src\Math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\CrunchMath\src\Physics\Body.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Body.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\CrunchMath\src\Physics\Contacts.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\CrunchMath\src\Physics\PhysxMath.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Core.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\CrunchMath\src\Physics\Core.h">
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\PhysxMath.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h">

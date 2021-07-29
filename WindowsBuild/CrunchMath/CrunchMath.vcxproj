@@ -285,15 +285,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h" />
-    <ClCompile Include="..\..\CrunchMath\src\Physics\Body.cpp" />
-    <ClInclude Include="..\..\CrunchMath\src\Physics\Body.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Body.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Body.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.h" />
-    <ClCompile Include="..\..\CrunchMath\src\Physics\Contacts.cpp" />
-    <ClInclude Include="..\..\CrunchMath\src\Physics\Contacts.h" />
-    <ClCompile Include="..\..\CrunchMath\src\Physics\PhysxMath.cpp" />
-    <ClInclude Include="..\..\CrunchMath\src\Physics\PhysxMath.h" />
-    <ClInclude Include="..\..\CrunchMath\src\Physics\Core.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.h" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Core.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\PhysxMath.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\PhysxMath.h" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h" />
   </ItemGroup>
   <ItemGroup>

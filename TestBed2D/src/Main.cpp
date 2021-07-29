@@ -231,6 +231,7 @@ int main()
                     Boxes[a].Model.Matrix[3][3] = 1.0f;
                 }
             }
+
             Boxes[a].Model.Scale(Boxes[a].Size);
             Boxes[a].Render();
             //std::cout << a << std::endl;
