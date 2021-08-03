@@ -562,7 +562,5 @@ namespace CrunchPhysx {
             data[7] = 2*q.j*q.k - 2*q.i*q.r;
             data[8] = 1 - (2*q.i*q.i  + 2*q.j*q.j);
         }
-
-        static Matrix3 linearInterpolate(const Matrix3& a, const Matrix3& b, cpfloat prop);
     };
 }
