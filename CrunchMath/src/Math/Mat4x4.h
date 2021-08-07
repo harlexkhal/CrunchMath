@@ -115,9 +115,4 @@ namespace CrunchMath {
 	}
 
 	Mat4x4 Invert(const Mat4x4& m);
-
-	static inline Vec3 GetColumn(int colpos, const Mat4x4& m)
-	{
-		return Vec3();
-	}
 }

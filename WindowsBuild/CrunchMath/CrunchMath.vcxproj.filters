@@ -7,6 +7,9 @@
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.cpp">
       <Filter>src\Math\BVH</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat3x3.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.cpp">
       <Filter>src\Math</Filter>
     </ClCompile>
@@ -52,6 +55,9 @@
       <Filter>src\Math\BVH</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\GeometricUtility.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat3x3.h">
       <Filter>src\Math</Filter>
     </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.h">

@@ -271,6 +271,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.h" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\GeometricUtility.h" />
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat3x3.cpp" />
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat3x3.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.cpp" />
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.h" />
     <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.cpp" />
