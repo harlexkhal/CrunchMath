@@ -1,359 +1,281 @@
+#include <float.h>
 #include <memory.h>
 #include <assert.h>
 #include "Body.h"
 
 namespace CrunchMath
 {
-    cpfloat sleepEpsilon = ((cpfloat)0.3);
+    float SleepEpsilon = ((float)0.3);
 
-    static inline void _transformInertiaTensor(Mat3x3& iitWorld, const Quaternion& q, const Mat3x3& iitBody, const Mat4x4& rotmat)
+    static inline void TransformInertiaTensor(Mat3x3& iitWorld, const Mat3x3& iitBody, const Mat4x4& rotmat)
     {
-        cpfloat t4 = rotmat.Matrix[0][0] * iitBody.Matrix[0][0] +
-            rotmat.Matrix[1][0] * iitBody.Matrix[0][1] +
-            rotmat.Matrix[2][0] * iitBody.Matrix[0][2];
+        Mat3x3 LocalToWorld(rotmat.GetColumnVector(0), rotmat.GetColumnVector(1), rotmat.GetColumnVector(2));
+        Mat3x3 TransposeInverseLocalToWorld = Invert(LocalToWorld);
+        TransposeInverseLocalToWorld.Transpose();
 
-        cpfloat t9 = rotmat.Matrix[0][0] * iitBody.Matrix[1][0] +
-            rotmat.Matrix[1][0] * iitBody.Matrix[1][1] +
-            rotmat.Matrix[2][0] * iitBody.Matrix[1][2];
-
-        cpfloat t14 = rotmat.Matrix[0][0] * iitBody.Matrix[2][0] +
-            rotmat.Matrix[1][0] * iitBody.Matrix[2][1] +
-            rotmat.Matrix[2][0] * iitBody.Matrix[2][2];
-
-        cpfloat t28 = rotmat.Matrix[0][1] * iitBody.Matrix[0][0] +
-            rotmat.Matrix[1][1] * iitBody.Matrix[0][1] +
-            rotmat.Matrix[2][1] * iitBody.Matrix[0][2];
-
-        cpfloat t33 = rotmat.Matrix[0][1] * iitBody.Matrix[1][0] +
-            rotmat.Matrix[1][1] * iitBody.Matrix[1][1] +
-            rotmat.Matrix[2][1] * iitBody.Matrix[1][2];
-
-        cpfloat t38 = rotmat.Matrix[0][1] * iitBody.Matrix[2][0] +
-            rotmat.Matrix[1][1] * iitBody.Matrix[2][1] +
-            rotmat.Matrix[2][1] * iitBody.Matrix[2][2];
-
-        cpfloat t52 = rotmat.Matrix[0][2] * iitBody.Matrix[0][0] +
-            rotmat.Matrix[1][2] * iitBody.Matrix[0][1] +
-            rotmat.Matrix[2][2] * iitBody.Matrix[0][2];
-
-        cpfloat t57 = rotmat.Matrix[0][2] * iitBody.Matrix[1][0] +
-            rotmat.Matrix[1][2] * iitBody.Matrix[1][1] +
-            rotmat.Matrix[2][2] * iitBody.Matrix[1][2];
-
-        cpfloat t62 = rotmat.Matrix[0][2] * iitBody.Matrix[2][0] +
-            rotmat.Matrix[1][2] * iitBody.Matrix[2][1] +
-            rotmat.Matrix[2][2] * iitBody.Matrix[2][2];
-
-
-
-        iitWorld.Matrix[0][0] = t4 * rotmat.Matrix[0][0] +
-            t9 * rotmat.Matrix[1][0] +
-            t14 * rotmat.Matrix[2][0];
-
-        iitWorld.Matrix[1][0] = t4 * rotmat.Matrix[0][1] +
-            t9 * rotmat.Matrix[1][1] +
-            t14 * rotmat.Matrix[2][1];
-
-        iitWorld.Matrix[2][0] = t4 * rotmat.Matrix[0][2] +
-            t9 * rotmat.Matrix[1][2] +
-            t14 * rotmat.Matrix[2][2];
-
-        iitWorld.Matrix[0][1] = t28 * rotmat.Matrix[0][0] +
-            t33 * rotmat.Matrix[1][0] +
-            t38 * rotmat.Matrix[2][0];
-
-        iitWorld.Matrix[1][1] = t28 * rotmat.Matrix[0][1] +
-            t33 * rotmat.Matrix[1][1] +
-            t38 * rotmat.Matrix[2][1];
-
-        iitWorld.Matrix[2][1] = t28 * rotmat.Matrix[0][2] +
-            t33 * rotmat.Matrix[1][2] +
-            t38 * rotmat.Matrix[2][2];
-
-        iitWorld.Matrix[0][2] = t52 * rotmat.Matrix[0][0] +
-            t57 * rotmat.Matrix[1][0] +
-            t62 * rotmat.Matrix[2][0];
-
-        iitWorld.Matrix[1][2] = t52 * rotmat.Matrix[0][1] +
-            t57 * rotmat.Matrix[1][1] +
-            t62 * rotmat.Matrix[2][1];
-
-        iitWorld.Matrix[2][2] = t52 * rotmat.Matrix[0][2] +
-            t57 * rotmat.Matrix[1][2] +
-            t62 * rotmat.Matrix[2][2];
+        iitWorld = TransposeInverseLocalToWorld * iitBody * Invert(LocalToWorld);
     }
 
-    static inline void _calculateTransformMatrix(Mat4x4& transformMatrix, const Vec3& position, const Quaternion& orientation)
+    static inline void CalculateTransformMatrix(Mat4x4& TransformMatrix, const Vec3& Position, const Quaternion& Orientation)
     {
-        transformMatrix.Rotate(orientation);
-        transformMatrix.Translate(position);
+        TransformMatrix.Rotate(Orientation);
+        TransformMatrix.Translate(Position);
     }
 
-    void Body::calculateDerivedData()
+    void Body::CalculateDerivedData()
     {
-        orientation.Normalize();
+        Orientation.Normalize();
 
         // Calculate the transform matrix for the body.
-        _calculateTransformMatrix(transformMatrix, position, orientation);
+        CalculateTransformMatrix(TransformMatrix, Position, Orientation);
 
         // Calculate the inertiaTensor in world space.
-        _transformInertiaTensor(inverseInertiaTensorWorld,
-            orientation,
-            inverseInertiaTensor,
-            transformMatrix);
-
+        TransformInertiaTensor(InverseInertiaTensorWorld, InverseInertiaTensor, TransformMatrix);
     }
 
-    void Body::integrate(cpfloat duration)
+    void Body::Integrate(float duration)
     {
-        if (!isAwake) return;
+        if (!IsAwake) return;
 
-        // Calculate linear acceleration from force inputs.
-        lastFrameAcceleration = acceleration;
-        lastFrameAcceleration += forceAccum * inverseMass;
+        // Calculate linear Acceleration from force inputs.
+        LastFrameAcceleration = Acceleration;
+        LastFrameAcceleration += ForceAccumulation * InverseMass;
 
-        // Calculate angular acceleration from torque inputs.
-        Vec3 angularAcceleration = inverseInertiaTensorWorld * torqueAccum;
+        // Calculate angular Acceleration from torque inputs.
+        Vec3 angularAcceleration = InverseInertiaTensorWorld * TorqueAccumulation;
 
         // Adjust velocities
-        // Update linear velocity from both acceleration and impulse.
-        velocity += lastFrameAcceleration * duration;
+        // Update linear Velocity from both Acceleration and impulse.
+        Velocity += LastFrameAcceleration * duration;
 
-        // Update angular velocity from both acceleration and impulse.
-        rotation += angularAcceleration * duration;
+        // Update angular Velocity from both Acceleration and impulse.
+        Rotation += angularAcceleration * duration;
 
         // Impose drag.
-        velocity *= cp_pow(linearDamping, duration);
-        rotation *= cp_pow(angularDamping, duration);
+        Velocity *= powf(LinearDamping, duration);
+        Rotation *= powf(AngularDamping, duration);
 
-        // Adjust positions
-        // Update linear position.
-        position += velocity * duration;
+        // Adjust Positions
+        // Update linear Position.
+        Position += Velocity * duration;
 
-        // Update angular position. //To do=> Take away Quaternion later...
-        Quaternion q(0, Vec3(rotation * duration));
-        q *= orientation;
-        orientation.w += q.w * ((cpfloat)0.5);
-        orientation.x += q.x * ((cpfloat)0.5);
-        orientation.y += q.y * ((cpfloat)0.5);
-        orientation.z += q.z * ((cpfloat)0.5);
+        // Update angular Position. //To do=> Take away Quaternion later...
+        Quaternion q(0, Vec3(Rotation * duration));
+        q *= Orientation;
+        Orientation.w += q.w * ((float)0.5);
+        Orientation.x += q.x * ((float)0.5);
+        Orientation.y += q.y * ((float)0.5);
+        Orientation.z += q.z * ((float)0.5);
 
-        // Normalise the orientation, and update the matrices with the new
-        // position and orientation
-        calculateDerivedData();
+        // Normalise the Orientation, and update the matrices with the new
+        // Position and Orientation
+        CalculateDerivedData();
 
         // Clear accumulators.
-        clearAccumulators();
+        ClearAccumulators();
 
         // Update the kinetic energy store, and possibly put the body to
         // sleep.
-        if (canSleep) {
-            cpfloat currentMotion = DotProduct(velocity, velocity) + DotProduct(rotation, rotation);
+        if (CanSleep) {
+            float currentMotion = DotProduct(Velocity, Velocity) + DotProduct(Rotation, Rotation);
 
-            cpfloat bias = cp_pow(0.5, duration);
-            motion = bias * motion + (1 - bias) * currentMotion;
+            float bias = powf(0.5, duration);
+            Motion = bias * Motion + (1 - bias) * currentMotion;
 
-            if (motion < sleepEpsilon) setAwake(false);
-            else if (motion > 10 * sleepEpsilon) motion = 10 * sleepEpsilon;
+            if (Motion < SleepEpsilon) SetAwake(false);
+            else if (Motion > 10 * SleepEpsilon) Motion = 10 * SleepEpsilon;
         }
     }
 
-    void Body::setMass(const cpfloat mass)
+    void Body::SetMass(const float mass)
     {
         assert(mass != 0);
-        Body::inverseMass = ((cpfloat)1.0) / mass;
+        this->InverseMass = ((float)1.0) / mass;
     }
 
-    cpfloat Body::getMass() const
+    float Body::GetMass() const
     {
-        if (inverseMass == 0) {
-            return cp_MAX;
+        if (InverseMass == 0) {
+            return FLT_MAX;
         }
         else {
-            return ((cpfloat)1.0) / inverseMass;
+            return ((float)1.0) / InverseMass;
         }
     }
 
-    cpfloat Body::getInverseMass() const
+    float Body::GetInverseMass() const
     {
-        return inverseMass;
+        return InverseMass;
     }
 
-    void Body::setInertiaTensor(const Mat3x3& inertiaTensor)
+    void Body::SetInertiaTensor(const Mat3x3& inertiaTensor)
     {
-        inverseInertiaTensor = Invert(inertiaTensor);
+        InverseInertiaTensor = Invert(inertiaTensor);
     }
 
-    void Body::getInertiaTensorWorld(Mat3x3& inertiaTensor) const
+    void Body::GetInertiaTensorWorld(Mat3x3& inertiaTensor) const
     {
-        inertiaTensor = Invert(inverseInertiaTensorWorld);
+        inertiaTensor = Invert(InverseInertiaTensorWorld);
     }
 
-    void Body::getInverseInertiaTensorWorld(Mat3x3& inverseInertiaTensor) const
+    void Body::GetInverseInertiaTensorWorld(Mat3x3& InverseInertiaTensor) const
     {
-        inverseInertiaTensor = inverseInertiaTensorWorld;
+        InverseInertiaTensor = InverseInertiaTensorWorld;
     }
 
-    void Body::setDamping(const cpfloat linearDamping,
-        const cpfloat angularDamping)
+    void Body::SetDamping(const float LinearDamping,
+        const float AngularDamping)
     {
-        Body::linearDamping = linearDamping;
-        Body::angularDamping = angularDamping;
+        this->LinearDamping = LinearDamping;
+        this->AngularDamping = AngularDamping;
     }
 
-    void Body::setPosition(const Vec3& position)
+    void Body::SetPosition(const Vec3& Position)
     {
-        Body::position = position;
+        this->Position = Position;
     }
 
-    void Body::setPosition(const cpfloat x, const cpfloat y, const cpfloat z)
+    void Body::SetPosition(const float x, const float y, const float z)
     {
-        position.x = x;
-        position.y = y;
-        position.z = z;
+        Position.x = x;
+        Position.y = y;
+        Position.z = z;
     }
 
-    void Body::getPosition(Vec3* position) const
+    void Body::GetPosition(Vec3& Position) const
     {
-        *position = Body::position;
+        Position = this->Position;
     }
 
-    Vec3 Body::getPosition() const
+    Vec3 Body::GetPosition() const
     {
-        return position;
+        return Position;
     }
 
-    void Body::setOrientation(const Quaternion& orientation)
+    void Body::SetOrientation(const Quaternion& Orientation)
     {
-        Body::orientation = orientation;
-        Body::orientation.Normalize();
+        this->Orientation = Orientation;
+        this->Orientation.Normalize();
     }
 
-    void Body::setOrientation(const cpfloat w, const cpfloat x,
-        const cpfloat y, const cpfloat z)
+    void Body::SetOrientation(const float w, const float x, const float y, const float z)
     {
-        orientation.w = w;
-        orientation.x = x;
-        orientation.y = y;
-        orientation.z = z;
-        orientation.Normalize();
+        Orientation.w = w;
+        Orientation.x = x;
+        Orientation.y = y;
+        Orientation.z = z;
+        Orientation.Normalize();
     }
 
-    void Body::getOrientation(Quaternion& orientation) const
+    void Body::GetOrientation(Quaternion& Orientation) const
     {
-        orientation = Body::orientation;
+        Orientation = this->Orientation;
     }
 
-    void Body::getOrientation(Mat3x3& matrix) const
+    void Body::GetOrientation(Mat3x3& matrix) const
     {
-        matrix.Matrix[0][0] = transformMatrix.Matrix[0][0];
-        matrix.Matrix[0][1] = transformMatrix.Matrix[0][1];
-        matrix.Matrix[0][2] = transformMatrix.Matrix[0][2];
+        matrix.Matrix[0][0] = TransformMatrix.Matrix[0][0];
+        matrix.Matrix[0][1] = TransformMatrix.Matrix[0][1];
+        matrix.Matrix[0][2] = TransformMatrix.Matrix[0][2];
 
-        matrix.Matrix[1][0] = transformMatrix.Matrix[1][0];
-        matrix.Matrix[1][1] = transformMatrix.Matrix[1][1];
-        matrix.Matrix[1][2] = transformMatrix.Matrix[1][2];
+        matrix.Matrix[1][0] = TransformMatrix.Matrix[1][0];
+        matrix.Matrix[1][1] = TransformMatrix.Matrix[1][1];
+        matrix.Matrix[1][2] = TransformMatrix.Matrix[1][2];
 
-        matrix.Matrix[2][0] = transformMatrix.Matrix[2][0];
-        matrix.Matrix[2][1] = transformMatrix.Matrix[2][1];
-        matrix.Matrix[2][2] = transformMatrix.Matrix[2][2];
+        matrix.Matrix[2][0] = TransformMatrix.Matrix[2][0];
+        matrix.Matrix[2][1] = TransformMatrix.Matrix[2][1];
+        matrix.Matrix[2][2] = TransformMatrix.Matrix[2][2];
     }
 
-    Mat4x4 Body::getTransform() const
+    Mat4x4 Body::GetTransform() const
     {
-        return transformMatrix;
+        return TransformMatrix;
     }
 
-    void Body::setVelocity(const cpfloat x, const cpfloat y, const cpfloat z)
+    void Body::SetVelocity(const float x, const float y, const float z)
     {
-        velocity.x = x;
-        velocity.y = y;
-        velocity.z = z;
+        Velocity.x = x;
+        Velocity.y = y;
+        Velocity.z = z;
     }
 
-    Vec3 Body::getVelocity() const
+    Vec3 Body::GetVelocity() const
     {
-        return velocity;
+        return Velocity;
     }
 
-    void Body::addVelocity(const Vec3& deltaVelocity)
+    void Body::AddVelocity(const Vec3& deltaVelocity)
     {
-        velocity += deltaVelocity;
+        Velocity += deltaVelocity;
     }
 
-    void Body::setRotation(const cpfloat x, const cpfloat y, const cpfloat z)
+    void Body::SetRotation(const float x, const float y, const float z)
     {
-        rotation.x = x;
-        rotation.y = y;
-        rotation.z = z;
+        Rotation.x = x;
+        Rotation.y = y;
+        Rotation.z = z;
     }
 
-    Vec3 Body::getRotation() const
+    Vec3 Body::GetRotation() const
     {
-        return rotation;
+        return Rotation;
     }
 
-    void Body::addRotation(const Vec3& deltaRotation)
+    void Body::AddRotation(const Vec3& deltaRotation)
     {
-        rotation += deltaRotation;
+        Rotation += deltaRotation;
     }
 
-    void Body::setAwake(const bool awake)
+    void Body::SetAwake(const bool awake)
     {
         if (awake)
         {
-            isAwake = true;
+            IsAwake = true;
 
-            // Add a bit of motion to avoid it falling asleep immediately.
-            motion = sleepEpsilon * 2.0f;
+            // Add a bit of Motion to avoid it falling asleep immediately.
+            Motion = SleepEpsilon * 2.0f;
         }
 
         else
         {
-            isAwake = false;
-            velocity = Vec3(0.0f, 0.0f, 0.0f);
-            rotation = Vec3(0.0f, 0.0f, 0.0f);
+            IsAwake = false;
+            Velocity = Vec3(0.0f, 0.0f, 0.0f);
+            Rotation = Vec3(0.0f, 0.0f, 0.0f);
         }
     }
 
-    void Body::setCanSleep(const bool canSleep)
+    Vec3 Body::GetLastFrameAcceleration() const
     {
-        Body::canSleep = canSleep;
-
-        if (!canSleep && !isAwake) setAwake();
+        return LastFrameAcceleration;
     }
 
-    Vec3 Body::getLastFrameAcceleration() const
+    void Body::ClearAccumulators()
     {
-        return lastFrameAcceleration;
+        ForceAccumulation = Vec3(0.0f, 0.0f, 0.0f);
+        TorqueAccumulation = Vec3(0.0f, 0.0f, 0.0f);
     }
 
-    void Body::clearAccumulators()
+    void Body::SetAcceleration(const Vec3& Acceleration)
     {
-        forceAccum = Vec3(0.0f, 0.0f, 0.0f);
-        torqueAccum = Vec3(0.0f, 0.0f, 0.0f);
+        Body::Acceleration = Acceleration;
     }
 
-    void Body::setAcceleration(const Vec3& acceleration)
+    bool Body::GetAwake() const
     {
-        Body::acceleration = acceleration;
+        return IsAwake;
     }
 
-    void Body::setInertiaTensorCoeffs(cpfloat ix, cpfloat iy, cpfloat iz, cpfloat ixy, cpfloat ixz, cpfloat iyz)
+    void Body::SetInertiaTensorCoeffs(float ix, float iy, float iz, float ixy, float ixz, float iyz)
     {
-        Mat3x3 InertiaTensor;
-        InertiaTensor.Matrix[0][0] = ix;   InertiaTensor.Matrix[1][0] = -ixy; InertiaTensor.Matrix[2][0] = -ixz;
-        InertiaTensor.Matrix[0][1] = -ixy; InertiaTensor.Matrix[1][1] = iy;   InertiaTensor.Matrix[2][1] = -iyz;
-        InertiaTensor.Matrix[0][2] = -ixz; InertiaTensor.Matrix[1][2] = -iyz; InertiaTensor.Matrix[2][2] = iz;
-
-        setInertiaTensor(InertiaTensor);
+        Mat3x3 InertiaTensor(Vec3(ix, -ixy, -ixz), Vec3(-ixy, iy, -iyz), Vec3(-ixz, -iyz, iz));
+        SetInertiaTensor(InertiaTensor);
     }
 
-    void Body::setBlockInertiaTensor(const Vec3& halfSizes, cpfloat mass)
+    void Body::SetBlockInertiaTensor(const Vec3& HalfSizes, float mass)
     {
-        Vec3 squares = halfSizes * halfSizes;
+        Vec3 squares = HalfSizes * HalfSizes;
 
-        setInertiaTensorCoeffs( 0.9f * mass * (squares.y + squares.z),
+        SetInertiaTensorCoeffs( 0.9f * mass * (squares.y + squares.z),
                                 0.9f * mass * (squares.x + squares.z),
                                 0.9f * mass * (squares.x + squares.y)
                               );

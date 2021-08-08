@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <cmath>
 #include <cassert>
@@ -20,7 +19,7 @@
  //******************************************************************************
  //Every Mat4x4 Methods/Member Functions that begins with **SET** Resets the.....
  //current Matrix and slots in new Matrix data for all rows and columns depending
- //on what ***SET*** Methods you use. e.g matrix.SetExample() reset the current 
+ //on what ***SET*** Methods you use. e.g matrix.SetExample() Reset the current 
  //Data of the Matrix and Resets it to what ever SetExample method those.........
  //Yeh!, thank me Later HarlexKhal Told you so.......peace out!!!..c you nxt comment.
  //********************************************************************************

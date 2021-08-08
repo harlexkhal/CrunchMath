@@ -78,7 +78,7 @@ namespace CrunchMath {
 			//Orientation of the x-axis[0][0 <-to-> 2] , y-axis[1][0 <-to-> 2] and z-axis[2][0 <-to-> 2]
 			Vec3 Orient(OrientationMatrix[i][j++], OrientationMatrix[i][j++], OrientationMatrix[i][j]);
 
-			//Projecting the point unto each axis with respect to its orientation
+			//Projecting the point unto each axis with respect to its Orientation
 			float Dist = DotProduct(Orient, d);
 
 			if (Dist > HalfExtent[i])

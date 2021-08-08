@@ -43,9 +43,9 @@ namespace CrunchMath {
 
 	Quaternion& Quaternion::FromObjectToWorldEuler(Vec3&& phb)
 	{
-		//y = heading rotation(h) rotating abt y axis
-		//z = bank rotation(b)    rotating abt z axis
-		//x = pitch rotation(p)   rotating abt x axis
+		//y = heading Rotation(h) rotating abt y axis
+		//z = bank Rotation(b)    rotating abt z axis
+		//x = pitch Rotation(p)   rotating abt x axis
 
 		float sinX; float sinY; float sinZ;
 		float cosX; float cosY; float cosZ;
@@ -63,9 +63,9 @@ namespace CrunchMath {
 
 	Quaternion& Quaternion::FromWorldToObjectEuler(Vec3&& phb) //Euler would be used here, once its been implemented;
 	{
-		//y = heading rotation(h) rotating abt y axis
-		//z = bank rotation(b)    rotating abt z axis
-		//x = pitch rotation(p)   rotating abt x axis
+		//y = heading Rotation(h) rotating abt y axis
+		//z = bank Rotation(b)    rotating abt z axis
+		//x = pitch Rotation(p)   rotating abt x axis
 
 		float sinX; float sinY; float sinZ;
 		float cosX; float cosY; float cosZ;

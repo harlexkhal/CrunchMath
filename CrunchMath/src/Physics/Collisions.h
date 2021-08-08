@@ -16,7 +16,7 @@ namespace CrunchMath {
     class CollisionBox : public CollisionPrimitive
     {
     public:
-        Vec3 halfSize;
+        Vec3 HalfSize;
     };
 
     /**
@@ -31,7 +31,7 @@ namespace CrunchMath {
          * can be incremented each time a contact is detected, while
          * this pointer points to the first contact found.
          */
-        Contact *contactArray;
+        Contact *ContactArray;
 
         /** Holds the contact array to write into. */
         Contact *Contacts;
@@ -40,25 +40,25 @@ namespace CrunchMath {
         int ContactsLeft;
 
         /** Holds the number of Contacts found so far. */
-        unsigned contactCount;
+        unsigned ContactCount;
 
-        /** Holds the friction value to write into any collisions. */
-        cpfloat friction;
+        /** Holds the Friction value to write into any collisions. */
+        float Friction;
 
-        /** Holds the restitution value to write into any collisions. */
-        cpfloat restitution;
+        /** Holds the Restitution value to write into any collisions. */
+        float Restitution;
 
         /**
-         * Holds the collision tolerance, even uncolliding objects this
+         * Holds the collision Tolerance, even uncolliding objects this
          * close should have collisions generated.
          */
-        cpfloat tolerance;
+        float Tolerance;
 
         /**
          * Checks if there are more Contacts available in the contact
          * data.
          */
-        bool hasMoreContacts()
+        bool HasMoreContacts()
         {
             return ContactsLeft > 0;
         }
@@ -66,22 +66,22 @@ namespace CrunchMath {
         /**
          * Resets the data so that it has no used Contacts recorded.
          */
-        void reset(unsigned maxContacts)
+        void Reset(unsigned MaxContacts)
         {
-            ContactsLeft = maxContacts;
-            contactCount = 0;
-            Contacts = contactArray;
+            ContactsLeft = MaxContacts;
+            ContactCount = 0;
+            Contacts = ContactArray;
         }
 
         /**
          * Notifies the data that the given number of Contacts have
          * been added.
          */
-        void addContacts(unsigned count)
+        void AddContacts(unsigned count)
         {
             // Reduce the number of Contacts remaining, add number used
             ContactsLeft -= count;
-            contactCount += count;
+            ContactCount += count;
 
             // Move the array forward
             Contacts += count;

@@ -87,9 +87,6 @@
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.h">
       <Filter>src\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Core.h">
-      <Filter>src\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h">
       <Filter>include</Filter>
     </ClInclude>
