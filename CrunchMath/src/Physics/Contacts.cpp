@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "Contacts.h"
 
-namespace CrunchPhysx{
+namespace CrunchMath{
 
     void Contact::setBodyData(Body* one, Body* two, cpfloat friction, cpfloat restitution)
     {
@@ -55,7 +55,7 @@ namespace CrunchPhysx{
      */
     inline void Contact::calculateContactBasis()
     {
-        Vector3 contactTangent[2];
+        Vec3 contactTangent[2];
 
         // Check whether the Z-axis is nearer to the X or Y axis
         if (cp_abs(contactNormal.x) > cp_abs(contactNormal.y))
@@ -91,26 +91,28 @@ namespace CrunchPhysx{
         }
 
         // Make a matrix from the three vectors.
-        contactToWorld.setComponents(contactNormal, contactTangent[0], contactTangent[1]);
+        contactToWorld = Mat3x3(contactNormal, contactTangent[0], contactTangent[1]);
     }
 
-    Vector3 Contact::calculateLocalVelocity(unsigned bodyIndex, cpfloat duration)
+    Vec3 Contact::calculateLocalVelocity(unsigned bodyIndex, cpfloat duration)
     {
         Body* thisBody = body[bodyIndex];
 
         // Work out the velocity of the contact point.
-        Vector3 velocity = thisBody->getRotation() % relativeContactPosition[bodyIndex];
+        Vec3 velocity = CrossProduct(thisBody->getRotation() , relativeContactPosition[bodyIndex]);
         velocity += thisBody->getVelocity();
 
         // Turn the velocity into contact-coordinates.
-        Vector3 contactVelocity = contactToWorld.transformTranspose(velocity);
+        Mat3x3 WorldToContact = contactToWorld;
+        WorldToContact.Transpose();
+        Vec3 contactVelocity = WorldToContact * velocity;
 
         // Calculate the ammount of velocity that is due to forces without
         // reactions.
-        Vector3 accVelocity = thisBody->getLastFrameAcceleration() * duration;
+        Vec3 accVelocity = thisBody->getLastFrameAcceleration() * duration;
 
         // Calculate the velocity in contact-coordinates.
-        accVelocity = contactToWorld.transformTranspose(accVelocity);
+        accVelocity = WorldToContact * accVelocity;
 
         // We ignore any component of acceleration in the contact normal
         // direction, we are only interested in planar acceleration
@@ -133,19 +135,19 @@ namespace CrunchPhysx{
 
         if (body[0]->getAwake())
         {
-            velocityFromAcc += body[0]->getLastFrameAcceleration() * duration * contactNormal;
+            velocityFromAcc += DotProduct(body[0]->getLastFrameAcceleration() , contactNormal) * duration;
         }
 
         if (body[1] && body[1]->getAwake())
         {
-            velocityFromAcc -= body[1]->getLastFrameAcceleration() * duration * contactNormal;
+            velocityFromAcc -= DotProduct(body[1]->getLastFrameAcceleration(), contactNormal) * duration;
         }
 
         // If the velocity is very slow, limit the restitution
         cpfloat thisRestitution = restitution;
         if (cp_abs(contactVelocity.x) < velocityLimit)
         {
-            thisRestitution = (cpfloat)0.0f;
+            thisRestitution = (cpfloat)0.0;
         }
 
         // Combine the bounce velocity with the removed
@@ -180,17 +182,17 @@ namespace CrunchPhysx{
         calculateDesiredDeltaVelocity(duration);
     }
 
-    void Contact::applyVelocityChange(Vector3 velocityChange[2], Vector3 rotationChange[2])
+    void Contact::applyVelocityChange(Vec3 velocityChange[2], Vec3 rotationChange[2])
     {
         // Get hold of the inverse mass and inverse inertia tensor, both in
         // world coordinates.
-        Matrix3 inverseInertiaTensor[2];
-        body[0]->getInverseInertiaTensorWorld(&inverseInertiaTensor[0]);
+        Mat3x3 inverseInertiaTensor[2];
+        body[0]->getInverseInertiaTensorWorld(inverseInertiaTensor[0]);
         if (body[1])
-            body[1]->getInverseInertiaTensorWorld(&inverseInertiaTensor[1]);
+            body[1]->getInverseInertiaTensorWorld(inverseInertiaTensor[1]);
 
         // We will calculate the impulse for each contact axis
-        Vector3 impulseContact;
+        Vec3 impulseContact;
 
         if (friction == (cpfloat)0.0)
         {
@@ -206,13 +208,13 @@ namespace CrunchPhysx{
         }
 
         // Convert impulse to world coordinates
-        Vector3 impulse = contactToWorld.transform(impulseContact);
+        Vec3 impulse = contactToWorld * impulseContact;
 
         // Split in the impulse into linear and rotational components
-        Vector3 impulsiveTorque = relativeContactPosition[0] % impulse;
-        rotationChange[0] = inverseInertiaTensor[0].transform(impulsiveTorque);
-        velocityChange[0].clear();
-        velocityChange[0].addScaledVector(impulse, body[0]->getInverseMass());
+        Vec3 impulsiveTorque = CrossProduct(relativeContactPosition[0] , impulse);
+        rotationChange[0] = inverseInertiaTensor[0] * impulsiveTorque;
+        velocityChange[0] = Vec3(0.0f, 0.0f, 0.0f);
+        velocityChange[0] += impulse * body[0]->getInverseMass();
 
         // Apply the changes
         body[0]->addVelocity(velocityChange[0]);
@@ -221,10 +223,10 @@ namespace CrunchPhysx{
         if (body[1])
         {
             // Work out body one's linear and angular changes
-            Vector3 impulsiveTorque = impulse % relativeContactPosition[1];
-            rotationChange[1] = inverseInertiaTensor[1].transform(impulsiveTorque);
-            velocityChange[1].clear();
-            velocityChange[1].addScaledVector(impulse, -body[1]->getInverseMass());
+            Vec3 impulsiveTorque = CrossProduct(impulse , relativeContactPosition[1]);
+            rotationChange[1] = inverseInertiaTensor[1] * impulsiveTorque;
+            velocityChange[1] = Vec3(0.0f, 0.0f, 0.0f);
+            velocityChange[1] += impulse * -body[1]->getInverseMass();
 
             // And apply them.
             body[1]->addVelocity(velocityChange[1]);
@@ -232,19 +234,19 @@ namespace CrunchPhysx{
         }
     }
 
-    inline Vector3 Contact::calculateFrictionlessImpulse(Matrix3* inverseInertiaTensor)
+    inline Vec3 Contact::calculateFrictionlessImpulse(Mat3x3* inverseInertiaTensor)
     {
-        Vector3 impulseContact;
+        Vec3 impulseContact;
 
         // Build a vector that shows the change in velocity in
         // world space for a unit impulse in the direction of the contact
         // normal.
-        Vector3 deltaVelWorld = relativeContactPosition[0] % contactNormal;
-        deltaVelWorld = inverseInertiaTensor[0].transform(deltaVelWorld);
-        deltaVelWorld = deltaVelWorld % relativeContactPosition[0];
+        Vec3 deltaVelWorld = CrossProduct(relativeContactPosition[0] , contactNormal);
+        deltaVelWorld = inverseInertiaTensor[0] * deltaVelWorld;
+        deltaVelWorld = CrossProduct(deltaVelWorld , relativeContactPosition[0]);
 
         // Work out the change in velocity in contact coordiantes.
-        cpfloat deltaVelocity = deltaVelWorld * contactNormal;
+        cpfloat deltaVelocity = DotProduct(deltaVelWorld , contactNormal);
 
         // Add the linear component of velocity change
         deltaVelocity += body[0]->getInverseMass();
@@ -253,12 +255,12 @@ namespace CrunchPhysx{
         if (body[1])
         {
             // Go through the same transformation sequence again
-            Vector3 deltaVelWorld = relativeContactPosition[1] % contactNormal;
-            deltaVelWorld = inverseInertiaTensor[1].transform(deltaVelWorld);
-            deltaVelWorld = deltaVelWorld % relativeContactPosition[1];
+            Vec3 deltaVelWorld = CrossProduct(relativeContactPosition[1] , contactNormal);
+            deltaVelWorld = inverseInertiaTensor[1] * deltaVelWorld;
+            deltaVelWorld = CrossProduct(deltaVelWorld , relativeContactPosition[1]);
 
             // Add the change in velocity due to rotation
-            deltaVelocity += deltaVelWorld * contactNormal;
+            deltaVelocity += DotProduct(deltaVelWorld, contactNormal);
 
             // Add the change in velocity due to linear motion
             deltaVelocity += body[1]->getInverseMass();
@@ -271,20 +273,20 @@ namespace CrunchPhysx{
         return impulseContact;
     }
 
-    inline Vector3 Contact::calculateFrictionImpulse(Matrix3* inverseInertiaTensor)
+    inline Vec3 Contact::calculateFrictionImpulse(Mat3x3* inverseInertiaTensor)
     {
-        Vector3 impulseContact;
+        Vec3 impulseContact;
         cpfloat inverseMass = body[0]->getInverseMass();
 
         // The equivalent of a cross product in matrices is multiplication
         // by a skew symmetric matrix - we build the matrix for converting
         // between linear and angular quantities.
-        Matrix3 impulseToTorque;
-        impulseToTorque.setSkewSymmetric(relativeContactPosition[0]);
+        Mat3x3 impulseToTorque;
+        impulseToTorque.SetSkewSymmetric(relativeContactPosition[0]);
 
         // Build the matrix to convert contact impulse to change in velocity
         // in world coordinates.
-        Matrix3 deltaVelWorld = impulseToTorque;
+        Mat3x3 deltaVelWorld = impulseToTorque;
         deltaVelWorld *= inverseInertiaTensor[0];
         deltaVelWorld *= impulseToTorque;
         deltaVelWorld *= -1;
@@ -293,10 +295,10 @@ namespace CrunchPhysx{
         if (body[1])
         {
             // Set the cross product matrix
-            impulseToTorque.setSkewSymmetric(relativeContactPosition[1]);
+            impulseToTorque.SetSkewSymmetric(relativeContactPosition[1]);
 
             // Calculate the velocity change matrix
-            Matrix3 deltaVelWorld2 = impulseToTorque;
+            Mat3x3 deltaVelWorld2 = impulseToTorque;
             deltaVelWorld2 *= inverseInertiaTensor[1];
             deltaVelWorld2 *= impulseToTorque;
             deltaVelWorld2 *= -1;
@@ -309,23 +311,26 @@ namespace CrunchPhysx{
         }
 
         // Do a change of basis to convert into contact coordinates.
-        Matrix3 deltaVelocity = contactToWorld.transpose();
+        Mat3x3 WorldToContact = contactToWorld;
+        WorldToContact.Transpose();
+
+        Mat3x3 deltaVelocity = WorldToContact;
         deltaVelocity *= deltaVelWorld;
         deltaVelocity *= contactToWorld;
 
         // Add in the linear velocity change
-        deltaVelocity.data[0] += inverseMass;
-        deltaVelocity.data[4] += inverseMass;
-        deltaVelocity.data[8] += inverseMass;
+        deltaVelocity.Matrix[0][0] += inverseMass;
+        deltaVelocity.Matrix[1][1] += inverseMass;
+        deltaVelocity.Matrix[2][2] += inverseMass;
 
         // Invert to get the impulse needed per unit velocity
-        Matrix3 impulseMatrix = deltaVelocity.inverse();
+        Mat3x3 impulseMatrix = Invert(deltaVelocity);
 
         // Find the target velocities to kill
-        Vector3 velKill(desiredDeltaVelocity, -contactVelocity.y, -contactVelocity.z);
+        Vec3 velKill(desiredDeltaVelocity, -contactVelocity.y, -contactVelocity.z);
 
         // Find the impulse to kill target velocities
-        impulseContact = impulseMatrix.transform(velKill);
+        impulseContact = impulseMatrix * velKill;
 
         // Check for exceeding friction
         cpfloat planarImpulse = cp_sqrt(
@@ -339,7 +344,7 @@ namespace CrunchPhysx{
             impulseContact.y /= planarImpulse;
             impulseContact.z /= planarImpulse;
 
-            impulseContact.x = deltaVelocity.data[0] + deltaVelocity.data[1] * friction * impulseContact.y + deltaVelocity.data[2] * friction * impulseContact.z;
+            impulseContact.x = deltaVelocity.Matrix[0][0] + deltaVelocity.Matrix[1][0] * friction * impulseContact.y + deltaVelocity.Matrix[2][0] * friction * impulseContact.z;
             impulseContact.x = desiredDeltaVelocity / impulseContact.x;
             impulseContact.y *= friction * impulseContact.x;
             impulseContact.z *= friction * impulseContact.x;
@@ -347,7 +352,7 @@ namespace CrunchPhysx{
         return impulseContact;
     }
 
-    void Contact::applyPositionChange(Vector3 linearChange[2], Vector3 angularChange[2], cpfloat penetration)
+    void Contact::applyPositionChange(Vec3 linearChange[2], Vec3 angularChange[2], cpfloat penetration)
     {
         const cpfloat angularLimit = (cpfloat)0.2f;
         cpfloat angularMove[2];
@@ -361,15 +366,15 @@ namespace CrunchPhysx{
         // of the contact normal, due to angular inertia only.
         for (unsigned i = 0; i < 2; i++) if (body[i])
         {
-            Matrix3 inverseInertiaTensor;
-            body[i]->getInverseInertiaTensorWorld(&inverseInertiaTensor);
+            Mat3x3 inverseInertiaTensor;
+            body[i]->getInverseInertiaTensorWorld(inverseInertiaTensor);
 
             // Use the same procedure as for calculating frictionless
             // velocity change to work out the angular inertia.
-            Vector3 angularInertiaWorld = relativeContactPosition[i] % contactNormal;
-            angularInertiaWorld = inverseInertiaTensor.transform(angularInertiaWorld);
-            angularInertiaWorld = angularInertiaWorld % relativeContactPosition[i];
-            angularInertia[i] = angularInertiaWorld * contactNormal;
+            Vec3 angularInertiaWorld = CrossProduct(relativeContactPosition[i] , contactNormal);
+            angularInertiaWorld = inverseInertiaTensor * angularInertiaWorld;
+            angularInertiaWorld = CrossProduct(angularInertiaWorld , relativeContactPosition[i]);
+            angularInertia[i] = DotProduct(angularInertiaWorld , contactNormal);
 
             // The linear component is simply the inverse mass
             linearInertia[i] = body[i]->getInverseMass();
@@ -395,13 +400,13 @@ namespace CrunchPhysx{
 
                 // To avoid angular projections that are too great (when mass is large
                 // but inertia tensor is small) limit the angular move.
-                Vector3 projection = relativeContactPosition[i];
-                projection.addScaledVector(contactNormal, -relativeContactPosition[i].scalarProduct(contactNormal));
+                Vec3 projection = relativeContactPosition[i];
+                projection += contactNormal * DotProduct(-relativeContactPosition[i] , contactNormal);
 
                 // Use the small angle approximation for the sine of the angle (i.e.
                 // the magnitude would be sine(angularLimit) * projection.magnitude
                 // but we approximate sine(angularLimit) to angularLimit).
-                cpfloat maxMagnitude = angularLimit * projection.magnitude();
+                cpfloat maxMagnitude = angularLimit * cp_sqrt(DotProduct(projection, projection));
 
                 if (angularMove[i] < -maxMagnitude)
                 {
@@ -423,19 +428,19 @@ namespace CrunchPhysx{
                 if (angularMove[i] == 0)
                 {
                     // Easy case - no angular movement means no rotation.
-                    angularChange[i].clear();
+                    angularChange[i] = Vec3(0.0f, 0.0f, 0.0f);
                 }
 
                 else
                 {
                     // Work out the direction we'd like to rotate in.
-                    Vector3 targetAngularDirection = relativeContactPosition[i].vectorProduct(contactNormal);
+                    Vec3 targetAngularDirection = CrossProduct(relativeContactPosition[i], contactNormal);
 
-                    Matrix3 inverseInertiaTensor;
-                    body[i]->getInverseInertiaTensorWorld(&inverseInertiaTensor);
+                    Mat3x3 inverseInertiaTensor;
+                    body[i]->getInverseInertiaTensorWorld(inverseInertiaTensor);
 
                     // Work out the direction we'd need to rotate to achieve that
-                    angularChange[i] = inverseInertiaTensor.transform(targetAngularDirection) * (angularMove[i] / angularInertia[i]);
+                    angularChange[i] = inverseInertiaTensor * targetAngularDirection * (angularMove[i] / angularInertia[i]);
                 }
 
                 // Velocity change is easier - it is just the linear movement
@@ -444,15 +449,22 @@ namespace CrunchPhysx{
 
                 // Now we can start to apply the values we've calculated.
                 // Apply the linear movement
-                Vector3 pos;
+                Vec3 pos;
                 body[i]->getPosition(&pos);
-                pos.addScaledVector(contactNormal, linearMove[i]);
+                pos += contactNormal * linearMove[i];
                 body[i]->setPosition(pos);
 
                 // And the change in orientation
                 Quaternion q;
-                body[i]->getOrientation(&q);
-                q.addScaledVector(angularChange[i], ((cpfloat)1.0));
+                body[i]->getOrientation(q);
+
+                Quaternion Rq(0, Vec3(angularChange[i] * 1.0f));
+                Rq *= q;
+                q.w += Rq.w * ((cpfloat)0.5);
+                q.x += Rq.x * ((cpfloat)0.5);
+                q.y += Rq.y * ((cpfloat)0.5);
+                q.z += Rq.z * ((cpfloat)0.5);
+
                 body[i]->setOrientation(q);
 
                 // We need to calculate the derived data for any body that is
@@ -513,8 +525,8 @@ namespace CrunchPhysx{
 
     void ContactResolver::adjustVelocities(Contact* c, unsigned numContacts, cpfloat duration)
     {
-        Vector3 velocityChange[2], rotationChange[2];
-        Vector3 deltaVel;
+        Vec3 velocityChange[2], rotationChange[2];
+        Vec3 deltaVel;
 
         // iteratively handle impacts in order of severity.
         velocityIterationsUsed = 0;
@@ -555,11 +567,14 @@ namespace CrunchPhysx{
                     {
                         if (c[i].body[b] == c[index].body[d])
                         {
-                            deltaVel = velocityChange[d] + rotationChange[d].vectorProduct(c[i].relativeContactPosition[b]);
+                            deltaVel = velocityChange[d] + CrossProduct(rotationChange[d], c[i].relativeContactPosition[b]);
 
                             // The sign of the change is negative if we're dealing
                             // with the second body in a contact.
-                            c[i].contactVelocity += c[i].contactToWorld.transformTranspose(deltaVel) * (b ? -1 : 1);
+                            Mat3x3 WorldToContact = c[i].contactToWorld;
+                            WorldToContact.Transpose();
+
+                            c[i].contactVelocity += (WorldToContact * deltaVel) * (b ? -1 : 1);
                             c[i].calculateDesiredDeltaVelocity(duration);
                         }
                     }
@@ -572,9 +587,9 @@ namespace CrunchPhysx{
     void ContactResolver::adjustPositions(Contact* c, unsigned numContacts, cpfloat duration)
     {
         unsigned i, index;
-        Vector3 linearChange[2], angularChange[2];
+        Vec3 linearChange[2], angularChange[2];
         cpfloat max;
-        Vector3 deltaPosition;
+        Vec3 deltaPosition;
 
         // iteratively resolve interpenetrations in order of severity.
         positionIterationsUsed = 0;
@@ -616,13 +631,13 @@ namespace CrunchPhysx{
                         {
                             if (c[i].body[b] == c[index].body[d])
                             {
-                                deltaPosition = linearChange[d] + angularChange[d].vectorProduct(c[i].relativeContactPosition[b]);
+                                deltaPosition = linearChange[d] + CrossProduct(angularChange[d], c[i].relativeContactPosition[b]);
 
                                 // The sign of the change is positive if we're
                                 // dealing with the second body in a contact
                                 // and negative otherwise (because we're
                                 // subtracting the resolution)..
-                                c[i].penetration += deltaPosition.scalarProduct(c[i].contactNormal) * (b ? 1 : -1);
+                                c[i].penetration += DotProduct(deltaPosition, c[i].contactNormal) * (b ? 1 : -1);
                             }
                         }
                     }

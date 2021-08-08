@@ -86,6 +86,8 @@ namespace CrunchMath {
 		Mat4x4& Transpose();
 
 		Mat4x4& operator*=(const Mat4x4& rhs);
+
+		Vec3 GetColumnVector(int i) const;
     };
 
 	static inline Vec3 operator*(const Mat4x4& lhs, const Vec3& rhs)

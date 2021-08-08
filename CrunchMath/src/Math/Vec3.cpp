@@ -11,6 +11,20 @@ namespace CrunchMath {
 	Vec3::Vec3(const Vec3& u) 
 		: x(u.x), y(u.y), z(u.z) {}
 
+	float Vec3::operator[](unsigned i) const
+	{
+		if (i == 0) return x;
+		if (i == 1) return y;
+		return z;
+	}
+
+	float& Vec3::operator[](unsigned i)
+	{
+		if (i == 0) return x;
+		if (i == 1) return y;
+		return z;
+	}
+
 	Vec3& Vec3::operator=(const Vec3 &u)
 	{
 		this->x = u.x;
@@ -47,7 +61,7 @@ namespace CrunchMath {
 		return *this;
 	}
 
-	Vec3 Vec3::operator*(const float& Scale)
+	Vec3 Vec3::operator*(const float& Scale) const
 	{
 		return Vec3(x*Scale, y*Scale, z*Scale);
 	}
@@ -70,27 +84,27 @@ namespace CrunchMath {
 		return *this;
 	}
 
-	Vec3 Vec3::operator+(const Vec3 &u)
+	Vec3 Vec3::operator+(const Vec3 &u) const
 	{
 		return Vec3(x + u.x, y + u.y, z + u.z);
 	}
 
-	Vec3 Vec3::operator-(const Vec3 &u)
+	Vec3 Vec3::operator-(const Vec3 &u) const
 	{
 		return Vec3(x - u.x, y - u.y, z - u.z);
 	}
 
-	Vec3 Vec3::operator*(const Vec3 &u)
+	Vec3 Vec3::operator*(const Vec3 &u) const
 	{
 		return Vec3(x*u.x, y*u.y, z*u.z);
 	}
 
-	Vec3 Vec3::operator/(const float& Scale)
+	Vec3 Vec3::operator/(const float& Scale) const
 	{
 		return Vec3(x / Scale, y / Scale, z / Scale);
 	}
 
-	Vec3 Vec3::operator-()
+	Vec3 Vec3::operator-() const
 	{
 		return Vec3(-x, -y, -z);
 	}
@@ -98,7 +112,7 @@ namespace CrunchMath {
 	void Vec3::Normalize()
 	{
 		float mag = x * x + y * y + z * z;
-		if (mag == 0.0f)
+		if (mag <= 0.0f)
 			return;
 
 		else if (mag > 0.0f)

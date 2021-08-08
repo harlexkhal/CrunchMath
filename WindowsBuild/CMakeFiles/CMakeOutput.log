@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine version 16.10.2+857e5a733 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 8/6/2021 10:18:02 PM.
+Build started 8/8/2021 1:18:57 AM.
 Project "C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\3.20.21032501-MSVC_2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -35,7 +35,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.90
+Time Elapsed 00:00:01.27
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -47,14 +47,14 @@ The CXX compiler identification is MSVC, found in "C:/Dev/MyProjects/CrunchMath/
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Dev/MyProjects/CrunchMath/WindowsBuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_31a7a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.10.2+857e5a733 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_506dd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.10.2+857e5a733 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30038.1 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_31a7a.dir\Debug\\" /Fd"cmTC_31a7a.dir\Debug\vc142.pdb" /external:env:EXTERNAL_INCLUDE /external:W3 /Gd /TP /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_31a7a.vcxproj -> C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_31a7a.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_506dd.dir\Debug\\" /Fd"cmTC_506dd.dir\Debug\vc142.pdb" /external:env:EXTERNAL_INCLUDE /external:W3 /Gd /TP /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_506dd.vcxproj -> C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_506dd.exe
 
 
 
@@ -68,7 +68,7 @@ The output was:
 Microsoft (R) Build Engine version 16.10.2+857e5a733 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 8/6/2021 10:18:06 PM.
+Build started 8/8/2021 1:19:00 AM.
 Project "C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\3.20.21032501-MSVC_2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -94,7 +94,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.99
+Time Elapsed 00:00:00.88
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -106,14 +106,14 @@ The C compiler identification is MSVC, found in "C:/Dev/MyProjects/CrunchMath/Wi
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Dev/MyProjects/CrunchMath/WindowsBuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_4fe40.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.10.2+857e5a733 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_d1d2e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.10.2+857e5a733 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30038.1 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCCompilerABI.c
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4fe40.dir\Debug\\" /Fd"cmTC_4fe40.dir\Debug\vc142.pdb" /external:env:EXTERNAL_INCLUDE /external:W3 /Gd /TC /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c"
-  cmTC_4fe40.vcxproj -> C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_4fe40.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d1d2e.dir\Debug\\" /Fd"cmTC_d1d2e.dir\Debug\vc142.pdb" /external:env:EXTERNAL_INCLUDE /external:W3 /Gd /TC /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c"
+  cmTC_d1d2e.vcxproj -> C:\Dev\MyProjects\CrunchMath\WindowsBuild\CMakeFiles\CMakeTmp\Debug\cmTC_d1d2e.exe
 
 
 

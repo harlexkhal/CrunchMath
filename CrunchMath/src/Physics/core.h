@@ -1,7 +1,7 @@
 #pragma once
 #include <float.h>
 
-namespace CrunchPhysx {
+namespace CrunchMath {
 
 #if 1
     //Single Precision Mode
@@ -41,7 +41,7 @@ namespace CrunchPhysx {
    * other forces are around that of gravity. It may need tweaking
    * if your simulation is drastically different to this.
 
-   * Defined in PhysxMath.cpp***
+   * Defined in Body.cpp***
    */
     extern cpfloat sleepEpsilon;
 }

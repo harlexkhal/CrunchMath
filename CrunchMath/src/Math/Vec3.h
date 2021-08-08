@@ -15,29 +15,33 @@ namespace CrunchMath {
 
 		Vec3(const Vec3& u);
 
+		float operator[](unsigned i) const;
+
+		float& operator[](unsigned i);
+
 		Vec3& operator=(const Vec3 &u);
 
-		Vec3 operator+(const Vec3& u);
+		Vec3 operator+(const Vec3& u) const;
 
 		Vec3& operator+=(const Vec3 &u);
 
-		Vec3 operator-(const Vec3& u);
+		Vec3 operator-(const Vec3& u) const;
 
 		Vec3& operator-=(const Vec3 &u);
 
-		Vec3 operator*(const Vec3& u);
+		Vec3 operator*(const Vec3& u) const;
 
 		Vec3& operator*=(const Vec3& u);
 
-		Vec3 operator*(const float& Scale);
+		Vec3 operator*(const float& Scale) const;
 
 		Vec3& operator*=(const float& Scale);
 
-		Vec3 operator/(const float& Scale);
+		Vec3 operator/(const float& Scale) const;
 
 		Vec3& operator/=(const float& Scale);
 
-		Vec3 operator- ();
+		Vec3 operator- () const;
 
 		bool operator==(Vec3& u);
 

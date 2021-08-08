@@ -38,6 +38,8 @@ namespace CrunchMath {
 
 		Quaternion operator*(const Quaternion& Q);
 
+		Quaternion& operator+=(const Quaternion& Q);
+
 		Quaternion& operator*=(const Quaternion& Q);
 
 		float GetRotationAngle();

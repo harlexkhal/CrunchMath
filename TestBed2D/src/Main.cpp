@@ -58,16 +58,16 @@ int main()
     float FixedTimeStep = (1.0f / 200.0f);
 
     /** Holds the maximum number of Contacts. */
-    const static unsigned maxContacts = 1000;
+    const static unsigned maxContacts = 5000;
 
     /** Holds the array of Contacts. */
-    CrunchPhysx::Contact Contacts[maxContacts];
+    CrunchMath::Contact Contacts[maxContacts];
 
     /** Holds the collision data structure for collision detection. */
-    CrunchPhysx::CollisionData cData;
+    CrunchMath::CollisionData cData;
 
     /** Holds the contact resolver. */
-    CrunchPhysx::ContactResolver resolver(maxContacts);
+    CrunchMath::ContactResolver resolver(maxContacts);
 
     cData.contactArray = Contacts;
 
@@ -80,33 +80,30 @@ int main()
     // Set the first block
     Box1.Size = CrunchMath::Vec3(0.8, 0.05, 0.0f);
     Box1.Position = CrunchMath::Vec3(-0.0f, -0.3f, 0.0f);
-    Box1.halfSize = CrunchPhysx::Vector3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
+    Box1.halfSize = CrunchMath::Vec3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
     Box1.body->setPosition(Box1.Position.x, Box1.Position.y, 0.0f);
     Box1.body->setOrientation(0.5f, 0.0, 0.0f, 1.3f);
     Box1.body->setVelocity(0, 0, 0);
-    Box1.body->setRotation(0, 0, 0);
-    CrunchPhysx::Matrix3 it;
+    //Box1.body->setRotation(0, 0, 0);
+    //Box1.body->setBlockInertiaTensor(Box1.halfSize, 10.0f);
     Box1.body->setDamping(0.9f, 0.9f);
     Box1.body->calculateDerivedData();
-    //Box1.calculateInternals();
-    Box1.body->setAcceleration(CrunchPhysx::Vector3(0.0f, 0.0f, 0.0f));
+    Box1.body->setAcceleration(CrunchMath::Vec3(0.0f, 0.0f, 0.0f));
     Box1.body->setAwake(true);
     Box1.body->setCanSleep(true);
 
     // Set the first block
     Box2.Size = CrunchMath::Vec3(0.05, 0.5, 0.0f);
-    Box2.halfSize = CrunchPhysx::Vector3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
+    Box2.halfSize = CrunchMath::Vec3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
     Box2.body->setPosition(0.1f, 0.0f, 0.0f);
     Box2.body->setOrientation(1, 0, 0, 0);
     Box2.body->setVelocity(0, 0, 0);
-    Box2.body->setRotation(0, 0, 0);
-    CrunchPhysx::Matrix3 it2;
-    it2.setBlockInertiaTensor(Box2.halfSize, 10.0f);
-    Box2.body->setInertiaTensor(it2);
+    //Box2.body->setRotation(0, 0, 0);
+    //Box2.body->setMass(1000.0f);
+    Box2.body->setBlockInertiaTensor(Box2.halfSize, 10.0f);
     Box2.body->setDamping(0.9f, 0.9f);
     Box2.body->calculateDerivedData();
-    //Box2.calculateInternals();
-    Box2.body->setAcceleration(CrunchPhysx::Vector3(0.0f, 0.0f, 0.0f));
+    Box2.body->setAcceleration(CrunchMath::Vec3(0.0f, 0.0f, 0.0f));
     Box2.body->setAwake(true);
     Box2.body->setCanSleep(true);
 
@@ -118,19 +115,16 @@ int main()
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
-        B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
+        B.halfSize = CrunchMath::Vec3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
         B.body->setPosition((float)rand() / RAND_MAX, 0.9f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
         B.body->setMass(10.0f);
-        CrunchPhysx::Matrix3 it;
-        it.setBlockInertiaTensor(B.halfSize, 10.0f);
-        B.body->setInertiaTensor(it);
+        B.body->setBlockInertiaTensor(B.halfSize, 10.0f);
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
-        //B.calculateInternals();
-        B.body->setAcceleration(CrunchPhysx::Vector3(0.0f, -9.8f, 0.0f));
+        B.body->setAcceleration(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 
@@ -141,19 +135,16 @@ int main()
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
-        B.halfSize = CrunchPhysx::Vector3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
+        B.halfSize = CrunchMath::Vec3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
         B.body->setPosition((float)rand() / RAND_MAX, 0.9f, 0.0f);
         B.body->setOrientation(1, 0, 0, 0);
         B.body->setVelocity(0, 0, 0);
         B.body->setRotation(0, 0, 0);
         B.body->setMass(10.0f);
-        CrunchPhysx::Matrix3 it;
-        it.setBlockInertiaTensor(B.halfSize, 10.0f);
-        B.body->setInertiaTensor(it);
+        B.body->setBlockInertiaTensor(B.halfSize, 10.0f);
         B.body->setDamping(0.9f, 0.9f);
         B.body->calculateDerivedData();
-        //B.calculateInternals();
-        B.body->setAcceleration(CrunchPhysx::Vector3(0.0f, -9.8f, 0.0f));
+        B.body->setAcceleration(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
         B.body->setAwake(true);
         B.body->setCanSleep(true);
 
@@ -182,9 +173,9 @@ int main()
 
         // Set up the collision data structure
         cData.reset(maxContacts);
-        cData.friction = (CrunchPhysx::cpfloat)0.9;
-        cData.restitution = (CrunchPhysx::cpfloat)0.2;
-        cData.tolerance = (CrunchPhysx::cpfloat)0.1;
+        cData.friction = (CrunchMath::cpfloat)0.9;
+        cData.restitution = (CrunchMath::cpfloat)0.2;
+        cData.tolerance = (CrunchMath::cpfloat)0.1;
 
         //PlanetTest.Step(FixedTimeStep);
 
@@ -197,7 +188,7 @@ int main()
         {
             for (int j = i + 1; j < 50; j++)
             {
-                CrunchPhysx::CollisionDetector::BoxBox(Boxes[i], Boxes[j], &cData);
+                CrunchMath::CollisionDetector::BoxBox(Boxes[i], Boxes[j], &cData);
             }
         }
 
@@ -219,19 +210,7 @@ int main()
 
         for (int a = 0; a < 50; a++)
         {
-            int f = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    Boxes[a].Model.Matrix[j][i] = Boxes[a].body->getTransform().data[f]; f++;
-                    Boxes[a].Model.Matrix[0][3] = 0.0f;
-                    Boxes[a].Model.Matrix[1][3] = 0.0f;
-                    Boxes[a].Model.Matrix[2][3] = 0.0f;
-                    Boxes[a].Model.Matrix[3][3] = 1.0f;
-                }
-            }
-
+            Boxes[a].Model = Boxes[a].body->getTransform();
             Boxes[a].Model.Scale(Boxes[a].Size);
             Boxes[a].Render();
             //std::cout << a << std::endl;

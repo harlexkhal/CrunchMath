@@ -125,6 +125,16 @@ namespace CrunchMath {
 		return result;
 	}
 
+	Quaternion& Quaternion::operator+=(const Quaternion& Q)
+	{
+		w += Q.w;
+		x += Q.x;
+		y += Q.y;
+		z += Q.z;
+
+		return *this;
+	}
+
 	Quaternion& Quaternion::operator*=(const Quaternion& Q)
 	{
 		*this = *this * Q;

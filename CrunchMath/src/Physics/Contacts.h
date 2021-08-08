@@ -1,7 +1,7 @@
 #pragma once
-#include "body.h"
+#include "Body.h"
 
-namespace CrunchPhysx {
+namespace CrunchMath {
 
     /*
      * Forward declaration, see full declaration below for complete
@@ -59,12 +59,12 @@ namespace CrunchPhysx {
         /**
          * Holds the position of the contact in world coordinates.
          */
-        Vector3 contactPoint;
+        Vec3 contactPoint;
 
         /**
          * Holds the direction of the contact in world coordinates.
          */
-        Vector3 contactNormal;
+        Vec3 contactNormal;
 
         /**
          * Holds the depth of penetration at the contact point. If both
@@ -86,13 +86,13 @@ namespace CrunchPhysx {
          * frame of reference to world co-ordinates. The columns of this
          * matrix form an orthonormal set of vectors.
          */
-        Matrix3 contactToWorld;
+        Mat3x3 contactToWorld;
 
         /**
          * Holds the closing velocity at the point of contact. This is set
          * when the calculateInternals function is run.
          */
-        Vector3 contactVelocity;
+        Vec3 contactVelocity;
 
         /**
          * Holds the required change in velocity for this contact to be
@@ -105,7 +105,7 @@ namespace CrunchPhysx {
          * centre of each body. This is set when the calculateInternals
          * function is run.
          */
-        Vector3 relativeContactPosition[2];
+        Vec3 relativeContactPosition[2];
 
     protected:
         /**
@@ -140,7 +140,7 @@ namespace CrunchPhysx {
          * Calculates and returns the velocity of the contact
          * point on the given body.
          */
-        Vector3 calculateLocalVelocity(unsigned bodyIndex, cpfloat duration);
+        Vec3 calculateLocalVelocity(unsigned bodyIndex, cpfloat duration);
 
         /**
          * Calculates an orthonormal basis for the contact point, based on
@@ -153,13 +153,13 @@ namespace CrunchPhysx {
          * Performs an inertia-weighted impulse based resolution of this
          * contact alone.
          */
-        void applyVelocityChange(Vector3 velocityChange[2], Vector3 rotationChange[2]);
+        void applyVelocityChange(Vec3 velocityChange[2], Vec3 rotationChange[2]);
 
         /**
          * Performs an inertia weighted penetration resolution of this
          * contact alone.
          */
-        void applyPositionChange(Vector3 linearChange[2], Vector3 angularChange[2], cpfloat penetration);
+        void applyPositionChange(Vec3 linearChange[2], Vec3 angularChange[2], cpfloat penetration);
 
         /**
          * Calculates the impulse needed to resolve this contact,
@@ -168,7 +168,7 @@ namespace CrunchPhysx {
          * save calculation time: the calling function has access to
          * these anyway.
          */
-        Vector3 calculateFrictionlessImpulse(Matrix3 *inverseInertiaTensor);
+        Vec3 calculateFrictionlessImpulse(Mat3x3 *inverseInertiaTensor);
 
         /**
          * Calculates the impulse needed to resolve this contact,
@@ -177,7 +177,7 @@ namespace CrunchPhysx {
          * object - is specified to save calculation time: the calling
          * function has access to these anyway.
          */
-        Vector3 calculateFrictionImpulse(Matrix3 *inverseInertiaTensor);
+        Vec3 calculateFrictionImpulse(Mat3x3 *inverseInertiaTensor);
     };
 
     /**

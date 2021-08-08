@@ -348,6 +348,11 @@ namespace CrunchMath {
 		return *this;
 	}
 	
+	Vec3 Mat4x4::GetColumnVector(int i) const
+	{
+		return Vec3(Matrix[i][0], Matrix[i][1], Matrix[i][2]);
+	}
+
 	Mat4x4 Invert(const Mat4x4& refm)
 	{
 		Mat4x4 m = refm;

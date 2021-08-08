@@ -8,12 +8,7 @@ namespace CrunchMath
 		{
 			for (int j = 0; j < 3; j++)
 			{
-				if (i == 2 && j == 2)
-				{
-					Matrix[i][j] = 1;
-					continue;
-				}
-				Matrix[i][j] = 0;
+				Matrix[i][j] = 0.0f;
 			}
 		}
 	}
@@ -175,7 +170,7 @@ namespace CrunchMath
 		}
 
 		float det = Determinant(m);
-		assert(det == 0.0f);
+		//assert(det == 0.0f);
 		float oneoverdet = 1.0f / det;
 
 		Mat3x3 Temp = m;

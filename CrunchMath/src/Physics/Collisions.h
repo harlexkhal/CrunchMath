@@ -1,7 +1,7 @@
 #pragma once
 #include "Contacts.h"
 
-namespace CrunchPhysx {
+namespace CrunchMath {
 
     class CollisionDetector;
 
@@ -16,7 +16,7 @@ namespace CrunchPhysx {
     class CollisionBox : public CollisionPrimitive
     {
     public:
-        Vector3 halfSize;
+        Vec3 halfSize;
     };
 
     /**
