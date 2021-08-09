@@ -6,7 +6,7 @@
 
 namespace CrunchMath {
 
-    static inline float transformToAxis(const CollisionBox& box, const Vec3& axis)
+    static inline float TransformToAxis(const CollisionBox& box, const Vec3& axis)
     {
         return
             (
@@ -26,8 +26,8 @@ namespace CrunchMath {
     static inline float PenetrationOnAxis(const CollisionBox& one, const CollisionBox& two, const Vec3& axis, const Vec3& toCentre)
     {
         // Project the half-size of one onto axis
-        float oneProject = transformToAxis(one, axis);
-        float twoProject = transformToAxis(two, axis);
+        float oneProject = TransformToAxis(one, axis);
+        float twoProject = TransformToAxis(two, axis);
 
         // Project this onto the axis
         float distance = fabsf(DotProduct(toCentre, axis));
@@ -37,7 +37,7 @@ namespace CrunchMath {
         return oneProject + twoProject - distance;
     }
 
-    static inline bool tryAxis(const CollisionBox& one, const CollisionBox& two, Vec3 axis, const Vec3& toCentre,
+    static inline bool TryAxis(const CollisionBox& one, const CollisionBox& two, Vec3 axis, const Vec3& toCentre,
         unsigned index, float& smallestPenetration, unsigned& smallestCase)
     {
         // Make sure we have a normalized axis, and don't check almost parallel axes
@@ -138,11 +138,6 @@ namespace CrunchMath {
         }
     }
 
-    // This preprocessor definition is only used as a convenience
-    // in the boxAndBox contact generation method.
-#define CHECK_OVERLAP(axis, index) \
-    if (!tryAxis(one, two, (axis), toCentre, (index), pen, best)) return 0;
-
     unsigned CollisionDetector::BoxBox(const CollisionBox& one, const CollisionBox& two, CollisionData* data)
     {
         //TO Do ----> EarlyOut Intersection Test to be done by math library...
@@ -158,13 +153,13 @@ namespace CrunchMath {
         // Now we check each axes, returning if it gives us
         // a separating axis, and keeping track of the axis with
         // the smallest Penetration otherwise.
-        if (!tryAxis(one, two, one.body->GetTransform().GetColumnVector(0), toCentre, (0), pen, best)) return 0;
-        if (!tryAxis(one, two, one.body->GetTransform().GetColumnVector(1), toCentre, (1), pen, best)) return 0;
-        //if (!tryAxis(one, two, one.getAxis(2), toCentre, (2), pen, best)) return 0;
+        if (!TryAxis(one, two, one.body->GetTransform().GetColumnVector(0), toCentre, (0), pen, best)) return 0;
+        if (!TryAxis(one, two, one.body->GetTransform().GetColumnVector(1), toCentre, (1), pen, best)) return 0;
+        //if (!TryAxis(one, two, one.getAxis(2), toCentre, (2), pen, best)) return 0;
 
-        if (!tryAxis(one, two, one.body->GetTransform().GetColumnVector(0), toCentre, (3), pen, best)) return 0;
-        if (!tryAxis(one, two, one.body->GetTransform().GetColumnVector(1), toCentre, (4), pen, best)) return 0;
-        //if (!tryAxis(one, two, one.getAxis(2), toCentre, (5), pen, best)) return 0;
+        if (!TryAxis(one, two, one.body->GetTransform().GetColumnVector(0), toCentre, (3), pen, best)) return 0;
+        if (!TryAxis(one, two, one.body->GetTransform().GetColumnVector(1), toCentre, (4), pen, best)) return 0;
+        //if (!TryAxis(one, two, one.getAxis(2), toCentre, (5), pen, best)) return 0;
 
         // Store the best axis-major, in case we run into almost
         // parallel edge collisions later
