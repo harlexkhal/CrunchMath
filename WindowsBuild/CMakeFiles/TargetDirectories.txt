@@ -10,6 +10,7 @@ C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/CMakeFiles/uninstall
 C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/CMakeFiles/INSTALL.dir
 C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/CMakeFiles/ALL_BUILD.dir
 C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/src/CMakeFiles/glfw.dir
+C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/src/CMakeFiles/update_mappings.dir
 C:/Dev/MyProjects/CrunchMath/WindowsBuild/Dependencies/glfw/src/CMakeFiles/INSTALL.dir
 C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/TestBed2D.dir
 C:/Dev/MyProjects/CrunchMath/WindowsBuild/TestBed2D/CMakeFiles/INSTALL.dir
