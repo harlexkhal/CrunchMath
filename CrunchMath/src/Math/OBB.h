@@ -1,6 +1,7 @@
 #pragma once
 #include "Vec3.h"
 #include "Vec4.h"
+#include "Mat3x3.h"
 #include "Mat4x4.h"
 
 namespace CrunchMath {
@@ -13,7 +14,7 @@ namespace CrunchMath {
 
 		OBB();
 
-		OBB(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent);
+		OBB(const Vec3& Center, const Mat3x3& Orientation, const Vec3& HalfExtent);
 
 		OBB(const OBB& OrientedBox);
 
@@ -25,6 +26,6 @@ namespace CrunchMath {
 
 		bool BroadPhaseCollisionTest(const OBB& OrientedBox);
 
-		void Set(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent);
+		void Set(const Vec3& Center, const Mat3x3& Orientation, const Vec3& HalfExtent);
 	};
 }
