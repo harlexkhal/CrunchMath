@@ -1,5 +1,6 @@
 #pragma once
 #include "Vec3.h"
+#include "Mat4x4.h"
 #include "Quaternion.h"
 
 namespace CrunchMath{
@@ -17,6 +18,8 @@ namespace CrunchMath{
 		Mat3x3(const Vec3& col1, const Vec3& col2);
 
 		Mat3x3(const Mat3x3& m);
+
+		Mat3x3(const Mat4x4& m);
 
 		Mat3x3(float identiy);
 
@@ -61,6 +64,21 @@ namespace CrunchMath{
 			+ (-m.Matrix[1][0] * ((m.Matrix[0][1] * m.Matrix[2][2]) - (m.Matrix[2][1] * m.Matrix[0][2])))
 			+ (m.Matrix[2][0] * ((m.Matrix[0][1] * m.Matrix[1][2]) - (m.Matrix[1][1] * m.Matrix[0][2])))
 			);
+	}
+
+	static inline Mat3x3 Abs(const Mat3x3& m)
+	{
+		Mat3x3 mMatrix;
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				mMatrix.Matrix[i][j] = fabs(m.Matrix[i][j]);
+			}
+		}
+
+		return mMatrix;
 	}
 
 	Mat3x3 Invert(const Mat3x3& m);

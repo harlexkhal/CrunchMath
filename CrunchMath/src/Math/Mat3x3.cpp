@@ -40,6 +40,17 @@ namespace CrunchMath
 		}
 	}
 
+	Mat3x3::Mat3x3(const Mat4x4& m)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				Matrix[i][j] = m.Matrix[i][j];
+			}
+		}
+	}
+
 	Mat3x3::Mat3x3(float identity)
 	{
 		//column vec 1               column vec 2            column vec 3

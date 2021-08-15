@@ -167,7 +167,7 @@ namespace CrunchMath {
 
 		else
 		{
-			std::cerr << "Invalid Magnitude" << std::endl; assert(false);
+			//std::cerr << "Invalid Magnitude" << std::endl; assert(false);
 		}
 	}
 

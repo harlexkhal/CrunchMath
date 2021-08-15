@@ -60,6 +60,11 @@ namespace CrunchMath {
 		);
 	}
 
+	static inline Vec3 Abs(const Vec3& v)
+	{
+		return Vec3(fabs(v.x), fabs(v.y), fabs(v.z));
+	}
+
 	static inline Vec3 Scale(const float Scaler, const Vec3& rhs)
 	{
 		return Vec3(Scaler * rhs.x, Scaler * rhs.y, Scaler * rhs.z);

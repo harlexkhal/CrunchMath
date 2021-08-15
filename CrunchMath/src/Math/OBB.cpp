@@ -19,9 +19,9 @@ namespace CrunchMath {
 		}
 	}
 
-	OBB::OBB(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent)
+	OBB::OBB(const Vec3& Center, const Mat3x3& Orientation, const Vec3& HalfExtent)
 	{
-		Set(Center, RotationAxis, HalfExtent);
+		Set(Center, Orientation, HalfExtent);
 	}
 
 	OBB::OBB(const OBB& OrientedBox)
@@ -165,7 +165,7 @@ namespace CrunchMath {
 			        DotProduct(Vec3(OrientationMatrix[0][1], OrientationMatrix[1][1], OrientationMatrix[2][1]), Tvec),
 			        DotProduct(Vec3(OrientationMatrix[0][2], OrientationMatrix[1][2], OrientationMatrix[2][2]), Tvec));
 		float T[3] = { Tvec.x, Tvec.y, Tvec.z };
-
+		
 		 /*Compute common subexpressions. Add in an epsilon term to
            counteract arithmetic errors when two edges are parallel and
            their cross product is (near) null
@@ -265,33 +265,16 @@ namespace CrunchMath {
 		return true;
 	}
 
-	void OBB::Set(const Vec3& Center, const Vec4& RotationAxis, const Vec3& HalfExtent)
+	void OBB::Set(const Vec3& Center, const Mat3x3& Orientaion, const Vec3& HalfExtent)
 	{
-		//Making sure its a unit Vector...
-		assert(RotationAxis.x <= 1.0f && RotationAxis.x >= 0.0f);
-		assert(RotationAxis.y <= 1.0f && RotationAxis.y >= 0.0f);
-		assert(RotationAxis.z <= 1.0f && RotationAxis.z >= 0.0f);
-
-		//making x-axis Sin and y-axis Cos---Switching axis to Switch from Left Handed to Right. Tested-withOpengl--WorkSpace Right Handed
-		float c = sin(RotationAxis.a);
-		float s = cos(RotationAxis.a);
-
-		float a = 1 - c;
-
-		//column vec 1...
-		OrientationMatrix[0][0] = ((RotationAxis.x * RotationAxis.x) * a) + c;
-		OrientationMatrix[0][1] = ((RotationAxis.x * RotationAxis.y) * a) + RotationAxis.z * s;
-		OrientationMatrix[0][2] = ((RotationAxis.x * RotationAxis.z) * a) - RotationAxis.y * s;
-
-		//column vec2...
-		OrientationMatrix[1][0] = ((RotationAxis.x * RotationAxis.y) * a) - RotationAxis.z * s;
-		OrientationMatrix[1][1] = ((RotationAxis.y * RotationAxis.y) * a) + c;
-		OrientationMatrix[1][2] = ((RotationAxis.y * RotationAxis.z) * a) + RotationAxis.x * s;
-
-		//column vec3...
-		OrientationMatrix[2][0] = ((RotationAxis.x * RotationAxis.z) * a) + RotationAxis.y * s;
-		OrientationMatrix[2][1] = ((RotationAxis.y * RotationAxis.z) * a) - RotationAxis.x * s;
-		OrientationMatrix[2][2] = ((RotationAxis.z * RotationAxis.z) * a) + c;
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				//Transposed
+				OrientationMatrix[j][i] = Orientaion.Matrix[i][j];
+			}
+		}
 
 		this->Center[0] = Center.x;
 		this->Center[1] = Center.y;
