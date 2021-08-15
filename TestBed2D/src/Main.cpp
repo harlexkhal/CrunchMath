@@ -78,11 +78,11 @@ int main()
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box1(vertexShaderSource, fragmentShaderSource);
     // Set the first block
-    Box1.Size = CrunchMath::Vec3(0.5f, 0.05f, 0.0f);
+    Box1.Size = CrunchMath::Vec3(0.8f, 0.05f, 0.0f);
     Box1.Position = CrunchMath::Vec3(-0.0f, -0.4f, 0.0f);
     Box1.HalfSize = CrunchMath::Vec3((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
     Box1.body->SetPosition(Box1.Position.x, Box1.Position.y, 0.0f);
-    Box1.body->SetOrientation(1.0f, 0.0, 0.0f, 0.0f);
+    Box1.body->SetOrientation(1.0f, 0.0, 0.0f, 2.0f);
     //Box1.body->SetBlockInertiaTensor(Box1.HalfSize, 100.0f);
     Box1.body->SetVelocity(0, 0, 0);
     Box1.body->SetDamping(0.9f, 0.9f);
@@ -91,16 +91,14 @@ int main()
     Box1.body->SetAwake(false);
 
     // Set the first block
-    Box2.Size = CrunchMath::Vec3(0.05f, 0.05f, 0.0f);
+    Box2.Size = CrunchMath::Vec3(0.05f, 0.5f, 0.0f);
     Box2.HalfSize = CrunchMath::Vec3((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
     Box2.body->SetPosition(0.1f, 0.0f, 0.0f);
     Box2.body->SetRotation(0.0f, 0.0f, 0.0f);
     Box2.body->SetOrientation(1, 0, 0, 0);
     Box2.body->SetVelocity(0, 0, 0);
-    Box2.body->SetMass(100.0f);
-    Box2.body->SetBlockInertiaTensor(Box2.HalfSize, 100.0f);
+    Box2.body->SetBlockInertiaTensor(Box2.HalfSize, 1000.0f);
     Box2.body->SetDamping(0.9f, 0.9f);
-    Box2.body->SetAcceleration(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
     Box2.body->CalculateDerivedData();
     Box2.body->SetAwake(true);
 
@@ -112,14 +110,14 @@ int main()
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
-        B.Size = CrunchMath::Vec3(0.06f, 0.06f, 0.0f);
+        B.Size = CrunchMath::Vec3(0.05f, 0.05f, 0.0f);
         B.HalfSize = CrunchMath::Vec3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
         B.body->SetPosition((float)rand() / RAND_MAX, 0.9f, 0.0f);
         B.body->SetOrientation(1, 0, 0, 0);
         B.body->SetVelocity(0, 0, 0);
         B.body->SetRotation(0, 0, 0);
-        B.body->SetMass(5000.0f);
-        B.body->SetBlockInertiaTensor(B.HalfSize, 5000.0f);
+        B.body->SetMass(500.0f);
+        B.body->SetBlockInertiaTensor(B.HalfSize, 500.0f);
         B.body->SetDamping(0.9f, 0.9f);
         B.body->CalculateDerivedData();
         B.body->SetAcceleration(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
@@ -132,14 +130,14 @@ int main()
     {
         Box B(vertexShaderSource, fragmentShaderSource);
         // Set the first block
-        B.Size = CrunchMath::Vec3(0.06f, 0.06f, 0.0f);
+        B.Size = CrunchMath::Vec3(0.05f, 0.05f, 0.0f);
         B.HalfSize = CrunchMath::Vec3((B.Size.x / 2.0f), (B.Size.y / 2.0f), 0.0f);
         B.body->SetPosition((float)rand() / RAND_MAX, 0.9f, 0.0f);
         B.body->SetOrientation(1, 0, 0, 0);
         B.body->SetVelocity(0, 0, 0);
         B.body->SetRotation(0, 0, 0);
-        B.body->SetMass(5000.0f);
-        B.body->SetBlockInertiaTensor(B.HalfSize, 5000.0f);
+        B.body->SetMass(500.0f);
+        B.body->SetBlockInertiaTensor(B.HalfSize, 500.0f);
         B.body->SetDamping(0.9f, 0.9f);
         B.body->CalculateDerivedData();
         B.body->SetAcceleration(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
