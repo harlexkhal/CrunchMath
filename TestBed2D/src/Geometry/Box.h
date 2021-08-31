@@ -1,10 +1,11 @@
 #pragma once
 #include "Geometry.h"
 
-class Box : public CrunchMath::CollisionBox, public Geometry
+class Box :  public Geometry
 {
 public:
     CrunchMath::Vec3 Size;
+    CrunchMath::Body* body;
     //CrunchMath::OBB Volume;
 private:
     float vertices[12 * 2];
@@ -24,8 +25,6 @@ public:
         CrunchMath::Vec4 R(0, 0, 1, CrunchMath::Radian(45));
         //Volume = CrunchMath::OBB(Position, R, (Size / 2));
         Color = CrunchMath::Vec4(0.0f, 1.0f, 0.0f, 1.0f);
-
-        body = new CrunchMath::Body();
     }
 
 protected:

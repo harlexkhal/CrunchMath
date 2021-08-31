@@ -22,6 +22,26 @@ namespace CrunchMath
         TransformMatrix.Translate(Position);
     }
 
+    Body::Body()
+    {
+        Position = Vec3(0.0f, 0.0f, 0.0f);
+        Orientation = Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
+        Velocity = Vec3(0.0f, 0.0f, 0.0f);
+        SetDamping(0.9f, 0.9f);
+        CalculateDerivedData();
+    }
+
+    Body::Body(const Body& copybody)
+    {
+        Copy(copybody);
+    }
+
+    Body& Body::operator=(const Body& copybody)
+    {
+        Copy(copybody);
+        return *this;
+    }
+
     void Body::CalculateDerivedData()
     {
         Orientation.Normalize();
@@ -89,8 +109,10 @@ namespace CrunchMath
 
     void Body::SetMass(const float mass)
     {
-        assert(mass != 0);
-        this->InverseMass = ((float)1.0) / mass;
+        if (mass <= 0.0f)
+            InverseMass = 0.0f;
+        else
+            InverseMass = ((float)1.0) / mass;
     }
 
     float Body::GetMass() const
@@ -279,5 +301,27 @@ namespace CrunchMath
                                 0.9f * mass * (squares.x + squares.z),
                                 0.9f * mass * (squares.x + squares.y)
                               );
+    }
+
+    void Body::Copy(const Body& copybody)
+    {
+        InverseMass = copybody.InverseMass;
+        InverseInertiaTensor = copybody.InverseInertiaTensor;
+        LinearDamping = copybody.LinearDamping;
+        AngularDamping = copybody.AngularDamping;
+        Position = copybody.Position;
+        Orientation = copybody.Orientation;
+        Velocity = copybody.Velocity;
+        Rotation = copybody.Rotation;
+        InverseInertiaTensorWorld = copybody.InverseInertiaTensorWorld;
+        Motion = copybody.Motion;
+        IsAwake = copybody.IsAwake;
+        CanSleep = copybody.CanSleep;
+        TransformMatrix = copybody.TransformMatrix;
+        ForceAccumulation = copybody.ForceAccumulation;
+        TorqueAccumulation = copybody.TorqueAccumulation;
+        Acceleration = copybody.Acceleration;
+        LastFrameAcceleration = copybody.LastFrameAcceleration;
+        Primitive = copybody.Primitive;
     }
 }

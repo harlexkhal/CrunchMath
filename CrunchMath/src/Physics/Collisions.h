@@ -5,18 +5,54 @@ namespace CrunchMath {
 
     class CollisionDetector;
 
-    class CollisionPrimitive
+    class Shape
     {
     public:
-        friend class CollisionDetector;
-
-        Body * body;
+        virtual void SetHalfExtent(float x, float y, float z) = 0;
+        virtual void SetBody(Body* body) = 0;
+        virtual Body* GetBody() const = 0;
+        virtual const Vec3& GetHalfSize() const = 0;
+    protected:
+        Vec3 HalfSize;
+        Body* body;
     };
 
-    class CollisionBox : public CollisionPrimitive
+    class Box : public Shape
     {
     public:
-        Vec3 HalfSize;
+        virtual void SetHalfExtent(float x, float y, float z) override 
+        {
+            HalfSize = Vec3(x, y, z);
+        }
+
+        virtual void SetBody(Body* body) override
+        {
+            this->body = body;
+        }
+
+        virtual Body* GetBody() const override
+        {
+            return body;
+        }
+        
+        virtual const Vec3& GetHalfSize() const override
+        {
+            return HalfSize;
+        }
+    };
+
+    class cmSphere : public Shape
+    {
+    public:
+        void SetRadius3D(float r)
+        {
+            HalfSize = Vec3(r, r, r);
+        }
+
+        void SetRadius2D(float r)
+        {
+            HalfSize = Vec3(r, r, 0.0f);
+        }
     };
 
     struct CollisionData
@@ -59,6 +95,6 @@ namespace CrunchMath {
     class CollisionDetector
     {
     public:
-        static unsigned BoxBox( const CollisionBox &one, const CollisionBox &two, CollisionData *data);
+        static unsigned Collision(const Shape* one, const Shape* two, CollisionData *data);
     };
 }

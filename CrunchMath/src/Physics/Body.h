@@ -4,9 +4,17 @@
 
 namespace CrunchMath {
 
+    class Shape;
+    
     class Body
     {
+        friend class World;
     public:
+        Body();
+        Body(const Body& copybody);
+        Body& operator=(const Body& copybody);
+       // ~Body() { delete Primitive; };
+
         void CalculateDerivedData();
         void Integrate(float duration);
         void SetMass(const float mass);
@@ -43,6 +51,8 @@ namespace CrunchMath {
         void SetBlockInertiaTensor(const Vec3& HalfSizes, float mass);
 
     private:
+        void Copy(const Body& copybody);
+
         float InverseMass;
         Mat3x3 InverseInertiaTensor;
 
@@ -68,6 +78,8 @@ namespace CrunchMath {
 
         Vec3 Acceleration;
         Vec3 LastFrameAcceleration;
+
+        Shape* Primitive;
     };
 
     /*
