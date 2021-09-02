@@ -2,35 +2,79 @@
 
 namespace CrunchMath {
 
-	World::World(int bodycount, Vec3 gravity)
-		:Size(bodycount),Gravity(gravity),Index(0)
+	World::World(Vec3 gravity)
+		:  Gravity(gravity), Index(0)
 	{
-		Stack = new Body[bodycount];
+		memset(FreeStack, true, MaxNumberOfBodies);
+		Contacts = new Contact[MaxContacts]; //For Testing Purpose => won't be allocated on the heap
 		CData.ContactArray = Contacts;
+		m_pNext = nullptr;
 	}
 
-	World::World(Vec3 gravity)
-		: Size(100), Gravity(gravity), Index(0)
+	World::~World()
 	{
-		Stack = new Body[100];
-		CData.ContactArray = Contacts;
+		World* ptr = this->m_pNext;
+		while (ptr != nullptr)
+		{
+			World* Hold = ptr;
+			ptr = ptr->m_pNext;
+			delete Hold;
+		}
 	}
 
 	Body* World::CreateBody(Shape* primitive)
 	{
-		if (empty())
+		if (Empty())
 		{
 			Stack[0].SetAcceleration(Gravity);
 			Body* newbody = Stack + Index;
 			newbody->Primitive = primitive;
 			newbody->Primitive->SetBody(newbody);
+			newbody->m_pNext = nullptr;
+			FreeStack[0] = false;
 			Index++;
 		    return newbody;
 		}
 
 		else if (Index == Size)
 		{
-			assert(false);
+			bool FoundSpace = false;
+			for (int i = 0; i < Size; i++)
+			{
+				if (FreeStack[i])
+				{
+					Stack[i].SetAcceleration(Gravity);
+
+					Body* newbody = Stack + i;
+					newbody->Primitive = primitive;
+					newbody->Primitive->SetBody(newbody);
+					FreeStack[i] = false;
+
+					return newbody;
+				}
+			}
+			
+			if (!FoundSpace)
+			{
+				if (m_pNext == nullptr)
+				{
+					m_pNext = new World(Gravity);
+					Body* newbody = m_pNext->CreateBody(primitive);
+
+					int i = Index - 1;
+					Body* Previous = Stack + i;
+					Previous->m_pNext = newbody;
+					
+					return newbody;
+				}
+
+				else
+				{
+					Body* newbody = m_pNext->CreateBody(primitive);
+
+					return newbody;
+				}
+			}
 		}
 
 		else
@@ -40,6 +84,13 @@ namespace CrunchMath {
 		   Body* newbody = Stack + Index;
 		   newbody->Primitive = primitive;
 		   newbody->Primitive->SetBody(newbody);
+
+		   int i = Index - 1;
+		   Body* Previous = Stack + i;
+		   Previous->m_pNext = newbody;
+		   newbody->m_pNext = nullptr;
+
+		   FreeStack[Index] = false;
 		   Index++;
 		   return newbody;
 		}
@@ -51,28 +102,38 @@ namespace CrunchMath {
 		CData.Friction = 0.9f;
 		CData.Restitution = 0.1f;
 
-		for (int i = 0; i < Index; i++)
+		Body* ptrStack = Stack;
+		while (ptrStack != nullptr)
 		{
-			(Stack + i)->Integrate(dt);
+			(ptrStack)->Integrate(dt);
+			ptrStack = ptrStack->m_pNext;
 		}
 
-		for (int i = 0; i < Index; i++)
+		ptrStack = Stack;
+		while (ptrStack != nullptr)
 		{
-			for (int j = i + 1; j < Index; j++)
+			for (Body* i = ptrStack->m_pNext; i != nullptr; )
 			{
-				CrunchMath::CollisionDetector::Collision(((Stack + i)->Primitive), ((Stack + j)->Primitive), &CData);
-			}
+				CrunchMath::CollisionDetector::Collision(((ptrStack)->Primitive), ((i)->Primitive), &CData);
+				i = i->m_pNext;
+		    }
+			ptrStack = ptrStack->m_pNext;
 		}
 
-		for (int i = 0; i < Index; i++)
+		/*--------------------Temporary---------------------------------*/
+		ptrStack = Stack;
+		while (ptrStack != nullptr)
 		{
-			if ((Stack + i)->GetPosition().y <= -0.9f)
+			if ((ptrStack)->GetPosition().y <= -0.9f)
 			{
-				(Stack + i)->SetVelocity(0, 0, 0);
-				(Stack + i)->SetRotation(0, 0, 0);
-				(Stack + i)->SetPosition(0.0f, 0.9f, 0.0f);
+				(ptrStack)->SetVelocity(0, 0, 0);
+				(ptrStack)->SetRotation(0, 0, 0);
+				(ptrStack)->SetPosition(0.0f, 0.9f, 0.0f);
 			}
+
+			ptrStack = ptrStack->m_pNext;
 		}
+		//-----------------------------------------------------------------
 
 		Resolver.ResolveContacts(CData.ContactArray, CData.ContactCount, dt);
 	}

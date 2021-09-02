@@ -13,7 +13,7 @@ namespace CrunchMath {
         Body();
         Body(const Body& copybody);
         Body& operator=(const Body& copybody);
-       // ~Body() { delete Primitive; };
+        ~Body(){};
 
         void CalculateDerivedData();
         void Integrate(float duration);
@@ -79,7 +79,8 @@ namespace CrunchMath {
         Vec3 Acceleration;
         Vec3 LastFrameAcceleration;
 
-        Shape* Primitive;
+        Shape* Primitive = nullptr;
+        Body* m_pNext;
     };
 
     /*

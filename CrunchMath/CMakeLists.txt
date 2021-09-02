@@ -1,6 +1,6 @@
 file(GLOB CRUNCHMATH_SOURCE_FILES
 	"src/*.*"
-        "src/Physics/*.*"
+    "src/Physics/*.*"
 	"src/Math/*.*"
 	"src/Math/BVH/*.*")
 

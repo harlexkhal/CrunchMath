@@ -57,10 +57,10 @@ int main()
     int Count = 0;
     float Ts = (1.0f / 200.0f);
 
-    CrunchMath::World gameWorld(2, CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
     Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);
 
+    CrunchMath::World gameWorld(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
     Box Boxes[2];
     Box Box2(vertexShaderSource, fragmentShaderSource);
     Box Box1(vertexShaderSource, fragmentShaderSource);
