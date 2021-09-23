@@ -26,7 +26,7 @@ namespace CrunchMath {
 
 		World* m_pNext;
 
-		const static unsigned int MaxNumberOfBodies = 1000;
+		const static unsigned int MaxNumberOfBodies = 100;
 		Body Stack[MaxNumberOfBodies];
 		bool FreeStack[MaxNumberOfBodies];
 		unsigned int Index = 0;

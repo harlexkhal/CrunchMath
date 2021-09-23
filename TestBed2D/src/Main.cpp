@@ -56,7 +56,7 @@ int main()
     float thetha = 0;
     int Count = 0;
     float Ts = (1.0f / 200.0f);
-
+   
     Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);
 
