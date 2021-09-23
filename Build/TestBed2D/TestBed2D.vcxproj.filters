@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Geometry\Box.h">
+      <Filter>src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Geometry\Circle.h">
+      <Filter>src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\src\Geometry\Geometry.h">
+      <Filter>src\Geometry</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\TestBed2D\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{3BEDDFA2-E145-39A0-8546-1895DF2CB6B6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Geometry">
+      <UniqueIdentifier>{16A14DC5-7093-37A5-9C20-07106FA65FA6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

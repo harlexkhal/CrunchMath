@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.cpp">
+      <Filter>src\Math\BVH</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat3x3.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\OBB.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Quaternion.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Sphere.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.cpp">
+      <Filter>src\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Body.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\World.cpp">
+      <Filter>src\Physics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\AABB.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHDS.hpp">
+      <Filter>src\Math\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\BVH\BVHSphere.h">
+      <Filter>src\Math\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\GeometricUtility.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat3x3.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Mat4x4.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Math_Util.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\OBB.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Quaternion.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Sphere.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec3.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Math\Vec4.h">
+      <Filter>src\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Body.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Collisions.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\Contacts.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\src\Physics\World.h">
+      <Filter>src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\include\CrunchMath.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\CrunchMath\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{7F6B032E-166E-3AD0-97DD-3C5B3EB53024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{3BEDDFA2-E145-39A0-8546-1895DF2CB6B6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math">
+      <UniqueIdentifier>{0CB54335-EAA1-3557-BF6F-1461495EAEC7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Math\BVH">
+      <UniqueIdentifier>{2F0C4276-8DF4-338B-B62F-7330E47D2FB9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Physics">
+      <UniqueIdentifier>{D98F5B00-CB93-375D-B4B9-84A44D33E51F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

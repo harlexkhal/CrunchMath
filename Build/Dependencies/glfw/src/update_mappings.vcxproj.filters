@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\099f9b3bef6a73c953e6bd603652b31a\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Dev\MyProjects\CrunchMath\Dependencies\glfw\CMake\GenerateMappings.cmake" />
+    <None Include="C:\Dev\MyProjects\CrunchMath\Build\Dependencies\glfw\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{19FF4BC8-15E8-3F99-B4C5-58E782290F31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{2429F4D4-7B71-318D-BAC1-804C10231560}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
