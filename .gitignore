@@ -3,3 +3,5 @@
 .vs/
 Debug/
 *.user
+*.bat
+Build/
