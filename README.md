@@ -20,7 +20,7 @@ CrunchMath is a 2D/3D Math & Physics Engine
 * Cloth Physics
 * Ragdoll Physics
 * UserInterface/Level Editor
-* Gjk/EPA Collision Detection/Resolution for complex polygons
+* GJK/EPA Collision Detection/Resolution for complex polygons
 * TestBed3D
 * Custom Build MeshLoader
 * Custom Build BMP Texture Loader
