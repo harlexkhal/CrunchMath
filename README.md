@@ -18,7 +18,7 @@ CrunchMath is a 2D/3D Math & Physics Engine
 * Ray Casting (Box, Sphere)
 * Rope Physics
 * Cloth Physics
-* Ragdolls Physics
+* Ragdoll Physics
 * UserInterface/Level Editor
 * Gjk/EPA Collision Detection/Resolution for complex polygons
 * TestBed3D
