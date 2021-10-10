@@ -13,7 +13,11 @@ namespace CrunchMath {
         Body();
         Body(const Body& copybody);
         Body& operator=(const Body& copybody);
-        ~Body(){};
+        ~Body()
+        {
+            if (Primitive != nullptr)
+                delete Primitive;
+        };
 
         void CalculateDerivedData();
         void Integrate(float duration);
@@ -39,6 +43,7 @@ namespace CrunchMath {
         void SetRotation(const float x, const float y, const float z);
         Vec3 GetRotation() const;
         void AddRotation(const Vec3 &deltaRotation);
+       const Shape* GetShape() const { return Primitive; };
 
         bool GetAwake() const;
         void SetAwake(const bool awake=true);

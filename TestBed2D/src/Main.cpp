@@ -61,17 +61,21 @@ int main()
     Circle Circle(vertexShaderSource, fragmentShaderSource);
 
     CrunchMath::World gameWorld(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
-    Box Boxes[2];
-    Box Box2(vertexShaderSource, fragmentShaderSource);
+    Box Boxes[4];
     Box Box1(vertexShaderSource, fragmentShaderSource);
+    Box Box2(vertexShaderSource, fragmentShaderSource);
+    Box Box3(vertexShaderSource, fragmentShaderSource);
+    Box Box4(vertexShaderSource, fragmentShaderSource);
     // Set the first block
     Box1.Size = CrunchMath::Vec3(0.8f, 0.05f, 0.0f);
     Box2.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
+    Box3.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
+    Box4.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
 
-    Box1.Position = CrunchMath::Vec3(-0.0f, -0.4f, 0.0f);
+    Box1.Position = CrunchMath::Vec3(0.0f, -0.4f, 0.0f);
 
     CrunchMath::Box boxshape;
-    boxshape.SetHalfExtent((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
+    boxshape.Set((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
 
     CrunchMath::Body* body = gameWorld.CreateBody(&boxshape);
     body->SetPosition(Box1.Position.x, Box1.Position.y, 0.0f);
@@ -84,9 +88,9 @@ int main()
     body->SetBlockInertiaTensor((Box1.Size / 2.0f), 100.0f);
     body->SetAwake(true);
     Box1.body = body;
-
+    
     CrunchMath::Box boxshape2;
-    boxshape2.SetHalfExtent((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
+    boxshape2.Set((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
 
     CrunchMath::Body* body2 = gameWorld.CreateBody(&boxshape2);
     body2->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
@@ -99,8 +103,32 @@ int main()
     body2->SetAwake(true);
     Box2.body = body2;
 
+    CrunchMath::Body* body3 = gameWorld.CreateBody(&boxshape2);
+    body3->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
+	body3->SetOrientation(0.0f, 0.0, 0.0f, 2.0f);
+	body3->SetVelocity(0.0f, 0.0f, 0.0f);
+	body3->SetDamping(0.9f, 0.9f);
+	body3->CalculateDerivedData();
+	body3->SetMass(1000.0f);
+	body3->SetBlockInertiaTensor((Box2.Size / 2.0f), 1000.0f);
+	body3->SetAwake(true);
+	Box3.body = body3;
+
+    CrunchMath::Body* body4 = gameWorld.CreateBody(&boxshape2);
+	body4->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
+	body4->SetOrientation(0.0f, 0.0, 0.0f, 2.0f);
+	body4->SetVelocity(0.0f, 0.0f, 0.0f);
+	body4->SetDamping(0.9f, 0.9f);
+	body4->CalculateDerivedData();
+	body4->SetMass(1000.0f);
+	body4->SetBlockInertiaTensor((Box2.Size / 2.0f), 1000.0f);
+	body4->SetAwake(true);
+	Box4.body = body4;
+
     Boxes[0] = Box1;
     Boxes[1] = Box2;
+    Boxes[2] = Box3;
+    Boxes[3] = Box4;
  
     float dt = 0.0f;
     float lastFrame = 0.0f;
@@ -113,7 +141,16 @@ int main()
        
         gameWorld.Step(Ts);
 
-        for (int a = 0; a < 2; a++)
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+            Boxes[1].body->SetVelocity(0.0f, 1.0f, 0.0f);
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+            Boxes[1].body->SetVelocity(1.0f, 0.0f, 0.0f);
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+            Boxes[1].body->SetVelocity(-1.0f, 0.0f, 0.0f);
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+            Boxes[1].body->SetVelocity(0.0f, -1.0f, 0.0f);
+
+        for (int a = 0; a < 4; a++)
         {
             Boxes[a].Model = Boxes[a].body->GetTransform();
             Boxes[a].Model.Scale(Boxes[a].Size);

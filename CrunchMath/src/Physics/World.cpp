@@ -3,24 +3,37 @@
 namespace CrunchMath {
 
 	World::World(Vec3 gravity)
-		:  Gravity(gravity), Index(0)
+		:Gravity(gravity), Index(0)
 	{
+		Parent = true;
 		memset(FreeStack, true, MaxNumberOfBodies);
-		Contacts = new Contact[MaxContacts]; //For Testing Purpose => won't be allocated on the heap
 		CData.ContactArray = Contacts;
 		m_pNext = nullptr;
 	}
 
+	World::World(Vec3 gravity, bool parent)
+		:Gravity(gravity), Index(0)
+	{
+		this->Parent = parent;
+		memset(FreeStack, true, MaxNumberOfBodies);
+		CData.ContactArray = Contacts;
+		m_pNext = nullptr;
+    }
+
 	World::~World()
 	{
-		World* ptr = this->m_pNext;
-		while (ptr != nullptr)
+		//Only Parent World Nodes/Blocks can delete its children
+		if (Parent)
 		{
-			World* Hold = ptr;
-			ptr = ptr->m_pNext;
-			delete Hold;
+			World* ptr = this->m_pNext;
+			while (ptr != nullptr)
+			{
+				World* Hold = ptr;
+				ptr = ptr->m_pNext;
+                delete Hold;
+			}
 		}
-	}
+    }
 
 	Body* World::CreateBody(Shape* primitive)
 	{
@@ -28,8 +41,28 @@ namespace CrunchMath {
 		{
 			Stack[0].SetAcceleration(Gravity);
 			Body* newbody = Stack + Index;
-			newbody->Primitive = primitive;
-			newbody->Primitive->SetBody(newbody);
+
+			switch (primitive->GetType())
+			{
+			case Shape::Type::s_Box: {
+				newbody->Primitive = new Box();
+				Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
+				newbody->Primitive->Set(HalfSize.x, HalfSize.y, HalfSize.z);
+				break;
+			}
+ 
+			case Shape::Type::s_Sphere: {
+				newbody->Primitive = new cmSphere();
+                float Radius = *(float*)primitive->GetHalfSize();
+				newbody->Primitive->Set(Radius);
+				break;
+			}
+ 
+			default:
+				 std::cerr << "Shape Type Does not Exist" << std::endl; assert(false);
+				break;
+			}
+ 
 			newbody->m_pNext = nullptr;
 			FreeStack[0] = false;
 			Index++;
@@ -46,8 +79,27 @@ namespace CrunchMath {
 					Stack[i].SetAcceleration(Gravity);
 
 					Body* newbody = Stack + i;
-					newbody->Primitive = primitive;
-					newbody->Primitive->SetBody(newbody);
+
+					switch (primitive->GetType())
+					{
+					case Shape::Type::s_Box: {
+						newbody->Primitive = new Box();
+						Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
+						newbody->Primitive->Set(HalfSize.x, HalfSize.y, HalfSize.z);
+						break;
+					}
+		 
+					case Shape::Type::s_Sphere: {
+						newbody->Primitive = new cmSphere();
+						float Radius = *(float*)primitive->GetHalfSize();
+						newbody->Primitive->Set(Radius);
+						break;
+					}
+		 
+					default:
+						 std::cerr << "Shape Type Does not Exist" << std::endl; assert(false);
+						break;
+					}
 					FreeStack[i] = false;
 
 					return newbody;
@@ -58,7 +110,8 @@ namespace CrunchMath {
 			{
 				if (m_pNext == nullptr)
 				{
-					m_pNext = new World(Gravity);
+					//subsequent World blocks/nodes created from here are children 
+					m_pNext = new World(Gravity, false);
 					Body* newbody = m_pNext->CreateBody(primitive);
 
 					int i = Index - 1;
@@ -82,9 +135,28 @@ namespace CrunchMath {
 		   Stack[Index].SetAcceleration(Gravity);
 
 		   Body* newbody = Stack + Index;
-		   newbody->Primitive = primitive;
-		   newbody->Primitive->SetBody(newbody);
 
+			switch (primitive->GetType())
+			{
+			case Shape::Type::s_Box: {
+				newbody->Primitive = new Box();
+				Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
+				newbody->Primitive->Set(HalfSize.x, HalfSize.y, HalfSize.z);
+				break;
+			}
+
+			case Shape::Type::s_Sphere: {
+				newbody->Primitive = new cmSphere();
+				float Radius = *(float*)primitive->GetHalfSize();
+				newbody->Primitive->Set(Radius);
+				break;
+			}
+
+			default:
+				 std::cerr << "Shape Type Does not Exist" << std::endl; assert(false);
+				break;
+			}
+			
 		   int i = Index - 1;
 		   Body* Previous = Stack + i;
 		   Previous->m_pNext = newbody;
@@ -114,7 +186,7 @@ namespace CrunchMath {
 		{
 			for (Body* i = ptrStack->m_pNext; i != nullptr; )
 			{
-				CrunchMath::CollisionDetector::Collision(((ptrStack)->Primitive), ((i)->Primitive), &CData);
+				CrunchMath::CollisionDetector::Collision(ptrStack, i, &CData);
 				i = i->m_pNext;
 		    }
 			ptrStack = ptrStack->m_pNext;
