@@ -67,26 +67,23 @@ int main()
     Box Box3(vertexShaderSource, fragmentShaderSource);
     Box Box4(vertexShaderSource, fragmentShaderSource);
     // Set the first block
-    Box1.Size = CrunchMath::Vec3(0.8f, 0.05f, 0.0f);
+    Box1.Size = CrunchMath::Vec3(100.0f, 0.5f, 0.0f);
     Box2.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
     Box3.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
     Box4.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
 
-    Box1.Position = CrunchMath::Vec3(0.0f, -0.4f, 0.0f);
+    Box1.Position = CrunchMath::Vec3(0.0f, -0.8f, 0.0f);
 
-    CrunchMath::Box boxshape;
-    boxshape.Set((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
+    CrunchMath::Box groundshape;
+    groundshape.Set((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
 
-    CrunchMath::Body* body = gameWorld.CreateBody(&boxshape);
+    CrunchMath::Body* body = gameWorld.CreateBody(&groundshape);
     body->SetPosition(Box1.Position.x, Box1.Position.y, 0.0f);
-    body->SetOrientation(1.0f, 0.0, 0.0f, 2.0f);
-    body->SetVelocity(0.0f, 0.0f, 0.0f);
-    body->SetDamping(0.9f, 0.9f);
-    body->CalculateDerivedData();
+    body->SetOrientation(1.0f, 0.0, 0.0f, 0.0f);
     body->SetAcceleration(CrunchMath::Vec3(0.0f, 0.0f, 0.0f));
+    body->CalculateDerivedData();
     body->SetMass(0.0f);
-    body->SetBlockInertiaTensor((Box1.Size / 2.0f), 100.0f);
-    body->SetAwake(true);
+    body->SetAwake(false);
     Box1.body = body;
     
     CrunchMath::Box boxshape2;
