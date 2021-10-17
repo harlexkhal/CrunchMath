@@ -21,6 +21,7 @@ namespace CrunchMath {
 		}
 
 		Body* CreateBody(Shape* primitive);
+		void SetIterations(uint32_t Position, uint32_t Velocity);
 		void Step(float dt);
 	private:
 		//Constructor for children world blocks/nodes
@@ -46,6 +47,6 @@ namespace CrunchMath {
 		CrunchMath::CollisionData CData;
 
 		/** Holds the contact Resolver. */
-		CrunchMath::ContactResolver Resolver = MaxContacts;
+		CrunchMath::ContactResolver Resolver;
 	};
 }

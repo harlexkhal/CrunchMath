@@ -60,7 +60,8 @@ int main()
     Circle Circle2(vertexShaderSource, fragmentShaderSource);
     Circle Circle(vertexShaderSource, fragmentShaderSource);
 
-    CrunchMath::World gameWorld(CrunchMath::Vec3(0.0f, -9.8f, 0.0f));
+    CrunchMath::Vec3 Gravity = CrunchMath::Vec3(0.0f, -9.8f, 0.0f);
+    CrunchMath::World gameWorld(Gravity);
     Box Boxes[4];
     Box Box1(vertexShaderSource, fragmentShaderSource);
     Box Box2(vertexShaderSource, fragmentShaderSource);

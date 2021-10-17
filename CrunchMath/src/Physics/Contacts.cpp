@@ -15,7 +15,8 @@ namespace CrunchMath{
     void Contact::MatchAwakeState()
     {
         // Collisions with the world never cause a body to wake up.
-        if (!body[1]) return;
+        if (!body[1])
+            return;
 
         bool body0awake = body[0]->GetAwake();
         bool body1awake = body[1]->GetAwake();
@@ -51,7 +52,7 @@ namespace CrunchMath{
      * stored as a 3x3 matrix, where each vector is a column (in other
      * words the matrix transforms contact space into world space). The x
      * direction is generated from the contact normal, and the y and z
-     * directionss are set so they are at right angles to it.
+     * directions are set so they are at right angles to it.
      */
     inline void Contact::CalculateContactBasis()
     {
@@ -60,7 +61,7 @@ namespace CrunchMath{
         // Check whether the Z-axis is nearer to the X or Y axis
         if (fabsf(ContactNormal.x) > fabsf(ContactNormal.y))
         {
-            // Scaling factor to ensure the results are normalised
+            // Scaling factor to ensure the results are normalized
             const float s = (float)1.0f / sqrtf(ContactNormal.z * ContactNormal.z + ContactNormal.x * ContactNormal.x);
 
             // The new X-axis is at right angles to the world Y-axis
@@ -76,7 +77,7 @@ namespace CrunchMath{
 
         else
         {
-            // Scaling factor to ensure the results are normalised
+            // Scaling factor to ensure the results are normalized
             const float s = (float)1.0 / sqrtf(ContactNormal.z * ContactNormal.z + ContactNormal.y * ContactNormal.y);
 
             // The new X-axis is at right angles to the world X-axis
@@ -107,7 +108,7 @@ namespace CrunchMath{
         WorldToContact.Transpose();
         Vec3 ContactVelocity = WorldToContact * Velocity;
 
-        // Calculate the ammount of Velocity that is due to forces without
+        // Calculate the amount of Velocity that is due to forces without
         // reactions.
         Vec3 accVelocity = thisBody->GetLastFrameAcceleration() * duration;
 
@@ -472,35 +473,34 @@ namespace CrunchMath{
                 // data. Otherwise the resolution will not change the Position
                 // of the object, and the next collision detection round will
                 // have the same Penetration.
-                if (!body[i]->GetAwake()) body[i]->CalculateDerivedData();
+                if (!body[i]->GetAwake())
+                    body[i]->CalculateDerivedData();
             }
         }
     }
 
     // Contact Resolver implementation
-    ContactResolver::ContactResolver(unsigned iterations, float VelocityEpsilon, float PositionEpsilon)
+	ContactResolver::ContactResolver()
+	{
+		SetIterations(6, 3);
+	}
+
+    ContactResolver::ContactResolver(unsigned PositionIterations, unsigned VelocityIterations)
     {
-        SetIterations(iterations, iterations);
-        SetEpsilon(VelocityEpsilon, PositionEpsilon);
+        SetIterations(PositionIterations, VelocityIterations);
     }
 
-    void ContactResolver::SetIterations(unsigned VelocityIterations, unsigned PositionIterations)
+	void ContactResolver::SetIterations(unsigned PositionIterations, unsigned VelocityIterations)
     {
         ContactResolver::VelocityIterations = VelocityIterations;
         ContactResolver::PositionIterations = PositionIterations;
     }
 
-    void ContactResolver::SetEpsilon(float VelocityEpsilon, float PositionEpsilon)
-    {
-        ContactResolver::VelocityEpsilon = VelocityEpsilon;
-        ContactResolver::PositionEpsilon = PositionEpsilon;
-    }
-
     void ContactResolver::ResolveContacts(Contact* Contacts, unsigned numContacts, float duration)
     {
         // Make sure we have something to do.
-        if (numContacts == 0) return;
-        if (!IsValid()) return;
+        if (numContacts == 0)
+            return;
 
         // Prepare the Contacts for processing
         PrepareContacts(Contacts, numContacts, duration);
@@ -533,7 +533,7 @@ namespace CrunchMath{
         while (VelocityIterationsUsed < VelocityIterations)
         {
             // Find contact with maximum magnitude of probable Velocity change.
-            float max = VelocityEpsilon;
+            float max = 0.0f;
             unsigned index = numContacts;
             for (unsigned i = 0; i < numContacts; i++)
             {
@@ -588,7 +588,6 @@ namespace CrunchMath{
     {
         unsigned i, index;
         Vec3 linearChange[2], angularChange[2];
-        float max;
         Vec3 deltaPosition;
 
         // iteratively resolve interPenetrations in order of severity.
@@ -596,7 +595,7 @@ namespace CrunchMath{
         while (PositionIterationsUsed < PositionIterations)
         {
             // Find biggest Penetration
-            max = PositionEpsilon;
+            float max = 0.0f;
             index = numContacts;
             for (i = 0; i < numContacts; i++)
             {

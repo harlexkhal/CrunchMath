@@ -102,7 +102,7 @@ namespace CrunchMath {
 
         /**
          * Holds the world space Position of the contact point relative to
-         * centre of each body. This is set when the CalculateInternals
+         * center of each body. This is set when the CalculateInternals
          * function is run.
          */
         Vec3 RelativeContactPosition[2];
@@ -206,7 +206,7 @@ namespace CrunchMath {
      * approach is very robust indeed for high Friction and low
      * Restitution values.
      *
-     * The algorithm produces visually believable behaviour. Tradeoffs
+     * The algorithm produces visually believable behavior. Trade offs
      * have been made to err on the side of visual floatism rather than
      * computational expense or numerical accuracy.
      *
@@ -243,24 +243,6 @@ namespace CrunchMath {
          */
         unsigned PositionIterations;
 
-        /**
-         * To avoid instability velocities smaller
-         * than this value are considered to be zero. Too small and the
-         * simulation may be unstable, too large and the bodies may
-         * interpenetrate visually. A good starting point is the default
-         * of 0.01.
-         */
-        float VelocityEpsilon;
-
-        /**
-         * To avoid instability Penetrations
-         * smaller than this value are considered to be not interpenetrating.
-         * Too small and the simulation may be unstable, too large and the
-         * bodies may interpenetrate visually. A good starting point is
-         * the default of0.01.
-         */
-        float PositionEpsilon;
-
     public:
         /**
          * Stores the number of Velocity iterations used in the
@@ -275,32 +257,17 @@ namespace CrunchMath {
         unsigned PositionIterationsUsed;
 
     public:
+        ContactResolver();
         /**
          * Creates a new contact Resolver with the given number of iterations
          * per resolution call, and optional epsilon values.
          */
-        ContactResolver(unsigned iterations, float VelocityEpsilon = (float)0.01, float PositionEpsilon = (float)0.01);
-
-        /**
-         * Returns true if the Resolver has valid settings and is ready to go.
-         */
-        bool IsValid()
-        {
-            return (
-                     (VelocityIterations > 0) && (PositionIterations > 0) &&
-                      (PositionEpsilon >= 0.0f) && (PositionEpsilon >= 0.0f)
-                   );
-        }
+        ContactResolver(unsigned PositionIterations, unsigned VelocityIterations);
 
         /**
          * Sets the number of iterations for each resolution stage.
          */
-        void SetIterations(unsigned VelocityIterations, unsigned PositionIterations);
-
-        /**
-         * Sets the Tolerance value for both Velocity and Position.
-         */
-        void SetEpsilon(float VelocityEpsilon, float PositionEpsilon);
+        void SetIterations(unsigned PositionIterations, unsigned VelocityIterations);
 
         /**
          * Resolves a set of Contacts for both Penetration and Velocity.
@@ -318,7 +285,7 @@ namespace CrunchMath {
          * @param numIterations The number of iterations through the
          * resolution algorithm. This should be at least the number of
          * Contacts (otherwise some constraints will not be resolved -
-         * although sometimes this is not noticable). If the iterations are
+         * although sometimes this is not noticeable). If the iterations are
          * not needed they will not be used, so adding more iterations may
          * not make any difference. In some cases you would need millions
          * of iterations. Think about the number of iterations as a bound:

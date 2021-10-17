@@ -8,6 +8,7 @@ namespace CrunchMath {
 		Parent = true;
 		memset(FreeStack, true, MaxNumberOfBodies);
 		CData.ContactArray = Contacts;
+		Resolver.SetIterations(6, 3);
 		m_pNext = nullptr;
 	}
 
@@ -17,6 +18,7 @@ namespace CrunchMath {
 		this->Parent = parent;
 		memset(FreeStack, true, MaxNumberOfBodies);
 		CData.ContactArray = Contacts;
+		Resolver.SetIterations(6, 3);
 		m_pNext = nullptr;
     }
 
@@ -168,6 +170,11 @@ namespace CrunchMath {
 		}
 	}
 
+	void World::SetIterations(uint32_t Position, uint32_t Velocity)
+	{
+		Resolver.SetIterations(Position, Velocity);
+	}
+
 	void World::Step(float dt)
 	{
 		CData.Reset(MaxContacts);
@@ -191,21 +198,6 @@ namespace CrunchMath {
 		    }
 			ptrStack = ptrStack->m_pNext;
 		}
-
-		/*--------------------Temporary---------------------------------*/
-		ptrStack = Stack;
-		while (ptrStack != nullptr)
-		{
-			if ((ptrStack)->GetPosition().y <= -0.9f)
-			{
-				(ptrStack)->SetVelocity(0, 0, 0);
-				(ptrStack)->SetRotation(0, 0, 0);
-				(ptrStack)->SetPosition(0.0f, 0.9f, 0.0f);
-			}
-
-			ptrStack = ptrStack->m_pNext;
-		}
-		//-----------------------------------------------------------------
 
 		Resolver.ResolveContacts(CData.ContactArray, CData.ContactCount, dt);
 	}

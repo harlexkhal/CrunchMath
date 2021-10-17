@@ -89,6 +89,9 @@ namespace CrunchMath {
         Penetration = fabs(Penetration);
 
         assert(BestAxis != 0xffffff);
+        /*if (BestAxis == 0xffffff || Penetration == -0xfffffffff)
+            return 0;*/
+
         if (BestAxis < 3)
         {
             FillPointFaceBoxBox(One, Two, CentreCentreDirection, Data, BestAxis, Penetration);
