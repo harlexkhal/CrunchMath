@@ -209,9 +209,19 @@ namespace CrunchMath
         matrix.Matrix[2][2] = TransformMatrix.Matrix[2][2];
     }
 
-    Mat4x4 Body::GetTransform() const
+    const Mat4x4& Body::GetTransform()
     {
         return TransformMatrix;
+    }
+
+    Mat4x4 Body::GetModelMatrix()
+    {
+        //Copying a 4x4 Matrix is extremely slow everytime the model is requested for...
+        //could do something like storing the Model matrix as a data member of body and
+        //passing it by reference here.....Todo=>Alex
+        Mat4x4 ModelMatrix = TransformMatrix;
+        ModelMatrix.Scale(Size);
+        return ModelMatrix;
     }
 
     void Body::SetVelocity(const float x, const float y, const float z)

@@ -49,6 +49,11 @@ namespace CrunchMath {
 			case Shape::Type::s_Box: {
 				newbody->Primitive = new Box();
 				Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
+				/* Its easy to detect whats a Boxand whats a Square by checking the
+				 * z-axis of the Size vector. so therefore no other enum shape for
+				 * squares would be implemented  (Check s_Shere comments below)
+				 */
+				newbody->Size = HalfSize * 2;
 				newbody->Primitive->Set(HalfSize.x, HalfSize.y, HalfSize.z);
 				break;
 			}
@@ -56,6 +61,9 @@ namespace CrunchMath {
 			case Shape::Type::s_Sphere: {
 				newbody->Primitive = new cmSphere();
                 float Radius = *(float*)primitive->GetHalfSize();
+				//Assuming its a Sphere....Note there would be a cirlce enum type later.
+				//given the facts that circles are 2D while Spheres are 3D.
+				newbody->Size = Vec3(Radius * 2, Radius * 2, Radius * 2);
 				newbody->Primitive->Set(Radius);
 				break;
 			}
@@ -87,6 +95,11 @@ namespace CrunchMath {
 					case Shape::Type::s_Box: {
 						newbody->Primitive = new Box();
 						Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
+						/* Its easy to detect whats a Boxand whats a Square by checking the
+					     * z-axis of the Size vector. so therefore no other enum shape for
+					     * squares would be implemented  (Check s_Shere comments below)
+						 */
+						newbody->Size = HalfSize * 2;
 						newbody->Primitive->Set(HalfSize.x, HalfSize.y, HalfSize.z);
 						break;
 					}
@@ -94,6 +107,10 @@ namespace CrunchMath {
 					case Shape::Type::s_Sphere: {
 						newbody->Primitive = new cmSphere();
 						float Radius = *(float*)primitive->GetHalfSize();
+					    /*Assuming its a Sphere....Note there would be a cirlce enum type later.
+					     * given the facts that circles are 2D while Spheres are 3D.
+						 */
+					    newbody->Size = Vec3(Radius * 2, Radius * 2, Radius * 2);
 						newbody->Primitive->Set(Radius);
 						break;
 					}
@@ -143,6 +160,10 @@ namespace CrunchMath {
 			case Shape::Type::s_Box: {
 				newbody->Primitive = new Box();
 				Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
+			    /* Its easy to detect whats a Boxand whats a Square by checking the
+				 * z-axis of the Size vector. so therefore no other enum shape for
+				 * squares would be implemented  (Check s_Shere comments below)*/
+				newbody->Size = HalfSize * 2;
 				newbody->Primitive->Set(HalfSize.x, HalfSize.y, HalfSize.z);
 				break;
 			}
@@ -150,6 +171,9 @@ namespace CrunchMath {
 			case Shape::Type::s_Sphere: {
 				newbody->Primitive = new cmSphere();
 				float Radius = *(float*)primitive->GetHalfSize();
+				/* Assuming its a Sphere....Note there would be a cirlce enum type later.
+				 * given the facts that circles are 2D while Spheres are 3D.*/
+			    newbody->Size = Vec3(Radius * 2, Radius * 2, Radius * 2);
 				newbody->Primitive->Set(Radius);
 				break;
 			}

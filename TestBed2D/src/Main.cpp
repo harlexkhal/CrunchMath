@@ -11,23 +11,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-const char* vertexShaderSource = "#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"uniform mat4 Model;\n"
-"void main()\n"
-"{\n"
-"   gl_Position = Model * vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-"}\0";
-
-const char* fragmentShaderSource = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"uniform vec4 Color;\n"
-"void main()\n"
-"{\n"
-"   FragColor = Color;\n"
-"}\n\0";
-
-int main()
+ int main()
 {
     // glfw: initialize and configure
     // ------------------------------
@@ -57,16 +41,16 @@ int main()
     int Count = 0;
     float Ts = (1.0f / 200.0f);
    
-    Circle Circle2(vertexShaderSource, fragmentShaderSource);
-    Circle Circle(vertexShaderSource, fragmentShaderSource);
+     //Circle Circle2; 
+    //Circle Circle; 
 
     CrunchMath::Vec3 Gravity = CrunchMath::Vec3(0.0f, -9.8f, 0.0f);
     CrunchMath::World gameWorld(Gravity);
     Box Boxes[4];
-    Box Box1(vertexShaderSource, fragmentShaderSource);
-    Box Box2(vertexShaderSource, fragmentShaderSource);
-    Box Box3(vertexShaderSource, fragmentShaderSource);
-    Box Box4(vertexShaderSource, fragmentShaderSource);
+    Box Box1;
+    Box Box2;
+    Box Box3;
+    Box Box4;
     // Set the first block
     Box1.Size = CrunchMath::Vec3(100.0f, 0.5f, 0.0f);
     Box2.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
@@ -150,8 +134,6 @@ int main()
 
         for (int a = 0; a < 4; a++)
         {
-            Boxes[a].Model = Boxes[a].body->GetTransform();
-            Boxes[a].Model.Scale(Boxes[a].Size);
             Boxes[a].Render();
         }
 

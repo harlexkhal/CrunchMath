@@ -7,7 +7,7 @@
 
 namespace CrunchMath {
 
-    static inline float TransformToAxis(const Body& body, const Vec3& axis)
+    static inline float TransformToAxis(Body& body, const Vec3& axis)
     {
         Vec3 HalfSize = *((Vec3*)body.GetShape()->GetHalfSize());
         return
@@ -18,7 +18,7 @@ namespace CrunchMath {
             );
     }
 
-    static inline float PenetrationOnAxis(const Body& One, const Body& Two, const Vec3& axis, const Vec3& toCentre)
+    static inline float PenetrationOnAxis(Body& One, Body& Two, const Vec3& axis, const Vec3& toCentre)
     {
         float OneProject = TransformToAxis(One, axis);
         float TwoProject = TransformToAxis(Two, axis);
@@ -28,7 +28,7 @@ namespace CrunchMath {
         return distance - (OneProject + TwoProject);
     }
 
-    static inline bool TryAxis(const Body& One, const Body& Two, Vec3 axis, const Vec3& toCentre,
+    static inline bool TryAxis(Body& One, Body& Two, Vec3 axis, const Vec3& toCentre,
         unsigned index, float& SmallestPenetration, unsigned& SmallestCase)
     {
         float Penetration = PenetrationOnAxis(One, Two, axis, toCentre);

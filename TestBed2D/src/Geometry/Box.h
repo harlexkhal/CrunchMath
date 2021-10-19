@@ -5,18 +5,31 @@ class Box :  public Geometry
 {
 public:
     CrunchMath::Vec3 Size;
-    CrunchMath::Body* body;
-    //CrunchMath::OBB Volume;
 private:
     float vertices[12 * 2];
 
 public:
-    Box(){}
 
-    Box(const char* vertexShaderSource, const char* fragmentShaderSource)
-    {
+    Box()
+    { 
+		const char* vertexShaderSource = "#version 330 core\n"
+		"layout (location = 0) in vec3 aPos;\n"
+		"uniform mat4 Model;\n"
+		"void main()\n"
+		"{\n"
+		"   gl_Position = Model * vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+		"}\0";
+
+		const char* fragmentShaderSource = "#version 330 core\n"
+		"out vec4 FragColor;\n"
+		"uniform vec4 Color;\n"
+		"void main()\n"
+		"{\n"
+		"   FragColor = Color;\n"
+		"}\n\0";
+
         CreateShaderProgram(vertexShaderSource, fragmentShaderSource);
-        Draw();
+		Draw();
         AllocateBuffers(sizeof(vertices), vertices);
 
         Size = CrunchMath::Vec3(0.035f, 0.035f, 0.0f);

@@ -10,7 +10,7 @@ public:
     CrunchMath::Vec4 Color;
     CrunchMath::Mat4x4 Model;
     CrunchMath::Vec3 Position;
-
+    CrunchMath::Body* body;
 protected:
     unsigned int ProgramID;
     unsigned int VAO;
@@ -22,6 +22,10 @@ public:
 
     virtual void Render()
     {
+        //Note. i'm not stupid for doing this. there is no need to be copying Model matrix generated from the physics library into body.
+        //i'm just trying to show ways it can be used just incase you have a different math library. you can just create your own copy method.
+        //You get the point.
+        Model = body->GetModelMatrix();
         glUseProgram(ProgramID);
         glUniformMatrix4fv(glGetUniformLocation(this->ProgramID, "Model"), 1, GL_FALSE, &Model.Matrix[0][0]);
         glUniform4f(glGetUniformLocation(this->ProgramID, "Color"), Color.x, Color.y, Color.z, Color.a);
