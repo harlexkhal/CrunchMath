@@ -1,17 +1,50 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
+#include <vector>
 #include "Geometry/Circle.h"
 #include "Geometry/Box.h"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
-// settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+CrunchMath::Vec3 Gravity = CrunchMath::Vec3(0.0f, -9.8f, 0.0f);
+CrunchMath::World gameWorld(Gravity);
 
- int main()
+std::vector<DebugRenderer::Box> Boxes;
+
+void FrameBufferResizeCallBack(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
+void TrackCusorCallBack(GLFWwindow* window, double xPos, double yPos)
+{
+	CrunchMath::cmBox boxshape2;
+	boxshape2.Set((0.05f / 2.0f), (0.05f / 2.0f), 0.0f);
+
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		float Xaxis = ((xPos + xPos) / 800.0f) - 1;
+		float Yaxis = 1 - ((yPos + yPos) / 600.0f);
+
+		DebugRenderer::Box newBox;
+		newBox.Size = CrunchMath::Vec3(0.05f, 0.05f, 0.0f); 
+		newBox.Position = CrunchMath::Vec3(Xaxis, Yaxis, 0.0f); 
+
+		CrunchMath::Body* newbody = gameWorld.CreateBody(&boxshape2);
+		newbody->SetPosition(newBox.Position.x, newBox.Position.y, 0.0f);
+		newbody->SetOrientation(0.0f, 0.0, 0.0f, 2.0f);
+		newbody->SetVelocity(0.0f, 0.0f, 0.0f);
+		newbody->SetDamping(0.9f, 0.9f);
+		newbody->CalculateDerivedData();
+		newbody->SetMass(100);
+		newbody->SetBlockInertiaTensor((newBox.Size / 2.0f), 100);
+		newbody->SetAwake(true);
+		newBox.body = newbody;
+		Boxes.emplace_back(newBox);
+	}
+}
+
+int main()
 {
     // glfw: initialize and configure
     // ------------------------------
@@ -20,7 +53,7 @@ const unsigned int SCR_HEIGHT = 600;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "CrunchMath", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "CrunchMath-TestBed2D", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -28,7 +61,8 @@ const unsigned int SCR_HEIGHT = 600;
         return -1;
     }
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetFramebufferSizeCallback(window, FrameBufferResizeCallBack);
+    glfwSetCursorPosCallback(window, TrackCusorCallBack);
     glfwSwapInterval(1);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -44,22 +78,12 @@ const unsigned int SCR_HEIGHT = 600;
      //Circle Circle2; 
     //Circle Circle; 
 
-    CrunchMath::Vec3 Gravity = CrunchMath::Vec3(0.0f, -9.8f, 0.0f);
-    CrunchMath::World gameWorld(Gravity);
-    Box Boxes[4];
-    Box Box1;
-    Box Box2;
-    Box Box3;
-    Box Box4;
-    // Set the first block
+
+    DebugRenderer::Box Box1;
     Box1.Size = CrunchMath::Vec3(100.0f, 0.5f, 0.0f);
-    Box2.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
-    Box3.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
-    Box4.Size = CrunchMath::Vec3(0.09f, 0.09f, 0.0f);
+	Box1.Position = CrunchMath::Vec3(0.0f, -0.8f, 0.0f); 
 
-    Box1.Position = CrunchMath::Vec3(0.0f, -0.8f, 0.0f);
-
-    CrunchMath::Box groundshape;
+    CrunchMath::cmBox groundshape;
     groundshape.Set((Box1.Size.x / 2.0f), (Box1.Size.y / 2.0f), 0.0f);
 
     CrunchMath::Body* body = gameWorld.CreateBody(&groundshape);
@@ -70,48 +94,8 @@ const unsigned int SCR_HEIGHT = 600;
     body->SetMass(0.0f);
     body->SetAwake(false);
     Box1.body = body;
-    
-    CrunchMath::Box boxshape2;
-    boxshape2.Set((Box2.Size.x / 2.0f), (Box2.Size.y / 2.0f), 0.0f);
-
-    CrunchMath::Body* body2 = gameWorld.CreateBody(&boxshape2);
-    body2->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
-    body2->SetOrientation(0.0f, 0.0, 0.0f, 2.0f);
-    body2->SetVelocity(0.0f, 0.0f, 0.0f);
-    body2->SetDamping(0.9f, 0.9f);
-    body2->CalculateDerivedData();
-    body2->SetMass(1000);
-    body2->SetBlockInertiaTensor((Box2.Size / 2.0f), 1000);
-    body2->SetAwake(true);
-    Box2.body = body2;
-
-    CrunchMath::Body* body3 = gameWorld.CreateBody(&boxshape2);
-    body3->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
-	body3->SetOrientation(0.0f, 0.0, 0.0f, 2.0f);
-	body3->SetVelocity(0.0f, 0.0f, 0.0f);
-	body3->SetDamping(0.9f, 0.9f);
-	body3->CalculateDerivedData();
-	body3->SetMass(1000.0f);
-	body3->SetBlockInertiaTensor((Box2.Size / 2.0f), 1000.0f);
-	body3->SetAwake(true);
-	Box3.body = body3;
-
-    CrunchMath::Body* body4 = gameWorld.CreateBody(&boxshape2);
-	body4->SetPosition(Box2.Position.x, Box2.Position.y, 0.0f);
-	body4->SetOrientation(0.0f, 0.0, 0.0f, 2.0f);
-	body4->SetVelocity(0.0f, 0.0f, 0.0f);
-	body4->SetDamping(0.9f, 0.9f);
-	body4->CalculateDerivedData();
-	body4->SetMass(1000.0f);
-	body4->SetBlockInertiaTensor((Box2.Size / 2.0f), 1000.0f);
-	body4->SetAwake(true);
-	Box4.body = body4;
-
-    Boxes[0] = Box1;
-    Boxes[1] = Box2;
-    Boxes[2] = Box3;
-    Boxes[3] = Box4;
- 
+    Boxes.emplace_back(Box1);
+   
     float dt = 0.0f;
     float lastFrame = 0.0f;
     while (!glfwWindowShouldClose(window))
@@ -119,20 +103,9 @@ const unsigned int SCR_HEIGHT = 600;
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Set up the collision data structure
-       
         gameWorld.Step(Ts);
 
-        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-            Boxes[1].body->SetVelocity(0.0f, 1.0f, 0.0f);
-		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-            Boxes[1].body->SetVelocity(1.0f, 0.0f, 0.0f);
-        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-            Boxes[1].body->SetVelocity(-1.0f, 0.0f, 0.0f);
-        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-            Boxes[1].body->SetVelocity(0.0f, -1.0f, 0.0f);
-
-        for (int a = 0; a < 4; a++)
+        for (int a = 0; a < Boxes.size(); a++)
         {
             Boxes[a].Render();
         }
@@ -143,9 +116,4 @@ const unsigned int SCR_HEIGHT = 600;
 
     glfwTerminate();
     return 0;
-}
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-    glViewport(0, 0, width, height);
 }

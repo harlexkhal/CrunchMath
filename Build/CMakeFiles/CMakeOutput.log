@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 9/23/2021 1:49:49 AM.
+Build started 10/20/2021 3:06:39 PM.
 Project "C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\3.20.21032501-MSVC_2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -47,14 +47,14 @@ The CXX compiler identification is MSVC, found in "C:/Dev/MyProjects/CrunchMath/
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Dev/MyProjects/CrunchMath/Build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_ff13d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_0771c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30133 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_ff13d.dir\Debug\\" /Fd"cmTC_ff13d.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_ff13d.vcxproj -> C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\CMakeTmp\Debug\cmTC_ff13d.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_0771c.dir\Debug\\" /Fd"cmTC_0771c.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_0771c.vcxproj -> C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\CMakeTmp\Debug\cmTC_0771c.exe
 
 
 
@@ -68,7 +68,7 @@ The output was:
 Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 9/23/2021 1:49:52 AM.
+Build started 10/20/2021 3:06:42 PM.
 Project "C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\3.20.21032501-MSVC_2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -94,7 +94,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.99
+Time Elapsed 00:00:00.90
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -106,14 +106,14 @@ The C compiler identification is MSVC, found in "C:/Dev/MyProjects/CrunchMath/Bu
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Dev/MyProjects/CrunchMath/Build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_9a446.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_174d8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.0+0538acc04 for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30133 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCCompilerABI.c
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9a446.dir\Debug\\" /Fd"cmTC_9a446.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c"
-  cmTC_9a446.vcxproj -> C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\CMakeTmp\Debug\cmTC_9a446.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_174d8.dir\Debug\\" /Fd"cmTC_174d8.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.20\Modules\CMakeCCompilerABI.c"
+  cmTC_174d8.vcxproj -> C:\Dev\MyProjects\CrunchMath\Build\CMakeFiles\CMakeTmp\Debug\cmTC_174d8.exe
 
 
 

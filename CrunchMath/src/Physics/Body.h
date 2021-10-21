@@ -4,7 +4,7 @@
 
 namespace CrunchMath {
 
-    class Shape;
+    class cmShape;
     
     class Body
     {
@@ -38,7 +38,7 @@ namespace CrunchMath {
         void GetOrientation(Mat3x3& matrix) const;
         /* Doesn't return a scaled matrix according to size of body. TransformMatrix here contains
          * Only the Translation and Orientation. check GetModelMatrix() below */
-        const Mat4x4& GetTransform();
+        const Mat4x4& GetTransform() const;
         //Returns a TransformMatrix containing its Rotation, Translation and Scale.
         Mat4x4 GetModelMatrix();
         void SetVelocity(const float x, const float y, const float z);
@@ -47,7 +47,7 @@ namespace CrunchMath {
         void SetRotation(const float x, const float y, const float z);
         Vec3 GetRotation() const;
         void AddRotation(const Vec3 &deltaRotation);
-        const Shape* GetShape() const { return Primitive; };
+        const cmShape* GetShape() const { return Primitive; };
 
         bool GetAwake() const;
         void SetAwake(const bool awake=true);
@@ -70,7 +70,7 @@ namespace CrunchMath {
 
         Vec3 Position;
         Quaternion Orientation;
-        Vec3 Size;
+		Vec3 Size;
 
         Vec3 Velocity;
         Vec3 Rotation;
@@ -89,8 +89,8 @@ namespace CrunchMath {
         Vec3 Acceleration;
         Vec3 LastFrameAcceleration;
 
-        Shape* Primitive = nullptr;
-        Body* m_pNext;
+		Body* m_pNext;
+		cmShape* Primitive = nullptr;
     };
 
     /*

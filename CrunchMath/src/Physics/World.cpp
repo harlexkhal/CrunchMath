@@ -7,18 +7,18 @@ namespace CrunchMath {
 	{
 		Parent = true;
 		memset(FreeStack, true, MaxNumberOfBodies);
-		CData.ContactArray = Contacts;
-		Resolver.SetIterations(6, 3);
+		CData.ptrContactArray = Contacts;
+		Resolver.SetIterations(5000, 100);
 		m_pNext = nullptr;
 	}
 
 	World::World(Vec3 gravity, bool parent)
 		:Gravity(gravity), Index(0)
 	{
+		//No need to set collision Data here since its always going to be handled by the Parent gameWorld.
+		//Same for ContactResolver. it is going to be handled by the parent game world...
 		this->Parent = parent;
 		memset(FreeStack, true, MaxNumberOfBodies);
-		CData.ContactArray = Contacts;
-		Resolver.SetIterations(6, 3);
 		m_pNext = nullptr;
     }
 
@@ -37,7 +37,7 @@ namespace CrunchMath {
 		}
     }
 
-	Body* World::CreateBody(Shape* primitive)
+	Body* World::CreateBody(cmShape* primitive)
 	{
 		if (Empty())
 		{
@@ -46,8 +46,8 @@ namespace CrunchMath {
 
 			switch (primitive->GetType())
 			{
-			case Shape::Type::s_Box: {
-				newbody->Primitive = new Box();
+			case cmShape::Type::s_Box: {
+				newbody->Primitive = new cmBox();
 				Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
 				/* Its easy to detect whats a Boxand whats a Square by checking the
 				 * z-axis of the Size vector. so therefore no other enum shape for
@@ -58,7 +58,7 @@ namespace CrunchMath {
 				break;
 			}
  
-			case Shape::Type::s_Sphere: {
+			case cmShape::Type::s_Sphere: {
 				newbody->Primitive = new cmSphere();
                 float Radius = *(float*)primitive->GetHalfSize();
 				//Assuming its a Sphere....Note there would be a cirlce enum type later.
@@ -92,8 +92,8 @@ namespace CrunchMath {
 
 					switch (primitive->GetType())
 					{
-					case Shape::Type::s_Box: {
-						newbody->Primitive = new Box();
+					case cmShape::Type::s_Box: {
+						newbody->Primitive = new cmBox();
 						Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
 						/* Its easy to detect whats a Boxand whats a Square by checking the
 					     * z-axis of the Size vector. so therefore no other enum shape for
@@ -104,7 +104,7 @@ namespace CrunchMath {
 						break;
 					}
 		 
-					case Shape::Type::s_Sphere: {
+					case cmShape::Type::s_Sphere: {
 						newbody->Primitive = new cmSphere();
 						float Radius = *(float*)primitive->GetHalfSize();
 					    /*Assuming its a Sphere....Note there would be a cirlce enum type later.
@@ -157,8 +157,8 @@ namespace CrunchMath {
 
 			switch (primitive->GetType())
 			{
-			case Shape::Type::s_Box: {
-				newbody->Primitive = new Box();
+			case cmShape::Type::s_Box: {
+				newbody->Primitive = new cmBox();
 				Vec3 HalfSize = *(Vec3*)primitive->GetHalfSize();
 			    /* Its easy to detect whats a Boxand whats a Square by checking the
 				 * z-axis of the Size vector. so therefore no other enum shape for
@@ -168,7 +168,7 @@ namespace CrunchMath {
 				break;
 			}
 
-			case Shape::Type::s_Sphere: {
+			case cmShape::Type::s_Sphere: {
 				newbody->Primitive = new cmSphere();
 				float Radius = *(float*)primitive->GetHalfSize();
 				/* Assuming its a Sphere....Note there would be a cirlce enum type later.
@@ -202,8 +202,8 @@ namespace CrunchMath {
 	void World::Step(float dt)
 	{
 		CData.Reset(MaxContacts);
-		CData.Friction = 0.9f;
-		CData.Restitution = 0.1f;
+		CData.Friction = 0.5f;
+		CData.Restitution = 0.5f;
 
 		Body* ptrStack = Stack;
 		while (ptrStack != nullptr)
@@ -217,12 +217,12 @@ namespace CrunchMath {
 		{
 			for (Body* i = ptrStack->m_pNext; i != nullptr; )
 			{
-				CrunchMath::CollisionDetector::Collision(ptrStack, i, &CData);
+				CrunchMath::CollisionDetector::Collision(*ptrStack, *i, &CData);
 				i = i->m_pNext;
 		    }
 			ptrStack = ptrStack->m_pNext;
 		}
 
-		Resolver.ResolveContacts(CData.ContactArray, CData.ContactCount, dt);
+		Resolver.ResolveContacts(Contacts, CData.ContactCount, dt);
 	}
 }
