@@ -20,7 +20,7 @@ namespace CrunchMath {
 			return true;
 		}
 
-		Body* CreateBody(Shape* primitive);
+		Body* CreateBody(cmShape* primitive);
 		void SetIterations(uint32_t Position, uint32_t Velocity);
 		void Step(float dt);
 	private:
@@ -30,7 +30,13 @@ namespace CrunchMath {
 		World* m_pNext;
 		bool Parent;
 
-		const static unsigned int MaxNumberOfBodies = 2;
+		//max number of body handled...if you a user exceeds this limit.
+		//a child world is created in form of a linked list connecting with its parents.
+		//this is done so to reduce memory fragmentation in creating and deleting rigid bodies.
+		//since rigid bodies are always allocated on heap. so we just prepare a block of memory
+		//for set of rigid bodies. you know what i mean...:-)
+		const static unsigned int MaxNumberOfBodies = 100;
+
 		Body Stack[MaxNumberOfBodies];
 		bool FreeStack[MaxNumberOfBodies];
 		unsigned int Index = 0;
@@ -38,7 +44,7 @@ namespace CrunchMath {
 		Vec3 Gravity = Vec3(0.0f, 0.0f, 0.0f);
 
 		/** Holds the maximum number of Contacts. */
-		const static unsigned MaxContacts = 1000;
+		const static unsigned MaxContacts = 5000;
 
 		/** Holds the array of Contacts. */
 		CrunchMath::Contact Contacts[MaxContacts];
