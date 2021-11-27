@@ -482,7 +482,7 @@ namespace CrunchMath{
     // Contact Resolver implementation
 	ContactResolver::ContactResolver()
 	{
-		SetIterations(6, 3);
+		SetIterations(1000, 100);
 	}
 
     ContactResolver::ContactResolver(unsigned PositionIterations, unsigned VelocityIterations)

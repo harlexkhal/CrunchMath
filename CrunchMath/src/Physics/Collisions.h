@@ -5,7 +5,7 @@ namespace CrunchMath {
 
     class CollisionDetector;
 
-    class Shape
+    class cmShape
     {
     public:
         enum Type
@@ -22,10 +22,10 @@ namespace CrunchMath {
         Type m_Shape;
     };
 
-    class Box : public Shape
+    class cmBox : public cmShape
     {
     public:
-        Box()
+        cmBox()
         {
             m_Shape = s_Box;
         }
@@ -44,12 +44,12 @@ namespace CrunchMath {
         Vec3 HalfSize;
     };
 
-    class cmSphere : public Shape
+    class cmSphere : public cmShape
     {
     public:
         cmSphere()
         {
-            m_Shape = Shape::s_Sphere;
+            m_Shape = cmShape::s_Sphere;
             Radius = 0.0f;
         }
 
@@ -69,11 +69,12 @@ namespace CrunchMath {
 
     struct CollisionData
     {
-        Contact *ContactArray;
 
-        Contact *Contacts;
+        Contact* ptrContactArray;
 
-        int ContactsLeft;
+        Contact* ptrCurrentContact;
+
+        int ContactsSpaceLeft;
 
         unsigned ContactCount;
 
@@ -83,30 +84,29 @@ namespace CrunchMath {
 
         float Tolerance;
 
-        bool HasMoreContacts()
-        {
-            return ContactsLeft > 0;
-        }
-
         void Reset(unsigned MaxContacts)
         {
-            ContactsLeft = MaxContacts;
+            ContactsSpaceLeft = MaxContacts;
             ContactCount = 0;
-            Contacts = ContactArray;
+            ptrCurrentContact = ptrContactArray;
         }
 
         void AddContacts(unsigned count)
         {
-            ContactsLeft -= count;
+            //Don't add any more contacts if there is no longer space to store new contacts...
+            if (ContactsSpaceLeft <= 0)
+                return;
+
+            ContactsSpaceLeft -= count;
             ContactCount += count;
 
-            Contacts += count;
+            ptrCurrentContact += count;
         }
-    };
+	};
 
     class CollisionDetector
     {
     public:
-        static unsigned Collision(Body* one, Body* two, CollisionData *data);
+        static unsigned Collision(Body& One, Body& Two, CollisionData* Data);
     };
 }

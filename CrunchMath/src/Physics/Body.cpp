@@ -209,7 +209,7 @@ namespace CrunchMath
         matrix.Matrix[2][2] = TransformMatrix.Matrix[2][2];
     }
 
-    const Mat4x4& Body::GetTransform()
+    const Mat4x4& Body::GetTransform() const
     {
         return TransformMatrix;
     }
