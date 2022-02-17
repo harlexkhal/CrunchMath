@@ -1,5 +1,5 @@
 # CrunchMath
-CrunchMath is a 2D/3D Math & Physics Engine
+2D/3D math-physics engine for making games that shouldn't be shipped for production and physics simulations test projects. Its main purpose is to understand the low level details that goes behind making physics simulated environments in games or any software that requires it
 
 ## Details:
 ### Features implemented so far are:
