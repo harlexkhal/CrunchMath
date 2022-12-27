@@ -89,8 +89,7 @@ int main()
 
     float thetha = 0;
     int Count = 0;
-    float Ts = (1.0f / 200.0f);
-
+ 
     /*
     * Circle Circle2;
     * Circle Circle; 
@@ -114,17 +113,33 @@ int main()
     Boxes.emplace_back(Box1);
    
     float dt = 0.0f;
-    float lastFrame = 0.0f;
+    float lastFrameTimeStamp = 0.0f;
+    float fr = (1.0f / 60.0f);
+    float accumulatedTime = 0.0f;
+
     while (!glfwWindowShouldClose(window))
     {
+        int currentTime = glfwGetTime();
+
+        dt = glfwGetTime() - lastFrameTimeStamp;
+        lastFrameTimeStamp = glfwGetTime();
+        std::cout << dt << std::endl;
+        
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        int State = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
-        if (State == GLFW_PRESS)
-            Spawn();
+       
 
-        gameWorld.Step(Ts);
+        accumulatedTime += dt;
+
+        while (accumulatedTime >= fr) {
+            int State = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+            if (State == GLFW_PRESS)
+                Spawn();
+            gameWorld.Step(dt);
+            accumulatedTime -= dt;
+        }
+
         for (int a = 0; a < Boxes.size(); a++)
             Boxes[a].Render();
 
